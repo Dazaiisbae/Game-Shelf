@@ -1218,6 +1218,23 @@ body::before{display:none}
   background:linear-gradient(180deg,#7CD0F7,#2E9BE0 50%,#1F86CC 51%,#3AA8EA);border:1px solid rgba(255,255,255,.75);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 2px 6px rgba(10,90,160,.35)}
 .addglyph svg{width:14px;height:14px;display:block}
+
+.sheet input[type=date]:disabled{opacity:.45}
+
+/* Queue rows: titles wrap instead of running under the button, icons always visible */
+.qrow{grid-template-columns:36px minmax(0,1fr) auto}
+.qrow > span{min-width:0}
+.qrow .t{display:block;width:100%;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;overflow-wrap:anywhere}
+.qrow .m{white-space:normal}
+.btn.qplay{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.btn svg{width:16px;height:16px;flex:0 0 16px;display:block}
+/* Phone taskbar: drop the clock (the phone shows one) so every app button fits */
+@media (max-width:759px){
+  .tray > span{display:none}
+  .tray{padding-left:2px}
+  .task{padding:0 4px;min-width:0}
+  .tasks{gap:0}
+}
 </style>
 </head>
 <body>
@@ -1271,6 +1288,7 @@ body::before{display:none}
   <div id="dateRow" hidden>
     <label for="fDate" id="dateLabel">Date beaten</label>
     <input id="fDate" type="date">
+    <label class="check-row" id="dateUnknownRow" style="margin-top:8px" hidden><input type="checkbox" id="fDateUnknown">Don't remember the date</label>
   </div>
   <label class="toggle" id="completeRow" hidden><input type="checkbox" id="fComplete">100% complete</label>
   <div class="grid2">
@@ -1897,6 +1915,9 @@ function setStatus(s){
   const g = editingGame;
   $('fDate').value = toInput(s === 'beaten' ? (g?.status==='beaten' && g.finishedAt) : ((g?.status==='playing' || g?.status==='hold') && g.startedAt));
   $('fDate').max = toInput();
+  const unknown = s === 'beaten' && g?.status === 'beaten' && !g.finishedAt;
+  $('dateUnknownRow').hidden = s !== 'beaten';
+  $('fDateUnknown').checked = unknown; $('fDate').disabled = unknown;
 }
 function setRating(n){ formRating = n; document.querySelectorAll('#fRating button').forEach(b=>b.setAttribute('aria-pressed', +b.dataset.star <= n)); }
 function setOwn(o){ formOwn = o; document.querySelectorAll('#ownSeg button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.own===o)); }
@@ -1978,6 +1999,7 @@ $('saveBtn').onclick = () => {
   applyStatus(g, formStatus);
   const dv = $('fDate').value;
   if (dv && formStatus === 'beaten') g.finishedAt = fromInput(dv);
+  if (formStatus === 'beaten' && $('fDateUnknown').checked) g.finishedAt = null;
   if (dv && (formStatus === 'playing' || formStatus === 'hold')) g.startedAt = fromInput(dv);
   g.complete = formStatus === 'beaten' && $('fComplete').checked;
   g.replays = formStatus === 'beaten' ? [...formReplays].sort((a,b)=>a-b) : [];
@@ -2027,6 +2049,7 @@ $('cancelBtn').onclick = closeSheet;
 $('scrim').onclick = closeSheet;
 $('fSeries').oninput = subOptions;
 $('fTags').oninput = tagSuggestions;
+$('fDateUnknown').onchange = e => { $('fDate').disabled = e.target.checked; };
 $('fPlatform').oninput = consoleSuggestions;
 $('consoleSugs').onclick = e => { const b = e.target.closest('[data-addconsole]'); if (!b) return;
   const cur = platformsOf({ platform: $('fPlatform').value }); cur.push(b.dataset.addconsole);
@@ -2159,9 +2182,9 @@ function appPlayer(){
   const row = (g, action) => `<div class="qrow">${discHTML(g, 36)}<span style="min-width:0"><button class="t" data-game="${g.id}">${esc(g.title)}</button>
       <span class="m">${esc([seriesOf(g)!==STANDALONE ? seriesOf(g) : '', g.platform].filter(Boolean).join(', '))}</span></span>${action}</div>`;
   return head + `<div class="qlist">
-    ${hold.length ? `<div class="pane-h"><b>On hold</b><span>${hold.length}</span></div>${hold.map(g => row(g, `<button class="btn" data-load="${g.id}">${ICONS.play}Resume</button>`)).join('')}<div style="height:12px"></div>` : ''}
+    ${hold.length ? `<div class="pane-h"><b>On hold</b><span>${hold.length}</span></div>${hold.map(g => row(g, `<button class="btn qplay" data-load="${g.id}">${ICONS.play}<span>Resume</span></button>`)).join('')}<div style="height:12px"></div>` : ''}
     <div class="pane-h"><b>Up next</b><span>${queue.length ? `${queue.length} ready` : ''}</span></div>
-    ${queue.length ? queue.map(g => row(g, `<button class="btn" data-load="${g.id}" aria-label="Play ${esc(g.title)}">${ICONS.play}</button>`)).join('') : '<p class="set-note">Nothing queued. Add games as Want to play.</p>'}</div>`;
+    ${queue.length ? queue.map(g => row(g, `<button class="btn qplay" data-load="${g.id}" aria-label="Play ${esc(g.title)}">${ICONS.play}<span>Play</span></button>`)).join('') : '<p class="set-note">Nothing queued. Add games as Want to play.</p>'}</div>`;
 }
 
 /* ---------- App: Library (explorer) ---------- */
@@ -2235,7 +2258,7 @@ function appGame(id){
   const facts = [fact(g.hours ? fmtH(g.hours) : '0h', 'played'), fact(g.rating ? `<span class="stars" style="font-size:14px">${starStr(g.rating)}</span>` : 'None', 'rating'),
     fact(g.own ? OWN[g.own] : 'Not set', 'owned'),
     fact(g.startedAt && (g.status==='playing'||g.status==='hold') ? esc(fmtDate(g.startedAt)) : '', 'started'),
-    fact(g.finishedAt && g.status==='beaten' ? esc(fmtDate(g.finishedAt)) : '', g.complete ? 'beaten at 100%' : 'beaten'),
+    fact(g.status==='beaten' ? (g.finishedAt ? esc(fmtDate(g.finishedAt)) : 'Unknown') : '', g.complete ? 'beaten at 100%' : 'beaten'),
     fact(clears(g) > 1 ? `×${clears(g)}` : '', 'clears')].join('');
   const chain = g.series?.trim() ? chainFor(g) : [], pos = chain.indexOf(g);
   return `<div class="gp-top">${discHTML(g, 110)}<div style="min-width:0"><span class="eyebrow">${g.complete ? '100% complete' : ST[g.status].long}</span>
