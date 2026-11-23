@@ -1570,7 +1570,7 @@ fieldset.group > legend{position:absolute;top:13px;left:14px;padding:0 !importan
 /* what each switch hides */
 :root[data-no-trophies] .trsec2,:root[data-no-trophies] .tr-statcard{display:none !important}
 :root[data-no-looks] .fonts-group,:root[data-no-looks] .see-label,:root[data-no-looks] .see-pick{display:none !important}
-:root[data-no-looks] .walls button:not([data-wallpick=aurora]):not([data-wallpick=holo]):not([data-wallpick=grid]):not([data-wallpick=frost]){display:none !important}
+:root[data-no-looks] .walls button:not([data-wallpick=aurora]):not([data-wallpick=holo]):not([data-wallpick=grid]):not([data-wallpick=frost]):not([data-wallphoto]){display:none !important}
 /* ===== Opening animation ===== */
 .intro{position:fixed;inset:0;z-index:100000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;overflow:hidden;color:#fff;
   background:radial-gradient(circle at 50% 42%,rgba(30,60,120,.55),rgba(3,8,20,.96) 70%),var(--wall);background-size:cover;cursor:pointer;
@@ -1773,13 +1773,13 @@ fieldset.group > legend{position:absolute;top:13px;left:14px;padding:0 !importan
 :root[data-season=newyear] #os::after{background:radial-gradient(ellipse at 50% 0,rgba(255,233,138,.5),transparent 70%)}
 /* holiday string lights along the top bar */
 :root[data-season=holidays] .stage-h{position:relative}
-:root[data-season=holidays] .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:12px;pointer-events:none;
+:root[data-season=holidays]:not([data-slvl=normal]):not([data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:12px;pointer-events:none;
   background:radial-gradient(circle at 10px 6px,#FF5E6A 0 3.5px,transparent 4.5px) 0 0/80px 12px repeat-x,radial-gradient(circle at 30px 6px,#FFD34D 0 3.5px,transparent 4.5px) 0 0/80px 12px repeat-x,
     radial-gradient(circle at 50px 6px,#5FD38A 0 3.5px,transparent 4.5px) 0 0/80px 12px repeat-x,radial-gradient(circle at 70px 6px,#6FB8FF 0 3.5px,transparent 4.5px) 0 0/80px 12px repeat-x;
   filter:drop-shadow(0 0 3px rgba(255,230,150,.8))}
 /* a little snow cap in winter */
 :root[data-season=winter] .stage-h{position:relative}
-:root[data-season=winter] .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:9px;pointer-events:none;
+:root[data-season=winter]:not([data-slvl=normal]):not([data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:9px;pointer-events:none;
   background:radial-gradient(circle at 9px 0,#fff 0 8px,transparent 8.5px) 0 0/22px 9px repeat-x;opacity:.9;filter:drop-shadow(0 1px 1px rgba(0,40,90,.15))}
 .seasons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .seasons button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:12px;border:2px solid transparent;background:var(--field);color:inherit;font:inherit}
@@ -1806,6 +1806,138 @@ fieldset.group > legend{position:absolute;top:13px;left:14px;padding:0 !importan
 .dn-m{display:block}
 .dn .d-tbtn,.dn .d-timer{margin-top:2.6vmin}
 .d-tbtn{white-space:nowrap;flex:0 0 auto}
+
+/* Timer buttons: a crisp drawn icon, centered with the label */
+.d-tbtn,.tm-on,.tm-go,.tm-stop{display:inline-flex;align-items:center;justify-content:center;gap:.45em;line-height:1}
+.d-tbtn .bi,.tm-on .bi,.tm-go .bi{width:1em;height:1em;flex:0 0 auto}
+.d-tbtn span,.tm-on span,.tm-go span{display:block;line-height:1}
+.d-timer{align-items:center}
+.d-tbtn.stop{padding:1.4vmin 3.4vmin;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px rgba(217,70,90,.4)}
+
+/* Timer pause */
+.tm-pz{display:inline-flex;align-items:center;justify-content:center;gap:.45em;line-height:1}
+.tm-pz .bi{width:1em;height:1em}
+.tm-pill .tm-pz{padding:7px 12px;color:#fff !important;background:rgba(255,255,255,.18) !important;border-color:rgba(255,255,255,.35) !important}
+.tm-pill .tm-pz span{display:none}
+.tm-pill.paused .tm-dot{background:#F2C14E;box-shadow:0 0 8px #F2C14E;animation:none}
+.tm-pill.paused #tmClock{opacity:.7}
+.d-timer.paused .d-tdot{background:#F2C14E;box-shadow:0 0 10px #F2C14E;animation:none}
+.d-timer.paused b{opacity:.7;text-shadow:none}
+.d-tbtn.pause,.d-tbtn.resume{background:rgba(255,255,255,.16)}
+.d-tbtn.resume{background:#2FBF8F;border-color:#2FBF8F}
+.d-timer{flex-wrap:wrap;justify-content:center}
+
+
+/* ===== Seasonal themes, more festive ===== */
+#seasonDeco{position:absolute;left:0;right:0;bottom:var(--tb,56px);height:54px;z-index:54;pointer-events:none;background-repeat:repeat-x;background-size:400px 100%;opacity:.95;filter:drop-shadow(0 -2px 6px rgba(0,0,0,.12))}
+:root[data-season=autumn] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V44Q40 28 80 42T160 38T240 44T320 36T400 44V70Z%22 fill=%22%23B5651D%22 fill-opacity=%22.55%22/%3E%3Cpath transform=%22translate(20 46) rotate(30)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(48 40) rotate(-40)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(75 48) rotate(70)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(110 42) rotate(-20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(140 50) rotate(45)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(170 40) rotate(-60)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(205 47) rotate(15)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(235 42) rotate(80)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(262 50) rotate(-30)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(295 41) rotate(55)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(330 47) rotate(-75)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(360 40) rotate(20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(385 48) rotate(-45)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(95 56) rotate(10)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(250 58) rotate(-10)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3C/svg%3E")}
+:root[data-season=winter] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V40Q30 24 60 36T120 30T180 38T240 28T300 36T360 30T400 38V70Z%22 fill=%22%23fff%22 fill-opacity=%22.92%22/%3E%3Cpath d=%22M0 70V52Q50 44 100 52T200 50T300 54T400 50V70Z%22 fill=%22%23DCEBFA%22 fill-opacity=%22.9%22/%3E%3C/svg%3E")}
+:root[data-season=holidays] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V40Q30 24 60 36T120 30T180 38T240 28T300 36T360 30T400 38V70Z%22 fill=%22%23fff%22 fill-opacity=%22.92%22/%3E%3Cpath d=%22M0 70V52Q50 44 100 52T200 50T300 54T400 50V70Z%22 fill=%22%23DCEBFA%22 fill-opacity=%22.9%22/%3E%3C/svg%3E")}
+:root[data-season=halloween] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V56Q100 48 200 56T400 54V70Z%22 fill=%22%231A1026%22 fill-opacity=%22.75%22/%3E%3Cg transform=%22translate(40 50) scale(1)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cg transform=%22translate(150 52) scale(0.8)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cg transform=%22translate(260 49) scale(1.1)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cg transform=%22translate(360 52) scale(0.85)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cpath d=%22M90 70V52l3 -6 3 6V70%22 fill=%22%231A1026%22 fill-opacity=%22.8%22/%3E%3Cpath d=%22M200 70V48l3 -6 3 6V70%22 fill=%22%231A1026%22 fill-opacity=%22.8%22/%3E%3Cpath d=%22M310 70V54l3 -6 3 6V70%22 fill=%22%231A1026%22 fill-opacity=%22.8%22/%3E%3C/svg%3E")}
+:root[data-season=spring] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V50Q100 40 200 50T400 48V70Z%22 fill=%22%236CC27A%22 fill-opacity=%22.75%22/%3E%3Cg transform=%22translate(25 44)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(70 48)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(120 42)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(175 47)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(225 43)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(280 48)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(330 44)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(378 47)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3C/svg%3E")}
+:root[data-season=summer] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V46Q25 36 50 46T100 46T150 46T200 46T250 46T300 46T350 46T400 46V70Z%22 fill=%22%232FB8D6%22 fill-opacity=%22.6%22/%3E%3Cpath d=%22M0 70V54Q25 46 50 54T100 54T150 54T200 54T250 54T300 54T350 54T400 54V70Z%22 fill=%22%231E8FB8%22 fill-opacity=%22.6%22/%3E%3Cpath d=%22M0 46Q25 36 50 46T100 46T150 46T200 46T250 46T300 46T350 46T400 46%22 stroke=%22%23fff%22 stroke-opacity=%22.8%22 stroke-width=%222%22 fill=%22none%22/%3E%3C/svg%3E")}
+:root[data-season=valentine] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath transform=%22translate(20 52) scale(1.2)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF7FB0%22/%3E%3Cpath transform=%22translate(60 58) scale(0.9)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(100 50) scale(1.4)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3Cpath transform=%22translate(145 57) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF7FB0%22/%3E%3Cpath transform=%22translate(190 51) scale(1.3)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(235 58) scale(0.9)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3Cpath transform=%22translate(280 50) scale(1.4)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF7FB0%22/%3E%3Cpath transform=%22translate(325 56) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(370 51) scale(1.2)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3C/svg%3E")}
+:root[data-season=newyear] #seasonDeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Crect x=%2215%22 y=%2250%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(20 15 50)%22 fill=%22%23FFE066%22/%3E%3Crect x=%2245%22 y=%2258%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-30 45 58)%22 fill=%22%237FE7FF%22/%3E%3Crect x=%2280%22 y=%2246%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(45 80 46)%22 fill=%22%23FF9FD8%22/%3E%3Crect x=%22115%22 y=%2256%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(10 115 56)%22 fill=%22%23B49CFF%22/%3E%3Crect x=%22150%22 y=%2248%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-50 150 48)%22 fill=%22%238CFFC9%22/%3E%3Crect x=%22185%22 y=%2258%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(30 185 58)%22 fill=%22%23FFE066%22/%3E%3Crect x=%22220%22 y=%2247%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-15 220 47)%22 fill=%22%23FF9FD8%22/%3E%3Crect x=%22255%22 y=%2257%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(60 255 57)%22 fill=%22%237FE7FF%22/%3E%3Crect x=%22290%22 y=%2249%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-40 290 49)%22 fill=%22%23B49CFF%22/%3E%3Crect x=%22325%22 y=%2258%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(25 325 58)%22 fill=%22%23FFE066%22/%3E%3Crect x=%22360%22 y=%2247%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-25 360 47)%22 fill=%22%238CFFC9%22/%3E%3Crect x=%22390%22 y=%2256%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(40 390 56)%22 fill=%22%23FF9FD8%22/%3E%3Cpath d=%22M0 64Q100 54 200 64T400 62%22 stroke=%22%23F2C14E%22 stroke-width=%223%22 fill=%22none%22/%3E%3C/svg%3E")}
+:root[data-season][data-slvl=festive] .stage-h,:root[data-season][data-slvl=normal] .stage-h{position:relative}
+:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 4Q30 16 60 4T120 4%22 stroke=%22%238A5A34%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath transform=%22translate(15 13) rotate(20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(45 13) rotate(-20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(75 13) rotate(25)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(105 13) rotate(-25)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3C/svg%3E") 0 0/120px 22px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M4 0h10l-5 14z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M22 0h10l-5 9z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M38 0h10l-5 18z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M56 0h10l-5 11z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M72 0h10l-5 16z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M90 0h10l-5 8z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M106 0h10l-5 15z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3C/svg%3E") 0 0/120px 22px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 10 60 3T120 3%22 stroke=%22%231A1026%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath d=%22M6 6h18l-9 14z%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M36 6h18l-9 14z%22 fill=%22%238B5CF6%22/%3E%3Cpath d=%22M66 6h18l-9 14z%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M96 6h18l-9 14z%22 fill=%22%238B5CF6%22/%3E%3C/svg%3E") 0 0/120px 22px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 4Q30 14 60 4T120 4%22 stroke=%22%234FA35E%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cg transform=%22translate(15 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(45 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(75 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(105 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3C/svg%3E") 0 0/120px 22px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 10 60 3T120 3%22 stroke=%22%23fff%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath d=%22M6 5h18l-9 15z%22 fill=%22%23FFD34D%22/%3E%3Cpath d=%22M36 5h18l-9 15z%22 fill=%22%232FB8D6%22/%3E%3Cpath d=%22M66 5h18l-9 15z%22 fill=%22%23FF7A59%22/%3E%3Cpath d=%22M96 5h18l-9 15z%22 fill=%22%235FD38A%22/%3E%3C/svg%3E") 0 0/120px 22px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 12 60 3T120 3%22 stroke=%22%23FF7FB0%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath transform=%22translate(15 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(45 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3Cpath transform=%22translate(75 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(105 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3C/svg%3E") 0 0/120px 22px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:22px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 10 60 3T120 3%22 stroke=%22%23F2C14E%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath d=%22M6 5h18l-9 15z%22 fill=%22%23F2C14E%22/%3E%3Cpath d=%22M36 5h18l-9 15z%22 fill=%22%23DCE5EE%22/%3E%3Cpath d=%22M66 5h18l-9 15z%22 fill=%22%23F2C14E%22/%3E%3Cpath d=%22M96 5h18l-9 15z%22 fill=%22%23DCE5EE%22/%3E%3C/svg%3E") 0 0/120px 22px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .stage-h::after{animation:twinkle 2.4s ease-in-out infinite}
+@keyframes twinkle{50%{filter:drop-shadow(0 0 6px rgba(255,230,150,1)) brightness(1.25)}}
+:root[data-season][data-slvl=subtle] .stage-h::after{display:none}
+:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFB067,#E8722A 50%,#C9581A 51%,#F08A3A) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#FFB067;box-shadow:0 0 8px #E8722A}
+:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#E8722A}
+:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#BFE7FF,#4FB6F2 50%,#2E8FD0 51%,#7FCBF5) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#BFE7FF;box-shadow:0 0 8px #4FB6F2}
+:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#4FB6F2}
+:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FF8A8A,#D9363E 50%,#B0222A 51%,#E85A5A) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#FF8A8A;box-shadow:0 0 8px #D9363E}
+:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#D9363E}
+:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#C9A0FF,#7A3FE0 50%,#5B22C0 51%,#9B6BF0) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#C9A0FF;box-shadow:0 0 8px #7A3FE0}
+:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#7A3FE0}
+:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFC4DD,#FF7FB0 50%,#E0508F 51%,#FF9CC4) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#FFC4DD;box-shadow:0 0 8px #FF7FB0}
+:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#FF7FB0}
+:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFE27A,#F2A922 50%,#D68A0A 51%,#F7BE3F) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#FFE27A;box-shadow:0 0 8px #F2A922}
+:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#F2A922}
+:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFB3D1,#FF4D8D 50%,#D92E6E 51%,#FF7FB0) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#FFB3D1;box-shadow:0 0 8px #FF4D8D}
+:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#FF4D8D}
+:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFE9A8,#E9B43C 50%,#C7861A 51%,#F2C14E) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .task.cur::after{background:#FFE9A8;box-shadow:0 0 8px #E9B43C}
+:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .feat-sw:checked{background:#E9B43C}
+.season-hello{display:flex;align-items:center;gap:12px;margin:0 0 12px;padding:12px 14px;border-radius:16px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--sh1),var(--sh2));color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.18);animation:pop .35s ease-out}
+.season-hello .se-big{font-size:34px;line-height:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.season-hello span.t{flex:1;min-width:0;display:flex;flex-direction:column}
+.season-hello b{font-size:16px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.season-hello small{font-size:12px;font-weight:700;opacity:.92}
+.season-hello button{border:0;background:rgba(255,255,255,.25);color:#fff;width:28px;height:28px;border-radius:50%;font-weight:900;cursor:pointer}
+.season-badge{font-size:22px !important;animation:badgeBob 3s ease-in-out infinite}
+@keyframes badgeBob{50%{transform:translateY(-2px) rotate(-6deg)}}
+@media (prefers-reduced-motion:reduce){ .season-badge,:root[data-season=holidays] .stage-h::after{animation:none} }
+
+/* ===== Display mode seasonal ===== */
+:root[data-season=autumn] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V44Q40 28 80 42T160 38T240 44T320 36T400 44V70Z%22 fill=%22%23B5651D%22 fill-opacity=%22.55%22/%3E%3Cpath transform=%22translate(20 46) rotate(30)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(48 40) rotate(-40)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(75 48) rotate(70)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(110 42) rotate(-20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(140 50) rotate(45)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(170 40) rotate(-60)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(205 47) rotate(15)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(235 42) rotate(80)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(262 50) rotate(-30)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(295 41) rotate(55)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(330 47) rotate(-75)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(360 40) rotate(20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(385 48) rotate(-45)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(95 56) rotate(10)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(250 58) rotate(-10)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3C/svg%3E")}
+:root[data-season=winter] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V40Q30 24 60 36T120 30T180 38T240 28T300 36T360 30T400 38V70Z%22 fill=%22%23fff%22 fill-opacity=%22.92%22/%3E%3Cpath d=%22M0 70V52Q50 44 100 52T200 50T300 54T400 50V70Z%22 fill=%22%23DCEBFA%22 fill-opacity=%22.9%22/%3E%3C/svg%3E")}
+:root[data-season=holidays] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V40Q30 24 60 36T120 30T180 38T240 28T300 36T360 30T400 38V70Z%22 fill=%22%23fff%22 fill-opacity=%22.92%22/%3E%3Cpath d=%22M0 70V52Q50 44 100 52T200 50T300 54T400 50V70Z%22 fill=%22%23DCEBFA%22 fill-opacity=%22.9%22/%3E%3C/svg%3E")}
+:root[data-season=halloween] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V56Q100 48 200 56T400 54V70Z%22 fill=%22%231A1026%22 fill-opacity=%22.75%22/%3E%3Cg transform=%22translate(40 50) scale(1)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cg transform=%22translate(150 52) scale(0.8)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cg transform=%22translate(260 49) scale(1.1)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cg transform=%22translate(360 52) scale(0.85)%22%3E%3Cellipse rx=%2213%22 ry=%2210%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M-2 -10q2 -6 6 -5%22 stroke=%22%233B5A1E%22 stroke-width=%223%22 fill=%22none%22/%3E%3Cpath d=%22M-7 -2l3 -3 3 3zM1 -2l3 -3 3 3zM-7 4q7 5 14 0l-2-1-2 2-3-2-3 2-2-2z%22 fill=%22%23FFE27A%22/%3E%3C/g%3E%3Cpath d=%22M90 70V52l3 -6 3 6V70%22 fill=%22%231A1026%22 fill-opacity=%22.8%22/%3E%3Cpath d=%22M200 70V48l3 -6 3 6V70%22 fill=%22%231A1026%22 fill-opacity=%22.8%22/%3E%3Cpath d=%22M310 70V54l3 -6 3 6V70%22 fill=%22%231A1026%22 fill-opacity=%22.8%22/%3E%3C/svg%3E")}
+:root[data-season=spring] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V50Q100 40 200 50T400 48V70Z%22 fill=%22%236CC27A%22 fill-opacity=%22.75%22/%3E%3Cg transform=%22translate(25 44)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(70 48)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(120 42)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(175 47)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(225 43)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(280 48)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFC4E8%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(330 44)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23fff%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(378 47)%22%3E%3Cpath d=%22M0 0V14%22 stroke=%22%234FA35E%22 stroke-width=%222%22/%3E%3Ccircle cx=%220%22 cy=%22-5%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%225%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%225%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-5%22 cy=%220%22 r=%224%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%223%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3C/svg%3E")}
+:root[data-season=summer] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath d=%22M0 70V46Q25 36 50 46T100 46T150 46T200 46T250 46T300 46T350 46T400 46V70Z%22 fill=%22%232FB8D6%22 fill-opacity=%22.6%22/%3E%3Cpath d=%22M0 70V54Q25 46 50 54T100 54T150 54T200 54T250 54T300 54T350 54T400 54V70Z%22 fill=%22%231E8FB8%22 fill-opacity=%22.6%22/%3E%3Cpath d=%22M0 46Q25 36 50 46T100 46T150 46T200 46T250 46T300 46T350 46T400 46%22 stroke=%22%23fff%22 stroke-opacity=%22.8%22 stroke-width=%222%22 fill=%22none%22/%3E%3C/svg%3E")}
+:root[data-season=valentine] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Cpath transform=%22translate(20 52) scale(1.2)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF7FB0%22/%3E%3Cpath transform=%22translate(60 58) scale(0.9)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(100 50) scale(1.4)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3Cpath transform=%22translate(145 57) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF7FB0%22/%3E%3Cpath transform=%22translate(190 51) scale(1.3)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(235 58) scale(0.9)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3Cpath transform=%22translate(280 50) scale(1.4)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF7FB0%22/%3E%3Cpath transform=%22translate(325 56) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(370 51) scale(1.2)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3C/svg%3E")}
+:root[data-season=newyear] .display .d-sdeco{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 70%22 preserveAspectRatio=%22none%22%3E%3Crect x=%2215%22 y=%2250%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(20 15 50)%22 fill=%22%23FFE066%22/%3E%3Crect x=%2245%22 y=%2258%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-30 45 58)%22 fill=%22%237FE7FF%22/%3E%3Crect x=%2280%22 y=%2246%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(45 80 46)%22 fill=%22%23FF9FD8%22/%3E%3Crect x=%22115%22 y=%2256%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(10 115 56)%22 fill=%22%23B49CFF%22/%3E%3Crect x=%22150%22 y=%2248%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-50 150 48)%22 fill=%22%238CFFC9%22/%3E%3Crect x=%22185%22 y=%2258%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(30 185 58)%22 fill=%22%23FFE066%22/%3E%3Crect x=%22220%22 y=%2247%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-15 220 47)%22 fill=%22%23FF9FD8%22/%3E%3Crect x=%22255%22 y=%2257%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(60 255 57)%22 fill=%22%237FE7FF%22/%3E%3Crect x=%22290%22 y=%2249%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-40 290 49)%22 fill=%22%23B49CFF%22/%3E%3Crect x=%22325%22 y=%2258%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(25 325 58)%22 fill=%22%23FFE066%22/%3E%3Crect x=%22360%22 y=%2247%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(-25 360 47)%22 fill=%22%238CFFC9%22/%3E%3Crect x=%22390%22 y=%2256%22 width=%226%22 height=%2210%22 rx=%221%22 transform=%22rotate(40 390 56)%22 fill=%22%23FF9FD8%22/%3E%3Cpath d=%22M0 64Q100 54 200 64T400 62%22 stroke=%22%23F2C14E%22 stroke-width=%223%22 fill=%22none%22/%3E%3C/svg%3E")}
+:root[data-season=autumn] .display .d-garland{content:"";position:absolute;left:0;right:0;top:0;height:34px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 4Q30 16 60 4T120 4%22 stroke=%22%238A5A34%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath transform=%22translate(15 13) rotate(20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3Cpath transform=%22translate(45 13) rotate(-20)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23D9472B%22/%3E%3Cpath transform=%22translate(75 13) rotate(25)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23F2B33D%22/%3E%3Cpath transform=%22translate(105 13) rotate(-25)%22 d=%22M0 -9Q8 -2 0 9Q-8 -2 0 -9Z%22 fill=%22%23E8722A%22/%3E%3C/svg%3E") 0 0/170px 34px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=winter] .display .d-garland{content:"";position:absolute;left:0;right:0;top:0;height:34px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M4 0h10l-5 14z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M22 0h10l-5 9z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M38 0h10l-5 18z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M56 0h10l-5 11z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M72 0h10l-5 16z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M90 0h10l-5 8z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3Cpath d=%22M106 0h10l-5 15z%22 fill=%22%23E8F6FF%22 fill-opacity=%22.95%22/%3E%3C/svg%3E") 0 0/170px 34px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=halloween] .display .d-garland{content:"";position:absolute;left:0;right:0;top:0;height:34px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 10 60 3T120 3%22 stroke=%22%231A1026%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath d=%22M6 6h18l-9 14z%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M36 6h18l-9 14z%22 fill=%22%238B5CF6%22/%3E%3Cpath d=%22M66 6h18l-9 14z%22 fill=%22%23E0781E%22/%3E%3Cpath d=%22M96 6h18l-9 14z%22 fill=%22%238B5CF6%22/%3E%3C/svg%3E") 0 0/170px 34px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=spring] .display .d-garland{content:"";position:absolute;left:0;right:0;top:0;height:34px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 4Q30 14 60 4T120 4%22 stroke=%22%234FA35E%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cg transform=%22translate(15 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23FFB3D1%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(45 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(75 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23FFC4E8%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3Cg transform=%22translate(105 11)%22%3E%3Ccircle cx=%220%22 cy=%22-4%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%224%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%220%22 cy=%224%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle cx=%22-4%22 cy=%220%22 r=%223.2%22 fill=%22%23fff%22/%3E%3Ccircle r=%222.4%22 fill=%22%23FFE066%22/%3E%3C/g%3E%3C/svg%3E") 0 0/170px 34px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=summer] .display .d-garland{content:"";position:absolute;left:0;right:0;top:0;height:34px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 10 60 3T120 3%22 stroke=%22%23fff%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath d=%22M6 5h18l-9 15z%22 fill=%22%23FFD34D%22/%3E%3Cpath d=%22M36 5h18l-9 15z%22 fill=%22%232FB8D6%22/%3E%3Cpath d=%22M66 5h18l-9 15z%22 fill=%22%23FF7A59%22/%3E%3Cpath d=%22M96 5h18l-9 15z%22 fill=%22%235FD38A%22/%3E%3C/svg%3E") 0 0/170px 34px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=valentine] .display .d-garland{content:"";position:absolute;left:0;right:0;top:0;height:34px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 12 60 3T120 3%22 stroke=%22%23FF7FB0%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath transform=%22translate(15 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(45 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3Cpath transform=%22translate(75 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FF4D8D%22/%3E%3Cpath transform=%22translate(105 12) scale(1)%22 d=%22M0 8C-12 0 -8 -10 0 -5C8 -10 12 0 0 8Z%22 fill=%22%23FFB3D1%22/%3E%3C/svg%3E") 0 0/170px 34px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+:root[data-season=newyear] .display .d-garland{content:"";position:absolute;left:0;right:0;top:0;height:34px;pointer-events:none;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 26%22%3E%3Cpath d=%22M0 3Q30 10 60 3T120 3%22 stroke=%22%23F2C14E%22 stroke-width=%221.5%22 fill=%22none%22/%3E%3Cpath d=%22M6 5h18l-9 15z%22 fill=%22%23F2C14E%22/%3E%3Cpath d=%22M36 5h18l-9 15z%22 fill=%22%23DCE5EE%22/%3E%3Cpath d=%22M66 5h18l-9 15z%22 fill=%22%23F2C14E%22/%3E%3Cpath d=%22M96 5h18l-9 15z%22 fill=%22%23DCE5EE%22/%3E%3C/svg%3E") 0 0/170px 34px repeat-x;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+.display .d-garland{position:absolute;left:0;right:0;z-index:3;pointer-events:none}
+:root[data-season=holidays] .display .d-garland{background:radial-gradient(circle at 12px 10px,#FF5E6A 0 6px,transparent 7.5px) 0 0/96px 22px repeat-x,radial-gradient(circle at 36px 10px,#FFD34D 0 6px,transparent 7.5px) 0 0/96px 22px repeat-x,radial-gradient(circle at 60px 10px,#5FD38A 0 6px,transparent 7.5px) 0 0/96px 22px repeat-x,radial-gradient(circle at 84px 10px,#6FB8FF 0 6px,transparent 7.5px) 0 0/96px 22px repeat-x;height:24px;filter:drop-shadow(0 0 6px rgba(255,230,150,.9));animation:twinkle 2.4s ease-in-out infinite}
+.display .d-sdeco{position:absolute;left:0;right:0;bottom:0;height:13vh;min-height:60px;z-index:1;pointer-events:none;background-repeat:repeat-x;background-size:auto 100%}
+.display #seasonFx.in-display{position:absolute;inset:0;z-index:1}
+.d-shello{margin-top:1vmin;font-size:clamp(12px,2.2vmin,20px);font-weight:800;opacity:.85}
+.display.night .d-garland,.display.night .d-sdeco{opacity:.35}
+/* photo wallpaper */
+:root[data-wall=photo] #os{background:linear-gradient(rgba(0,0,0,var(--wdim,.2)),rgba(0,0,0,var(--wdim,.2))),var(--wphoto) center/cover no-repeat !important}
+.wp-photo{display:flex !important;align-items:center;justify-content:center;font-style:normal;font-size:26px;font-weight:300;color:var(--soft);background:var(--field) center/cover no-repeat;border:2px dashed var(--pane-line)}
+.wp-photo[style]{border-style:solid;border-color:rgba(255,255,255,.7)}
+.wp-photo-opts{margin-top:12px}
+/* ===== Display mode music visualizer ===== */
+.d-viz{position:absolute;left:0;right:0;bottom:0;height:22vh;width:100%;z-index:1;pointer-events:none;opacity:.55;-webkit-mask:linear-gradient(transparent,#000 40%);mask:linear-gradient(transparent,#000 40%)}
+.display .d-drift{z-index:2}
+.d-mus{position:absolute;right:max(4vmin,env(safe-area-inset-right));bottom:max(3vmin,env(safe-area-inset-bottom));z-index:3;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.3);color:#fff;font:inherit;font-weight:800;font-size:13px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);cursor:pointer}
+.d-mus .bi{width:14px;height:14px}
+.d-mus.on{background:linear-gradient(180deg,rgba(108,198,245,.6),rgba(46,155,224,.6))}
+/* ===== Display sleep ===== */
+.display.sleeping{background:#000 !important}
+.display.sleeping > *{opacity:0 !important;transition:opacity 1.5s}
+.display.sleeping::before,.display.sleeping::after{opacity:0 !important}
+.dsched .search{margin:4px 0 0;width:100%;padding:9px 12px}
+
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+@keyframes foilSweep2{0%,100%{background-position:120% 0}50%{background-position:-20% 0}}
+
+/* Segmented buttons and two-column rows used by newer panels */
+.gf-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gf-seg{display:flex;gap:6px}
+.gf-seg.wrap{flex-wrap:wrap}
+.gf-seg button{flex:1 0 auto;padding:9px 10px;border-radius:999px;border:1px solid var(--edge);background:var(--field);color:inherit;font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.gf-seg button[aria-pressed=true]{color:#fff;background:linear-gradient(180deg,#6CC6F5,#2E9BE0 50%,#1F86CC 51%,#3AA8EA);border-color:rgba(255,255,255,.6)}
+
+/* the "From photos" wallpaper tile is always available, even with Extra looks off */
+
+
+.walls button[data-wallphoto] i.wp-photo{width:100%;align-self:stretch}
 </style>
 </head>
 <body>
@@ -3312,7 +3444,7 @@ function dispRender(){
 }
 function dispTick(){
   const el = $('display'); if (!el) return;
-  const dtc = $('dTimer'), tn = typeof timerNow === 'function' ? timerNow() : null; if (dtc && tn) dtc.textContent = fmtClock(Date.now() - tn.start);
+  const dtc = $('dTimer'), tn = typeof timerNow === 'function' ? timerNow() : null; if (dtc && tn) dtc.textContent = fmtClock(timerMs(tn));
   const d = new Date(), h = d.getHours();
   el.querySelector('.d-time').textContent = d.toLocaleTimeString([], { hour:'numeric', minute:'2-digit' });
   el.querySelector('.d-date').textContent = d.toLocaleDateString([], { weekday:'long', month:'long', day:'numeric' });
@@ -3328,7 +3460,7 @@ function startDisplay(){
   document.body.appendChild(el);
   el.addEventListener('click', e => {
     if (e.target.closest('.d-exit')) return stopDisplay();
-    const dt = e.target.closest('[data-dtm]'); if (dt){ e.stopPropagation(); if (dt.dataset.dtm === 'start') startTimer(dt.dataset.id); else stopTimer(); return; }
+    const dt = e.target.closest('[data-dtm]'); if (dt){ e.stopPropagation(); const a = dt.dataset.dtm; if (a === 'start') startTimer(dt.dataset.id); else if (a === 'pause') pauseTimer(); else if (a === 'resume') resumeTimer(); else stopTimer(); return; }
     const b = el.querySelector('.d-exit'); b.hidden = false; el.querySelector('.d-hint').hidden = true;
     if (document.fullscreenEnabled && !document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(() => {});
     clearTimeout(dispHintT); dispHintT = setTimeout(() => { b.hidden = true; }, 4000);
@@ -3374,6 +3506,12 @@ const fmtDur = ms => { const m = Math.round(ms / 60000); return m < 60 ? `${m} m
 /* ---------- 1) Play timer ---------- */
 let pillTick = null;
 const timerNow = () => featOn('timer') && prefs.timer && games.find(g => g.id === prefs.timer.id) ? prefs.timer : null;
+const PLAY_I = '<svg class="bi" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg>', PAUSE_I = '<svg class="bi" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="4.5" width="4.5" height="15" rx="1.5" fill="currentColor"/><rect x="14" y="4.5" width="4.5" height="15" rx="1.5" fill="currentColor"/></svg>';
+const timerMs = t => t ? Math.max(0, (t.pausedAt || Date.now()) - t.start - (t.pausedMs || 0)) : 0;
+function pauseTimer(){ const t = timerNow(); if (!t || t.pausedAt) return; t.pausedAt = Date.now(); savePrefs(); render(); toast('Timer paused'); }
+function resumeTimer(){ const t = timerNow(); if (!t || !t.pausedAt) return; t.pausedMs = (t.pausedMs || 0) + (Date.now() - t.pausedAt); t.pausedAt = null; savePrefs(); render(); toast('Timer resumed'); }
+const pauseBtn = (cls, attr) => { const t = timerNow(); return t && t.pausedAt
+  ? `<button class="${cls} resume" ${attr}="resume">${PLAY_I}<span>Resume</span></button>` : `<button class="${cls} pause" ${attr}="pause">${PAUSE_I}<span>Pause</span></button>`; };
 function startTimer(id){
   const g = games.find(x => x.id === id); if (!g) return;
   const cur = timerNow();
@@ -3384,7 +3522,7 @@ function startTimer(id){
 }
 function stopTimer(after){
   const cur = timerNow(); if (!cur) return;
-  const g = games.find(x => x.id === cur.id), ms = Date.now() - cur.start;
+  const g = games.find(x => x.id === cur.id), ms = timerMs(cur);
   let h = Math.max(1 / 3600, Math.round(ms / 1000) / 3600);
   const ov = document.createElement('div'); ov.className = 'tm-ov';
   const draw = () => { ov.innerHTML = `<div class="tm-card"><p class="tm-e">Session done</p><h2>${esc(g.title)}</h2>
@@ -3406,11 +3544,12 @@ function drawPill(){
   if (!cur){ if (p) p.remove(); clearInterval(pillTick); pillTick = null; return; }
   const g = games.find(x => x.id === cur.id);
   if (!p){ p = document.createElement('div'); p.id = 'timerPill'; p.className = 'tm-pill'; $('os').appendChild(p); }
-  p.innerHTML = `<span class="tm-dot"></span><button class="tm-t" data-game="${g.id}">${esc(g.title)}</button><b id="tmClock">${fmtClock(Date.now() - cur.start)}</b><button class="btn tm-stop" data-tmstop>Stop</button>`;
-  if (!pillTick) pillTick = setInterval(() => { const c = timerNow(), el = $('tmClock'); if (c && el) el.textContent = fmtClock(Date.now() - c.start); else drawPill(); }, 1000);
+  p.classList.toggle('paused', !!cur.pausedAt);
+  p.innerHTML = `<span class="tm-dot"></span><button class="tm-t" data-game="${g.id}">${cur.pausedAt ? 'Paused, ' : ''}${esc(g.title)}</button><b id="tmClock">${fmtClock(timerMs(cur))}</b>${pauseBtn('btn tm-pz', 'data-tmpz')}<button class="btn tm-stop" data-tmstop>Stop</button>`;
+  if (!pillTick) pillTick = setInterval(() => { const c = timerNow(), el = $('tmClock'); if (c && el) el.textContent = fmtClock(timerMs(c)); else drawPill(); }, 1000);
 }
 const timerBtn = g => { if (!featOn('timer')) return ''; const on = timerNow() && timerNow().id === g.id;
-  return on ? `<button class="btn tm-on" data-tmstop>■ Stop timer</button>` : `<button class="btn" data-tmstart="${g.id}">▶ Start timer</button>`; };
+  return on ? pauseBtn('btn tm-pz', 'data-tmpz') + `<button class="btn tm-on" data-tmstop><svg class="bi" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="3" fill="currentColor"/></svg><span>Stop timer</span></button>` : `<button class="btn tm-go" data-tmstart="${g.id}"><svg class="bi" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg><span>Start timer</span></button>`; };
 appPlayer = (orig => function(){
   const html = orig();
   return html.replace(/<button class="btn" data-hour="([^"]+)">\+1h<\/button>/, (m, id) => { const g = games.find(x => x.id === id); return (g ? timerBtn(g) : '') + m; });
@@ -3511,6 +3650,7 @@ document.addEventListener('click', e => {
   const t = e.target;
   const ts = t.closest('[data-tmstart]'); if (ts){ startTimer(ts.dataset.tmstart); return; }
   if (t.closest('[data-tmstop]')){ stopTimer(); return; }
+  const pz = t.closest('[data-tmpz]'); if (pz){ pz.dataset.tmpz === 'pause' ? pauseTimer() : resumeTimer(); return; }
   const cd = t.closest('[data-calday]'); if (cd){ calPick = calPick === cd.dataset.calday ? null : cd.dataset.calday; const sl = $('calScroll')?.scrollLeft; renderStage(false); const sc = $('calScroll'); if (sc){ sc.dataset.done = '1'; sc.scrollLeft = sl; } return; }
   const cy = t.closest('[data-caly]'); if (cy){ calYear += +cy.dataset.caly; calPick = null; renderStage(false); return; }
   const mf = t.closest('[data-mnfree]'); if (mf){ setPrice(mf.dataset.mnfree, '0'); toast('Marked as free'); return; }
@@ -3762,16 +3902,171 @@ document.addEventListener('change', e => {
 function dispTimerHTML(g){
   if (typeof featOn !== 'function' || !featOn('timer') || !g) return '';
   const tn = timerNow();
-  if (tn && tn.id === g.id) return `<div class="d-timer"><span class="d-tdot"></span><b id="dTimer">${fmtClock(Date.now() - tn.start)}</b><button class="d-tbtn stop" data-dtm="stop">■ Stop</button></div>`;
-  return `<button class="d-tbtn" data-dtm="start" data-id="${g.id}">▶ Start timer</button>`;
+  if (tn && tn.id === g.id) return `<div class="d-timer ${tn.pausedAt ? 'paused' : ''}"><span class="d-tdot"></span><b id="dTimer">${fmtClock(timerMs(tn))}</b>${pauseBtn('d-tbtn', 'data-dtm')}<button class="d-tbtn stop" data-dtm="stop"><svg class="bi" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="3" fill="currentColor"/></svg><span>Stop</span></button></div>`;
+  return `<button class="d-tbtn" data-dtm="start" data-id="${g.id}"><svg class="bi" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg><span>Start timer</span></button>`;
 }
-/* Display mode + Play timer: start, watch, and stop the timer right on the dashboard */
-function dispTimerHTML(g){
-  if (typeof featOn !== 'function' || !featOn('timer') || !g) return '';
-  const tn = timerNow();
-  if (tn && tn.id === g.id) return `<div class="d-timer"><span class="d-tdot"></span><b id="dTimer">${fmtClock(Date.now() - tn.start)}</b><button class="d-tbtn stop" data-dtm="stop">■ Stop</button></div>`;
-  return `<button class="d-tbtn" data-dtm="start" data-id="${g.id}">▶ Start timer</button>`;
+/* Seasonal themes, more prominent: Subtle, Normal, or Festive */
+const SEASON_HELLO = {
+  winter:['❄️','Cozy winter gaming','Grab a blanket and a long RPG','#6FB8F5','#3B6FD8'], spring:['🌸','Spring is here','Fresh season, fresh backlog','#FF9CC4','#B47CF0'],
+  summer:['☀️','Summer gaming season','Long days, longer play sessions','#FFC53D','#FF7A59'], autumn:['🍂','Cozy autumn vibes','Perfect weather for a story game','#F2A03D','#C9581A'],
+  halloween:['🎃','Happy Halloween!','Time for something spooky','#9B5CF6','#E0781E'], holidays:['🎄','Happy holidays!','Hope your wishlist comes true','#D9363E','#2E8F4F'],
+  newyear:['🎆','Happy New Year!','New year, new goal. Set it on Stats','#E9B43C','#7A3FE0'], valentine:['💗','Happy Valentine\u2019s Day','Share a game with someone you love','#FF4D8D','#B47CF0']
+};
+const seasonLvl = () => prefs.seasonLvl || 'normal';
+const SEASON_MULT = () => ({ subtle:.5, normal:1, festive:1.8 })[seasonLvl()] || 1;
+applyTheme = (orig => function(){ orig(); const r = document.documentElement;
+  if (featOn('season')) r.dataset.slvl = seasonLvl(); else r.removeAttribute('data-slvl');
+  let d = $('seasonDeco'); const show = featOn('season') && seasonLvl() === 'festive' && !r.hasAttribute('data-lite');
+  if (show && !d){ d = document.createElement('div'); d.id = 'seasonDeco'; d.setAttribute('aria-hidden', 'true'); $('os').appendChild(d); } else if (!show && d) d.remove();
+})(applyTheme);
+/* more particles on Festive */
+seasonStart = (orig => function(kind){ orig(kind); const extra = Math.round(sz.parts.length * (SEASON_MULT() - 1));
+  if (extra > 0) for (let i = 0; i < extra; i++) sz.parts.push(seasonPart(kind, true)); else if (extra < 0) sz.parts.length = Math.max(4, sz.parts.length + extra); })(seasonStart);
+/* a seasonal greeting on Now Playing and Library */
+renderStage = (orig => function(a){ orig(a);
+  if (!featOn('season') || seasonLvl() === 'subtle' || !['player','library'].includes(currentApp)) return;
+  const k = seasonNow(), h = SEASON_HELLO[k], today = toInput(); if (!h || prefs.seasonHide === today + k) return;
+  $('stageBody').insertAdjacentHTML('afterbegin', `<div class="season-hello" style="--sh1:${h[3]};--sh2:${h[4]}"><span class="se-big">${h[0]}</span><span class="t"><b>${h[1]}</b><small>${h[2]}</small></span><button data-seasonhide aria-label="Hide for today">✕</button></div>`);
+})(renderStage);
+/* Intensity choice in the Seasonal theme panel */
+appSettings = (orig => function(){ const html = orig(); if (!featOn('season')) return html;
+  const lvl = seasonLvl(), row = `<p class="d-l" style="margin:12px 0 6px">How festive</p><div class="gf-seg">${[['subtle','Subtle'],['normal','Normal'],['festive','Festive']].map(([k, l]) => `<button data-slvlpick="${k}" aria-pressed="${lvl===k}">${l}</button>`).join('')}</div>
+    <p class="set-note" style="margin:6px 0 0">${lvl === 'subtle' ? 'Just the falling effects, lighter, and the icon.' : lvl === 'normal' ? 'Seasonal colors on buttons, a garland on the top bar, and a seasonal greeting.' : 'Everything in Normal, plus scenery along the bottom and lots more falling effects.'}</p>`;
+  return html.replace('<label class="lite-row"><span><b>Falling effects</b>', row + '<label class="lite-row"><span><b>Falling effects</b>'); })(appSettings);
+document.addEventListener('click', e => {
+  const l = e.target.closest('[data-slvlpick]'); if (l){ prefs.seasonLvl = l.dataset.slvlpick; savePrefs(); seasonStop(); applyTheme(); renderStage(false); return; }
+  if (e.target.closest('[data-seasonhide]')){ prefs.seasonHide = toInput() + seasonNow(); savePrefs(); renderStage(false); }
+});
+
+/* ===================================================================
+   Seasonal themes on Display mode: falling effects, a garland, scenery,
+   and a seasonal line under the date.
+   =================================================================== */
+function dispSeason(){
+  const el = $('display'); if (!el) return;
+  el.querySelectorAll('.d-garland,.d-sdeco,.d-shello').forEach(x => x.remove());
+  if (!featOn('season')) return;
+  const lvl = seasonLvl(), k = seasonNow(), h = SEASON_HELLO[k];
+  if (lvl !== 'subtle'){ el.insertAdjacentHTML('beforeend', '<div class="d-garland" aria-hidden="true"></div>'); }
+  if (lvl === 'festive' && !document.documentElement.hasAttribute('data-lite')) el.insertAdjacentHTML('beforeend', '<div class="d-sdeco" aria-hidden="true"></div>');
+  const date = el.querySelector('.d-date'); if (date && h) date.insertAdjacentHTML('afterend', `<div class="d-shello">${h[0]} ${esc(h[1])}</div>`);
+  const cv = $('seasonFx'); if (cv && cv.parentNode !== el){ el.appendChild(cv); cv.classList.add('in-display'); seasonSize(); }
 }
+startDisplay = (orig => function(){ orig(); dispSeason(); })(startDisplay);
+stopDisplay = (orig => function(){ const cv = $('seasonFx'); if (cv && cv.classList.contains('in-display')){ cv.classList.remove('in-display'); $('os').appendChild(cv); } orig(); seasonSize(); })(stopDisplay);
+seasonStart = (orig => function(kind){ orig(kind); if (typeof dispOn !== 'undefined' && dispOn) dispSeason(); })(seasonStart);
+
+/* ===================================================================
+   Wallpaper from your camera roll, with a dim slider so text stays readable.
+   =================================================================== */
+const WP_KEY = 'game-shelf-wallphoto';
+let wallPhoto = null;
+async function wallPhotoLoad(){ try{ const r = await window.storage.get(WP_KEY, false); wallPhoto = r && r.value ? r.value : null; }catch(e){ wallPhoto = null; } applyTheme(); renderStage(false); }
+async function wallPhotoSave(data){ wallPhoto = data; try{ if (data) await window.storage.set(WP_KEY, data, false); else await window.storage.delete(WP_KEY, false); }catch(e){ toast('That photo is too big to save. Try a smaller one.'); } }
+if (!BASIC_WALLS.includes('photo')) BASIC_WALLS.push('photo');
+applyTheme = (orig => function(){ orig(); const r = document.documentElement;
+  if (prefs.wall === 'photo' && wallPhoto){ r.dataset.wall = 'photo'; r.style.setProperty('--wphoto', `url("${wallPhoto}")`); r.style.setProperty('--wdim', String((prefs.wallDim ?? 20) / 100)); r.style.setProperty('--wall', `linear-gradient(rgba(0,0,0,${(prefs.wallDim ?? 20) / 100}),rgba(0,0,0,${(prefs.wallDim ?? 20) / 100})),url("${wallPhoto}") center/cover`); }
+  else { r.style.removeProperty('--wphoto'); r.style.removeProperty('--wall'); if (r.dataset.wall === 'photo') r.dataset.wall = 'aurora'; }
+})(applyTheme);
+appSettings = (orig => function(){
+  const html = orig(), i = html.indexOf('<fieldset class="group"><legend>Wallpaper</legend>'); if (i < 0) return html;
+  const gridEnd = html.indexOf('</div>', html.indexOf('<div class="walls">', i));
+  const tile = `<button data-wallphoto aria-pressed="${prefs.wall === 'photo' && !!wallPhoto}"><i class="wp-photo" ${wallPhoto ? `style="background-image:url('${wallPhoto}')"` : ''}>${wallPhoto ? '' : '+'}</i>${wallPhoto ? 'Your photo' : 'From photos'}</button>`;
+  const extra = `<input type="file" id="wallPhotoIn" accept="image/*" class="vh">
+    ${prefs.wall === 'photo' && wallPhoto ? `<div class="wp-photo-opts"><label class="d-l" for="wallDim">Darken photo so text is easy to read</label><input type="range" id="wallDim" min="0" max="60" step="5" value="${prefs.wallDim ?? 20}" style="width:100%">
+      <div class="set-row"><label class="btn" for="wallPhotoIn">Change photo</label><button class="btn" data-wallphotox>Remove photo</button></div></div>` : ''}`;
+  let out = html.slice(0, gridEnd) + tile + html.slice(gridEnd);
+  const fsEnd = out.indexOf('</fieldset>', i); return out.slice(0, fsEnd) + extra + out.slice(fsEnd);
+})(appSettings);
+async function wallPhotoRead(file){
+  const data = await new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(file); });
+  const img = new Image(); await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = data; });
+  const max = 1800, k = Math.min(1, max / Math.max(img.width, img.height)), c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', .82);
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-wallphoto]')){ if (wallPhoto){ prefs.wall = 'photo'; savePrefs(); applyTheme(); renderStage(false); } else $('wallPhotoIn')?.click(); return; }
+  if (e.target.closest('[data-wallphotox]')){ wallPhotoSave(null); prefs.wall = 'aurora'; savePrefs(); applyTheme(); renderStage(false); toast('Photo wallpaper removed'); }
+});
+document.addEventListener('change', async e => {
+  if (e.target.id === 'wallPhotoIn' && e.target.files[0]){ try{ const d = await wallPhotoRead(e.target.files[0]); await wallPhotoSave(d); prefs.wall = 'photo'; savePrefs(); applyTheme(); renderStage(false); toast('Wallpaper set ✦'); }catch(err){ toast('That photo could not be loaded. Try a different one.'); } }
+  if (e.target.id === 'wallDim'){ savePrefs(); }
+});
+document.addEventListener('input', e => { if (e.target.id === 'wallDim'){ prefs.wallDim = +e.target.value; applyTheme(); } });
+
+/* ===================================================================
+   Music visualizer on Display mode: glowing bars that move with the music,
+   plus a music button right on the dashboard.
+   =================================================================== */
+let viz = { raf:null, an:null, data:null, last:0 };
+function vizAnalyser(){ if (!mus.ctx) return null; if (!viz.an){ viz.an = mus.ctx.createAnalyser(); viz.an.fftSize = 256; viz.an.smoothingTimeConstant = .78; mus.master.connect(viz.an); viz.data = new Uint8Array(viz.an.frequencyBinCount); } return viz.an; }
+function vizOn(){ return typeof dispOn !== 'undefined' && dispOn && featOn('music') && prefs.dispViz !== false; }
+function vizSync(){
+  const el = $('display'); if (!el) { cancelAnimationFrame(viz.raf); viz.raf = null; return; }
+  let cv = el.querySelector('.d-viz');
+  if (!vizOn()){ cv?.remove(); cancelAnimationFrame(viz.raf); viz.raf = null; }
+  else if (!cv){ cv = document.createElement('canvas'); cv.className = 'd-viz'; cv.setAttribute('aria-hidden', 'true'); el.insertBefore(cv, el.firstChild.nextSibling); }
+  let mb = el.querySelector('.d-mus');
+  if (featOn('music')){ if (!mb){ mb = document.createElement('button'); mb.className = 'd-mus'; el.appendChild(mb); }
+    mb.innerHTML = mus.playing ? `${PAUSE_I}<span>${esc(st().name)}</span>` : `${PLAY_I}<span>Music</span>`; mb.setAttribute('aria-label', mus.playing ? 'Pause music' : 'Play music'); mb.classList.toggle('on', mus.playing); }
+  else mb?.remove();
+  if (vizOn() && !viz.raf) viz.raf = requestAnimationFrame(vizDraw);
+}
+function vizDraw(now){
+  const el = $('display'), cv = el && el.querySelector('.d-viz'); if (!cv){ viz.raf = null; return; }
+  viz.raf = requestAnimationFrame(vizDraw); if (document.hidden || now - viz.last < 33) return; viz.last = now;
+  const r = Math.min(2, devicePixelRatio || 1), W = cv.clientWidth, H = cv.clientHeight; if (cv.width !== W * r || cv.height !== H * r){ cv.width = W * r; cv.height = H * r; }
+  const c = cv.getContext('2d'); c.setTransform(r, 0, 0, r, 0, 0); c.clearRect(0, 0, W, H);
+  const an = mus.playing ? vizAnalyser() : null; if (an) an.getByteFrequencyData(viz.data);
+  const n = Math.max(24, Math.min(64, Math.floor(W / 16))), gap = 4, bw = (W - gap * (n - 1)) / n;
+  const grad = c.createLinearGradient(0, H, 0, 0); grad.addColorStop(0, 'rgba(127,231,255,.85)'); grad.addColorStop(.55, 'rgba(180,156,255,.8)'); grad.addColorStop(1, 'rgba(255,159,216,.9)');
+  c.fillStyle = grad; c.shadowColor = 'rgba(180,156,255,.8)'; c.shadowBlur = 12;
+  let peak = 0; if (an) for (let j = 1; j < viz.data.length * .5; j++) peak = Math.max(peak, viz.data[j]);
+  viz.peak = Math.max(peak, (viz.peak || 60) * .985, 60);
+  for (let i = 0; i < n; i++){
+    const off = Math.abs(i - (n - 1) / 2) / ((n - 1) / 2);            // bass in the middle, highs toward the edges
+    const bin = an ? viz.data[Math.floor(Math.pow(off, 1.25) * (viz.data.length * .45)) + 1] / viz.peak : 0;
+    const idle = .04 + .02 * Math.sin(now / 600 + i * .5);
+    const h = Math.max(idle, bin) * H * .95, x = i * (bw + gap);
+    c.beginPath(); c.roundRect ? c.roundRect(x, H - h, bw, h, Math.min(4, bw / 2)) : c.rect(x, H - h, bw, h); c.fill();
+  }
+}
+/* hook into Display mode and the music player */
+startDisplay = (orig => function(){ orig(); vizSync(); })(startDisplay);
+stopDisplay = (orig => function(){ orig(); vizSync(); })(stopDisplay);
+musUI = (orig => function(){ orig(); if (typeof dispOn !== 'undefined' && dispOn) vizSync(); })(musUI);
+document.addEventListener('click', e => { const b = e.target.closest('.d-mus'); if (!b) return; e.stopPropagation(); musToggle(); }, true);
+/* switch in the Display mode settings */
+appSettings = (orig => function(){
+  const html = orig(); if (!featOn('display') || !featOn('music')) return html;
+  const row = `<label class="lite-row"><span><b>Music visualizer</b><small>Glowing bars that move with the background music</small></span><input type="checkbox" class="feat-sw" id="vizSw" ${prefs.dispViz !== false ? 'checked' : ''} aria-label="Music visualizer"></label>`;
+  const i = html.indexOf('<fieldset class="group"><legend>Display mode</legend>'); if (i < 0) return html;
+  const end = html.indexOf('</fieldset>', i); return html.slice(0, end) + row + html.slice(end);
+})(appSettings);
+document.addEventListener('change', e => { if (e.target.id === 'vizSw'){ prefs.dispViz = e.target.checked; savePrefs(); vizSync(); } });
+
+/* ---------- Display mode schedule ---------- */
+const dsched = () => (prefs.dispSched ||= { on:false, off:'01:00', wake:'08:00' });
+const minsOf = t => { const [h, m] = String(t || '0:0').split(':').map(Number); return h * 60 + (m || 0); };
+function dispAsleep(){ const s = dsched(); if (!s.on) return false; const now = new Date(), n = now.getHours() * 60 + now.getMinutes(), a = minsOf(s.off), b = minsOf(s.wake);
+  return a === b ? false : a < b ? (n >= a && n < b) : (n >= a || n < b); }
+dispTick = (orig => function(){ orig(); const el = $('display'); if (!el) return;
+  const sleep = dispAsleep() && !(el.wakeUntil && Date.now() < el.wakeUntil);
+  if (sleep !== el.classList.contains('sleeping')){ el.classList.toggle('sleeping', sleep);
+    if (sleep){ try{ wakeLock && wakeLock.release(); }catch(e){} wakeLock = null; if (typeof mus !== 'undefined' && mus.playing && prefs.dispSchedMusic !== false){ musStop(true); } }
+    else keepAwake(); }
+})(dispTick);
+document.addEventListener('click', e => { const el = $('display'); if (el && el.classList.contains('sleeping') && el.contains(e.target)){ e.stopPropagation(); el.wakeUntil = Date.now() + 60000; el.classList.remove('sleeping'); keepAwake(); } }, true);
+appSettings = (orig => function(){ const html = orig(); if (!featOn('display')) return html; const s = dsched();
+  const row = `<div class="dsched"><label class="lite-row"><span><b>Sleep schedule</b><small>Goes dark at night so it doesn\u2019t light up your room, then wakes up by itself</small></span><input type="checkbox" class="feat-sw" id="dsOn" ${s.on ? 'checked' : ''} aria-label="Sleep schedule"></label>
+    ${s.on ? `<div class="gf-two" style="margin-top:8px"><div><label class="d-l" for="dsOff">Go dark at</label><input class="search" type="time" id="dsOff" value="${s.off}"></div><div><label class="d-l" for="dsWake">Wake up at</label><input class="search" type="time" id="dsWake" value="${s.wake}"></div></div>
+      <p class="set-note" style="margin:6px 0 0">While asleep the screen goes black and lets the tablet rest. Tap it to peek for a minute. Music stops when it goes dark.</p>` : ''}</div>`;
+  const i = html.indexOf('<fieldset class="group"><legend>Display mode</legend>'); if (i < 0) return html; const end = html.indexOf('</fieldset>', i); return html.slice(0, end) + row + html.slice(end); })(appSettings);
+document.addEventListener('change', e => { const s = dsched();
+  if (e.target.id === 'dsOn'){ s.on = e.target.checked; savePrefs(); renderStage(false); }
+  if (e.target.id === 'dsOff'){ s.off = e.target.value || '01:00'; savePrefs(); }
+  if (e.target.id === 'dsWake'){ s.wake = e.target.value || '08:00'; savePrefs(); } });
+
 /* ===================================================================
    Settings, organized: a short menu of sections instead of one long page.
    Every panel keeps working as before; this just sorts them into pages.
@@ -3938,6 +4233,7 @@ document.addEventListener('click', e => {
 
 
 load().then(() => {
+  wallPhotoLoad();
   if (/[?&]display\b/.test(location.search)){ prefs.features = { ...(prefs.features || {}), display:true }; savePrefs(); }
   applyTheme(); openWin(games.length ? 'library' : (TASK_APPS.includes('player') ? 'player' : 'library'));
   if (/[?&]display\b/.test(location.search)) startDisplay(); else announceNew();
