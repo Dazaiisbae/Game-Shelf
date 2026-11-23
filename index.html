@@ -1235,6 +1235,190 @@ body::before{display:none}
   .task{padding:0 4px;min-width:0}
   .tasks{gap:0}
 }
+
+/* Tap reliability on iPhone:
+   1) the app root is no longer position:fixed (iOS can mis-route taps inside scrolled areas of fixed layers)
+   2) the frosted blur moves to a layer behind the panel, so the scrolling area itself isn't inside a blur layer
+   3) no double-tap zoom delay */
+html,body{height:100%;overscroll-behavior:none}
+body{touch-action:manipulation}
+#os{position:absolute !important;inset:0;height:100%;height:100dvh}
+.stage{-webkit-backdrop-filter:none !important;backdrop-filter:none !important;background:transparent !important;isolation:isolate}
+.stage::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--win-bg);
+  -webkit-backdrop-filter:blur(26px) saturate(1.6);backdrop-filter:blur(26px) saturate(1.6);pointer-events:none}
+.stage-body{-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.toast:not(.has-action){pointer-events:none !important}
+
+/* ===== Trophies in the game panel ===== */
+.cup{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;color:var(--c);filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.cup svg{width:100%;height:100%;fill:color-mix(in srgb,var(--c) 35%,transparent)}
+.trsec{padding:6px 10px 10px}
+.tr-head2{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left;padding:6px 2px}
+.tr-h2t{flex:1;min-width:0;display:flex;flex-direction:column}
+.tr-h2t b{font-size:14px;font-weight:900}
+.tr-h2t span{font-size:12px;font-weight:700;color:var(--soft)}
+.tr-pct2{font-size:13px;font-weight:900;padding:3px 9px;border-radius:999px;background:var(--tint);border:1px solid var(--edge)}
+.tr-pct2.full{border-color:#F2C14E;background:rgba(242,193,78,.25)}
+.trsec .chev{color:var(--soft);font-size:16px;font-weight:900}
+.tr-bar{display:block;height:6px;margin:2px 2px 4px}
+.trsec.open .tr-bar{margin-bottom:10px}
+.trsec .chips-row{margin:0 0 8px}
+.tr-plat{display:flex;align-items:center;gap:8px;width:100%;margin-bottom:8px;padding:10px;border-radius:12px;border:1px solid #9FC9FF;background:linear-gradient(135deg,rgba(159,201,255,.35),rgba(255,255,255,.4));color:inherit;font:inherit;font-size:13px;font-weight:700;text-align:left}
+.tlist{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.trow{display:flex;align-items:center;gap:9px;padding:8px;border-radius:10px;background:var(--field);border:1px solid var(--pane-line)}
+.trow.earned{opacity:.72}
+.tcheck{flex:0 0 28px;width:28px;height:28px;border-radius:50%;border:2.5px solid var(--soft);background:none;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;padding:0}
+.trow.earned .tcheck{border-color:#2FBF8F;background:#2FBF8F;animation:checkPop .3s cubic-bezier(.3,1.6,.5,1)}
+@keyframes checkPop{50%{transform:scale(1.25)}}
+.tname{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.tname b{font-size:14px;font-weight:800;overflow-wrap:anywhere}
+.tname small{font-size:12px;color:var(--soft);font-weight:600;overflow-wrap:anywhere}
+.tname .tdate{color:#2FBF8F;font-weight:700}
+.strike{background:linear-gradient(currentColor,currentColor) no-repeat 0 55%/0% 2px;transition:background-size .35s ease-out}
+.trow.earned .strike{background-size:100% 2px}
+.tedit{flex:0 0 auto;border:0;background:none;color:var(--soft);font-size:16px;padding:4px 6px}
+.trow.editing{flex-direction:column;align-items:stretch;gap:8px}
+.trow.editing .search{margin:0;padding:9px 12px}
+.tr-addrow{display:flex;gap:6px}
+.tr-addrow .search{flex:1;margin:0;padding:10px 12px;min-width:0}
+.tr-typepick{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tr-typepick button{display:flex;align-items:center;gap:5px;border:1px solid var(--edge);background:var(--field);color:inherit;font:inherit;font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px}
+.tr-typepick button[aria-pressed=true]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.tr-types{display:flex;gap:14px;margin-top:8px}
+.tr-types span{display:flex;align-items:center;gap:5px;font-weight:900}
+.tspark{position:absolute;width:6px;height:6px;margin:-3px;border-radius:2px;z-index:9960;pointer-events:none;animation:tspark .6s ease-out forwards}
+@keyframes tspark{to{transform:translate(var(--dx),var(--dy));opacity:0}}
+.d-l{font-size:12px;font-weight:800;color:var(--soft)}
+.drawer textarea.bk{width:100%;min-height:90px;font:13px/1.35 inherit;padding:8px;border-radius:8px;border:1px solid var(--edge);background:var(--field);color:var(--ink);margin-top:6px}
+@media (prefers-reduced-motion:reduce){ .strike{transition:none} .trow.earned .tcheck{animation:none} }
+
+.tr-types b small{font-size:11px;font-weight:700;color:var(--soft);margin-left:1px}
+.tr-types{flex-wrap:wrap}
+/* ===== Trophy section v2 ===== */
+.medal{position:relative;display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;border-radius:50%;color:#fff;
+  background:linear-gradient(135deg,var(--m1),var(--m2) 45%,var(--m3) 55%,var(--m4));box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -2px 4px rgba(0,0,0,.18),0 2px 6px rgba(0,30,60,.25)}
+.medal svg{width:58%;height:58%;stroke:#fff;fill:rgba(255,255,255,.25);filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+.medal:not(.on){filter:grayscale(.85) brightness(1.08);opacity:.55}
+.medal.on::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);background-size:250% 100%;animation:medalShine 3.5s ease-in-out infinite}
+@keyframes medalShine{0%,70%,100%{background-position:150% 0}85%{background-position:-50% 0}}
+.trsec2{padding:8px 10px 10px;border-radius:14px}
+.trsec2.full{border-color:#F2C14E;box-shadow:0 0 0 1px rgba(242,193,78,.45),0 0 18px rgba(242,193,78,.25)}
+.tr-head3{display:flex;align-items:center;gap:12px;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left;padding:4px 2px}
+.tring{position:relative;flex:0 0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:conic-gradient(#7FE7FF 0,#B49CFF calc(var(--p) * .5),#FF9FD8 var(--p),var(--pane-line) var(--p) 100%)}
+.tring::before{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--win-bg)}
+.tring span{position:relative;font-size:12px;font-weight:900}
+.trsec2.full .tring{background:conic-gradient(#FFF3B0,#F2C14E,#FFE27A,#D9A21B,#FFF3B0)}
+.tr-h3t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.tr-h3t > b{font-size:15px;font-weight:900}
+.tr-h3t > span{font-size:12px;font-weight:700;color:var(--soft)}
+.tl-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:3px}
+.tl-t{display:flex;align-items:center;gap:4px}
+.tl-t b{font-size:13px;font-weight:900}
+.tl-t small{font-size:10px;font-weight:700;color:var(--soft)}
+.trsec2 .chev{color:var(--soft);font-size:16px;font-weight:900}
+.tr-done{display:flex;align-items:center;gap:10px;margin:8px 0 4px;padding:10px 12px;border-radius:12px;background:linear-gradient(135deg,rgba(255,243,176,.6),rgba(242,193,78,.25));border:1px solid rgba(242,193,78,.6)}
+.tr-done span{display:flex;flex-direction:column;font-size:12px;font-weight:700;color:var(--soft)}
+.tr-done b{font-size:15px;color:var(--ink)}
+.tr-plat2{display:flex;align-items:center;gap:10px;width:100%;margin:8px 0 4px;padding:10px 12px;border-radius:12px;border:1px solid #9FC9FF;color:inherit;font:inherit;text-align:left;
+  background:linear-gradient(110deg,rgba(159,201,255,.25) 30%,rgba(255,255,255,.7) 50%,rgba(159,201,255,.25) 70%) 0 0/250% 100%;animation:foilSweep2 2.5s ease-in-out infinite}
+.tr-plat2 span{display:flex;flex-direction:column;font-size:12px;font-weight:700;color:var(--soft)}
+.tr-plat2 b{font-size:15px;color:var(--ink)}
+@keyframes foilSweep2{0%,100%{background-position:120% 0}50%{background-position:-20% 0}}
+.tr-chips{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0 2px}
+.tchip{font-size:11px;font-weight:900;padding:4px 9px;border-radius:999px}
+.tchip.miss{color:#B3261E;background:rgba(240,68,79,.14);border:1px solid rgba(240,68,79,.4)}
+.tchip.pin{color:#8A5A00;background:rgba(242,193,78,.2);border:1px solid rgba(242,193,78,.55)}
+.tr-chips select{margin-left:auto;font-size:12px;padding:6px 26px 6px 10px;border-radius:999px}
+.tsub{display:flex;align-items:center;gap:6px;margin:12px 2px 6px;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.tsub span{font-size:11px;padding:1px 7px;border-radius:999px;background:var(--tint);border:1px solid var(--edge);letter-spacing:0}
+.tsub-btn{width:100%;border:0;background:none;font-family:inherit;cursor:pointer;text-align:left;padding:0}
+.tsub-btn i{margin-left:auto;font-style:normal;color:var(--aqua-deep);letter-spacing:0;text-transform:none;font-size:12px}
+.tlist2{display:flex;flex-direction:column;gap:6px}
+.trow2{position:relative;display:flex;align-items:center;gap:10px;padding:9px 8px 9px 12px;border-radius:12px;overflow:hidden;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 14%,transparent),transparent 60%),var(--field);border:1px solid var(--pane-line)}
+.trow2::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--tc)}
+.trow2.pinned{border-color:rgba(242,193,78,.7);box-shadow:0 0 0 1px rgba(242,193,78,.3)}
+.trow2.earned{background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 26%,transparent),transparent 70%),var(--field)}
+.trow2.earned .tname b{color:var(--soft)}
+.trow2.just::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.8) 50%,transparent 70%);background-size:250% 100%;animation:rowShine .7s ease-out forwards}
+@keyframes rowShine{from{background-position:150% 0}to{background-position:-50% 0}}
+.trow2 .tcheck{flex:0 0 28px;width:28px;height:28px;border-radius:50%;border:2.5px solid var(--soft);background:var(--win-bg);color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;padding:0}
+.trow2.earned .tcheck{border-color:#2FBF8F;background:#2FBF8F;animation:checkPop .3s cubic-bezier(.3,1.6,.5,1)}
+.trow2.earned .medal.on{animation:medalPop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes medalPop{40%{transform:scale(1.2) rotate(-8deg)}}
+.tmeta{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}
+.ttype{font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--tc);filter:brightness(.8)}
+.tmiss{font-size:10px;font-weight:900;padding:1px 6px;border-radius:999px;color:#fff;background:#E0465A}
+.trow2 .tdate{font-size:11px;color:#2FBF8F;font-weight:800}
+.tacts{display:flex;align-items:center;gap:2px}
+.tpin{border:0;background:none;color:#E9A920;font-size:18px;padding:4px}
+.trow2.editing{flex-direction:column;align-items:stretch;gap:8px}
+.trow2.editing .search{margin:0;padding:9px 12px}
+.trow2.editing .check-row{font-size:13px;font-weight:700}
+.tr-new2{margin-top:12px;padding-top:12px;border-top:1px solid var(--pane-line)}
+.tr-typepick button .medal{box-shadow:none}
+.plat-ov{position:absolute;inset:0;z-index:9950;display:flex;align-items:center;justify-content:center;padding:16px;background:radial-gradient(circle,rgba(159,201,255,.45),rgba(5,15,35,.82));animation:pop .3s ease-out}
+.plat-card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:26px 22px;border-radius:24px;max-width:340px;color:var(--ink);background:var(--win-bg);border:1px solid var(--edge);
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 0 60px rgba(159,201,255,.8)}
+.plat-card .medal{animation:platIn .8s cubic-bezier(.2,1.4,.4,1)}
+@keyframes platIn{from{transform:scale(.3) rotate(-120deg);filter:brightness(3)}to{transform:none;filter:none}}
+.plat-t{margin:14px 0 0;font-size:13px;font-weight:900;letter-spacing:.4em;color:#6F9BD8}
+.plat-card h2{margin:4px 0 6px;font-size:22px;overflow-wrap:anywhere}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){ .medal.on::after,.tr-plat2,.trow2.just::after,.plat-card .medal,.trow2.earned .medal.on{animation:none !important} }
+
+.trow2.earned .strike{background-size:100% 2px}
+.trow2 .strike{background:linear-gradient(currentColor,currentColor) no-repeat 0 55%/0% 2px;transition:background-size .35s ease-out}
+
+/* Smooth tab switches: no fade on the panel (a fade on a parent makes the frosted glass drop out and pop back on iPhone),
+   and the glass layer stays on its own steady layer */
+.stage.swap .stage-body{animation:none !important}
+.stage::before{transform:translateZ(0);-webkit-transform:translateZ(0);will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.stage-body{transform:translateZ(0);-webkit-transform:translateZ(0)}
+
+.file-offscreen{position:fixed;left:-10000px;top:0;width:1px;height:1px;opacity:0}
+.bk-loaded{margin:8px 0 0;padding:8px 10px;border-radius:10px;background:var(--tint);border:1px solid var(--edge);font-weight:700;color:var(--ink)}
+
+/* ===== Trophy polish ===== */
+.tr-hero{position:relative;display:flex;align-items:center;gap:14px;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left;padding:8px 4px;border-radius:12px;overflow:hidden;isolation:isolate}
+.tr-hero.has-art::before{content:"";position:absolute;inset:-20px;z-index:-1;background:var(--art) center/cover;filter:blur(18px) saturate(1.3);opacity:.35}
+.tring2{position:relative;flex:0 0 58px;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:conic-gradient(#7FE7FF 0,#B49CFF calc(var(--p) * .5),#FF9FD8 var(--p),var(--pane-line) var(--p) 100%);box-shadow:0 3px 10px rgba(0,30,60,.18)}
+.tring2-in{position:absolute;inset:6px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--win-bg)}
+.tring2-in b{font-size:17px;font-weight:900;line-height:1}
+.tring2-in small{font-size:10px;font-weight:800;color:var(--soft)}
+.trsec2.full .tring2{background:conic-gradient(#FFF3B0,#F2C14E,#FFE27A,#D9A21B,#FFF3B0);animation:ringGlow 2.6s ease-in-out infinite}
+@keyframes ringGlow{50%{box-shadow:0 0 18px rgba(242,193,78,.7)}}
+.tr-h3t > b{display:flex;align-items:baseline;gap:6px}
+.tr-h3t > b em{font-style:normal;font-size:12px;font-weight:900;color:var(--soft)}
+.tr-next{font-size:12px;font-weight:700;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.tstack{display:flex;height:6px;margin-top:6px;border-radius:3px;overflow:hidden;background:var(--pane-line)}
+.tstack i{display:block;height:100%}
+.tr-mile{margin:6px 2px 0;font-size:12px;font-weight:800;color:var(--soft)}
+.tr-guide{display:flex;align-items:center;gap:6px;margin-top:8px}
+.tr-guide .tr-addrow{flex:1}
+.tguide{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:800;color:var(--aqua-deep);text-decoration:none;padding:6px 10px;border-radius:999px;background:var(--tint);border:1px solid var(--edge)}
+.tguide.add{color:var(--soft);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.tr-empty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 6px 4px}
+.tr-empty .medal{margin:0 -4px}
+.tr-empty p{margin:10px 0;font-size:13px;font-weight:600;color:var(--soft);max-width:300px}
+.trow2{cursor:pointer;transition:transform .12s ease-out,opacity .25s}
+.trow2:active{transform:scale(.985)}
+.trow2.editing{cursor:default}
+.trow2.earned .medal.on{box-shadow:0 0 0 2px rgba(255,255,255,.8),0 0 14px color-mix(in srgb,var(--tc) 70%,transparent)}
+.trow2.added{animation:rowIn .45s cubic-bezier(.2,1.2,.4,1)}
+@keyframes rowIn{from{transform:translateY(-8px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+.trow2 .tdate{font-size:11px}
+.tr-typeseg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:8px}
+.tr-typeseg button{display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid var(--edge);background:var(--field);color:inherit;font:inherit;font-size:10px;font-weight:800;padding:7px 2px;border-radius:12px}
+.tr-typeseg button[aria-pressed=true]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset;background:var(--tint)}
+.tr-typeseg button .medal{box-shadow:none}
+.tr-typeseg button:not([aria-pressed=true]) .medal{filter:grayscale(.6);opacity:.7}
+@media (prefers-reduced-motion:reduce){ .trsec2.full .tring2,.trow2.added{animation:none} }
+.tr-emedals{display:flex;align-items:flex-end;justify-content:center}
+.tr-emedals .medal{margin:0 -5px}
+.tr-emedals .medal:nth-child(2){position:relative;z-index:1;transform:translateY(-6px)}
 </style>
 </head>
 <body>
@@ -1697,7 +1881,7 @@ function doSpin(){
   document.querySelector('.result')?.remove();
   if (el) el.style.transform = `rotate(${spinAngle}deg)`;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  setTimeout(() => { spinning = false; spinResult = pick; if (tab==='spin') render(); }, reduce ? 0 : 3300);
+  setTimeout(() => { spinning = false; spinResult = pick; render(); }, reduce ? 0 : 3300);
 }
 
 /* Charts */
@@ -2125,7 +2309,12 @@ function renderDrawer(){
 }
 
 /* ---------- Rendering ---------- */
-function render(){ renderStage(false); renderDrawer(); renderTaskbar(); if (!$('start').hidden) renderStart(); }
+function syncOverlays(){
+  if (!drawerGame){ $('drawer').classList.remove('open'); $('dscrim').classList.remove('open'); }
+  if (!$('sheet').classList.contains('open')) $('scrim').classList.remove('open');
+}
+function render(){ renderStage(false); renderDrawer(); renderTaskbar(); if (!$('start').hidden) renderStart(); syncOverlays(); }
+document.addEventListener('visibilitychange', () => { if (!document.hidden) syncOverlays(); });
 function renderStage(animate){
   const body = $('stageBody'), st = body.scrollTop, li = body.querySelector('#libList'), ist = li ? li.scrollTop : 0;
   $('stageTitle').textContent = APPS[currentApp].title;
@@ -2287,7 +2476,8 @@ function appSettings(){
       <label class="check-row" style="margin-top:10px"><input type="checkbox" id="bkCovers" checked>Include cover photos</label>
       <p class="set-note">${prefs.lastBackup ? `Last backup: ${new Date(prefs.lastBackup).toLocaleDateString()}` : 'No backup yet. Save one once your collection is in.'}</p>
       ${restoreOpen ? `<p class="set-note">Pick a backup file or paste a copied backup. Restoring replaces everything in the app.</p>
-        <div class="set-row" style="margin-top:8px"><label class="btn" for="bkFile">Choose backup file</label><input type="file" id="bkFile" accept=".json,application/json,text/plain" class="vh"></div>
+        <div class="set-row" style="margin-top:8px"><button class="btn" type="button" id="bkChoose">Choose backup file</button><input type="file" id="bkFile" class="file-offscreen" tabindex="-1" aria-hidden="true"></div>
+        <p class="set-note bk-loaded" id="bkLoaded" hidden></p>
         <textarea class="bk" id="bkText" placeholder="Or paste your backup here" aria-label="Backup text"></textarea>
         <div class="set-row" style="margin-top:8px"><button class="btn" id="bkCancel">Cancel</button><button class="btn" id="bkRestore" style="color:#fff;background:#D9465A;border-color:#D9465A">${restoreArmed2 ? 'Tap again to replace everything' : 'Restore backup'}</button></div>` : ''}
     </fieldset>
@@ -2358,6 +2548,7 @@ document.addEventListener('click', e => {
   if (t.id === 'bkRestoreOpen'){ restoreOpen = !restoreOpen; restoreArmed2 = false; return render(); }
   if (t.id === 'bkCancel'){ restoreOpen = false; restoreArmed2 = false; return render(); }
   if (t.id === 'bkRestore') return doRestore();
+  if (t.id === 'bkChoose'){ const fi = $('bkFile'); if (fi){ fi.value = ''; fi.click(); } return; }
   // stats, timeline, spin (shared with the old views)
   if (t.id === 'spinBtn') return doSpin();
   if (t.id === 'goalBtn'){ goalEditing = true; render(); setTimeout(()=>$('goalInput')?.focus(), 50); return; }
@@ -2387,7 +2578,17 @@ document.addEventListener('change', e => {
   if (id==='spinOwned'){ spinOwned = e.target.checked; render(); }
   if (id==='spinInOrder'){ spinInOrder = e.target.checked; render(); }
   if (id==='bkFile'){ const f = e.target.files[0]; if (!f) return; const r = new FileReader();
-    r.onload = () => { const ta = $('bkText'); if (ta) ta.value = r.result; restoreArmed2 = false; toast('Backup loaded. Tap Restore backup to use it.'); };
+    r.onload = () => {
+      const ta = $('bkText'); if (ta) ta.value = r.result; restoreArmed2 = false;
+      const info = $('bkLoaded'); let msg;
+      try{ const d = JSON.parse(String(r.result).trim()); msg = d && d.app === 'game-shelf' && Array.isArray(d.games)
+          ? `✓ Loaded ${f.name}: ${d.games.length} games${d.exported ? `, saved ${new Date(d.exported).toLocaleDateString()}` : ''}${d.covers ? ', with cover photos' : ''}. Tap Restore backup below.`
+          : `That file doesn't look like a Game Shelf backup. Pick the file named game-shelf-backup.`; }
+      catch(err){ msg = `That file doesn't look like a Game Shelf backup. Pick the file named game-shelf-backup.`; }
+      if (info){ info.hidden = false; info.textContent = msg; }
+      document.getElementById('bkRestore')?.scrollIntoView({ behavior:'smooth', block:'center' });
+      e.target.value = '';
+    };
     r.onerror = () => toast('That file could not be read.'); r.readAsText(f); }
 });
 document.addEventListener('input', e => {
@@ -2402,6 +2603,200 @@ document.addEventListener('keydown', e => {
 });
 
 setInterval(renderTaskbar, 30000);
+/* ===================================================================
+   Trophies live inside each game's panel (tap a disc).
+   Write them down, tap to cross them off. Totals show on the Stats page.
+   =================================================================== */
+ICONS.trophy = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4"/><path d="M12 14v3M8.5 20h7M9.5 17h5v3h-5z"/></svg>';
+const TTYPES = { plat:['Platinum','#9FC9FF'], gold:['Gold','#F2C14E'], silver:['Silver','#C3CED9'], bronze:['Bronze','#D89A62'], none:['Trophy','#B49CFF'] };
+let trFilter = 'all', trType = 'none', trPaste = false, trEdit = null, trOpen = false;
+const trophiesOf = g => Array.isArray(g?.trophies) ? g.trophies : [];
+const trDone = g => trophiesOf(g).filter(t => t.earned).length;
+const cup = (type, size = 20) => `<span class="cup" style="--c:${(TTYPES[type] || TTYPES.none)[1]};width:${size}px;height:${size}px">${ICONS.trophy}</span>`;
+const newTid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const trGameNow = () => drawerGame && games.find(x => x.id === drawerGame);
+function trRefresh(){ renderDrawer(); renderStage(false); }
+
+const MEDAL = { plat:['#F2FAFF','#9FC9FF','#FFFFFF','#6F9BD8'], gold:['#FFF3B0','#E9B43C','#FFE38A','#B97A12'], silver:['#FFFFFF','#B9C6D3','#F2F6F9','#8395A8'],
+  bronze:['#FFD8B4','#C97B3E','#F2B07A','#8E5224'], none:['#EEE6FF','#9B7BFF','#DCCFFF','#6040D0'] };
+const medal = (type, size, on = true) => { const m = MEDAL[type] || MEDAL.none;
+  return `<span class="medal ${on ? 'on' : ''}" style="width:${size}px;height:${size}px;--m1:${m[0]};--m2:${m[1]};--m3:${m[2]};--m4:${m[3]}">${ICONS.trophy}</span>`; };
+let trSort = 'default', trShowEarned = true;
+const relDay = ts => { const d0 = new Date(); d0.setHours(0,0,0,0); const d = new Date(ts); d.setHours(0,0,0,0); const n = Math.round((d0 - d) / 864e5);
+  return n <= 0 ? 'today' : n === 1 ? 'yesterday' : n < 7 ? `${n} days ago` : fmtDate(ts); };
+let trGuideEdit = false, trJustAdded = null;
+function trophySection(g){
+  const list = trophiesOf(g), n = list.length, d = trDone(g), pct = n ? Math.round(d / n * 100) : 0, full = n && d === n;
+  const types = ['plat','gold','silver','bronze','none'].filter(k => list.some(t => (t.type || 'none') === k));
+  const tally = types.map(k => { const of = list.filter(t => (t.type || 'none') === k); return `<span class="tl-t">${medal(k, 18)}<b>${of.filter(t => t.earned).length}<small>/${of.length}</small></b></span>`; }).join('');
+  const stack = n ? `<span class="tstack" aria-hidden="true">${types.map(k => { const e = list.filter(t => (t.type || 'none') === k && t.earned).length; return e ? `<i style="width:${e / n * 100}%;background:linear-gradient(180deg,${MEDAL[k][0]},${k === 'silver' ? MEDAL[k][3] : MEDAL[k][1]})"></i>` : ''; }).join('')}</span>` : '';
+  const missLeft = list.filter(t => t.missable && !t.earned).length, pinned = list.filter(t => t.pinned && !t.earned);
+  const others = list.filter(t => t.type !== 'plat'), plat = list.find(t => t.type === 'plat' && !t.earned);
+  const platReady = plat && others.length && others.every(t => t.earned);
+  const nextUp = pinned[0] || list.find(t => !t.earned && t.type !== 'plat');
+  const nextMile = [25, 50, 75, 100].find(m => pct < m), toMile = nextMile ? Math.ceil(n * nextMile / 100) - d : 0;
+  const order = { plat:0, gold:1, silver:2, bronze:3, none:4 };
+  const sorted = arr => [...arr].sort((a, b) => trSort === 'type' ? order[a.type || 'none'] - order[b.type || 'none'] : trSort === 'recent' ? (b.earned || 0) - (a.earned || 0) : 0);
+  const row = t => { const idx = list.indexOf(t);
+    return trEdit === t.id
+    ? `<div class="trow2 editing" style="--tc:${(MEDAL[t.type] || MEDAL.none)[1]}"><input class="search" id="trEName" value="${esc(t.name)}" aria-label="Trophy name"><input class="search" id="trEDesc" value="${esc(t.desc || '')}" placeholder="How to get it (optional)" aria-label="Description">
+        <div class="tr-typepick">${Object.entries(TTYPES).map(([k, [l]]) => `<button data-tretype="${k}" aria-pressed="${(t.type || 'none')===k}">${medal(k, 18)}${l}</button>`).join('')}</div>
+        <label class="check-row"><input type="checkbox" id="trEMiss" ${t.missable ? 'checked' : ''}>Missable (easy to lock yourself out of)</label>
+        <div class="set-row"><button class="btn" data-trmove="${t.id}" data-dir="-1" ${idx === 0 ? 'disabled' : ''} aria-label="Move up">↑</button><button class="btn" data-trmove="${t.id}" data-dir="1" ${idx === n - 1 ? 'disabled' : ''} aria-label="Move down">↓</button>
+          <button class="btn primary" data-trsave="${t.id}" style="margin-left:auto">Save</button><button class="btn" data-trcancel>Cancel</button></div>
+        <button class="linkbtn" data-trdel="${t.id}" style="color:var(--danger);margin:2px auto 0">Delete trophy</button></div>`
+    : `<div class="trow2 ${t.earned ? 'earned' : ''} ${t.pinned && !t.earned ? 'pinned' : ''} ${trJustAdded === t.id ? 'added' : ''}" data-trrow="${t.id}" style="--tc:${(MEDAL[t.type] || MEDAL.none)[1]}">
+        <button class="tcheck" data-trtoggle="${t.id}" aria-pressed="${!!t.earned}" aria-label="${t.earned ? 'Earned' : 'Not earned'}: ${esc(t.name)}">${t.earned ? '✓' : ''}</button>
+        ${medal(t.type || 'none', 38, !!t.earned)}
+        <span class="tname"><b><span class="strike">${esc(t.name)}</span></b>${t.desc ? `<small>${esc(t.desc)}</small>` : ''}
+          <span class="tmeta"><span class="ttype">${TTYPES[t.type || 'none'][0]}</span>${t.missable && !t.earned ? '<span class="tmiss">Missable</span>' : ''}${t.earned ? `<span class="tdate">✓ ${relDay(t.earned)}</span>` : ''}</span></span>
+        <span class="tacts">${t.earned ? '' : `<button class="tpin" data-trpin="${t.id}" aria-pressed="${!!t.pinned}" aria-label="${t.pinned ? 'Unpin' : 'Pin'} ${esc(t.name)}">${t.pinned ? '★' : '☆'}</button>`}
+          <button class="tedit" data-tredit="${t.id}" aria-label="Edit ${esc(t.name)}">✎</button></span></div>`; };
+  const ring = `<span class="tring2" style="--p:${pct}%"><span class="tring2-in">${full ? medal(list.some(t => t.type === 'plat') ? 'plat' : 'gold', 30) : `<b>${n ? pct : 0}<small>%</small></b>`}</span></span>`;
+  const sub = !n ? (trOpen ? 'No trophies yet' : 'Tap to start a trophy list') : full ? 'Every trophy earned ✦' : nextUp ? `Next: ${nextUp.name}` : `${n - d} to go`;
+  const head = `<button class="tr-hero ${covers[g.id] ? 'has-art' : ''}" id="trOpenBtn" aria-expanded="${trOpen}" style="${covers[g.id] ? `--art:url('${covers[g.id]}')` : ''}">
+      ${ring}<span class="tr-h3t"><b>Trophies <em>${n ? `${d}/${n}` : ''}</em></b><span class="tr-next">${esc(sub)}</span>${n ? `<span class="tl-row">${tally}</span>${stack}` : ''}</span>
+      <span class="chev">${trOpen ? '⌃' : '⌄'}</span></button>`;
+  if (!trOpen) return `<div class="group trsec2 ${full ? 'full' : ''}">${head}</div>`;
+  const todo = list.filter(t => !t.earned && !t.pinned), done = list.filter(t => t.earned);
+  const guide = g.trGuide
+    ? (trGuideEdit ? '' : `<a class="tguide" href="${esc(g.trGuide)}" target="_blank" rel="noopener">🔗 Open trophy guide</a><button class="tedit" id="trGuideEditBtn" aria-label="Change guide link">✎</button>`)
+    : (trGuideEdit ? '' : `<button class="tguide add" id="trGuideEditBtn">🔗 Add a guide link</button>`);
+  const guideEditor = trGuideEdit ? `<div class="tr-addrow"><input class="search" id="trGuideIn" value="${esc(g.trGuide || '')}" placeholder="Paste a guide link (https://...)" inputmode="url" autocomplete="off"><button class="btn primary" id="trGuideSave">Save</button></div>` : '';
+  const adder = trPaste
+    ? `<label class="d-l" for="trPasteBox">One trophy per line. Add a note after a dash, like "Treasure Hunter - open 100 chests"</label>
+       <textarea id="trPasteBox" class="bk" rows="5" placeholder="First Steps&#10;Treasure Hunter - open 100 chests&#10;Master of All"></textarea>
+       <div class="set-row" style="margin-top:8px"><button class="btn primary" id="trPasteAdd">Add all</button><button class="btn" id="trPasteToggle">One at a time</button></div>`
+    : `<div class="tr-addrow"><input class="search" id="trNew" placeholder="${n ? 'Add another trophy...' : 'Name your first trophy...'}" autocomplete="off" aria-label="New trophy name"><button class="btn primary" id="trAdd">Add</button></div>
+       <div class="tr-typeseg" role="group" aria-label="Trophy type">${Object.entries(TTYPES).map(([k, [l]]) => `<button data-trtype="${k}" aria-pressed="${trType===k}" title="${l}">${medal(k, 24)}<span>${l}</span></button>`).join('')}</div>
+       <button class="linkbtn" id="trPasteToggle" style="color:var(--aqua-deep);margin-top:8px">Paste a whole list instead</button>`;
+  const empty = !n ? `<div class="tr-empty"><span class="tr-emedals">${medal('silver', 36)}${medal('gold', 48)}${medal('bronze', 36)}</span>
+      <p>Write down the trophies you're going for, then tap to cross them off as you get them.</p>
+      <div class="set-row" style="justify-content:center"><button class="btn" id="trQuickPlat">+ Add a Platinum</button><button class="btn" id="trPasteToggle2">Paste a list</button></div></div>` : '';
+  return `<div class="group trsec2 open ${full ? 'full' : ''}">${head}
+    ${full ? `<div class="tr-done">${medal(list.some(t => t.type === 'plat') ? 'plat' : 'gold', 36)}<span><b>100% trophies!</b>${n} earned, finished ${relDay(Math.max(...list.map(t => t.earned)))}</span></div>` : ''}
+    ${platReady ? `<button class="tr-plat2" data-trtoggle="${plat.id}">${medal('plat', 36)}<span><b>Platinum is ready!</b>Everything else is done. Tap to unlock ${esc(plat.name)}</span></button>` : ''}
+    ${n && !full && nextMile ? `<p class="tr-mile">${toMile} more to hit ${nextMile}%</p>` : ''}
+    <div class="tr-guide">${guide}${guideEditor}</div>
+    ${empty}
+    ${n ? `<div class="tr-chips">${missLeft ? `<span class="tchip miss">⚠ ${missLeft} missable left</span>` : ''}${pinned.length ? `<span class="tchip pin">★ ${pinned.length} pinned</span>` : ''}
+        <select id="trSort" aria-label="Sort trophies"><option value="default" ${trSort==='default'?'selected':''}>Your order</option><option value="type" ${trSort==='type'?'selected':''}>By type</option><option value="recent" ${trSort==='recent'?'selected':''}>Recently earned</option></select></div>` : ''}
+    ${pinned.length ? `<p class="tsub">★ Working on</p><div class="tlist2">${sorted(pinned).map(row).join('')}</div>` : ''}
+    ${todo.length ? `<p class="tsub">To get <span>${todo.length}</span></p><div class="tlist2">${sorted(todo).map(row).join('')}</div>` : ''}
+    ${done.length ? `<button class="tsub tsub-btn" id="trEarnedToggle" aria-expanded="${trShowEarned}">Earned <span>${done.length}</span><i>${trShowEarned ? 'Hide' : 'Show'}</i></button>
+      ${trShowEarned ? `<div class="tlist2">${sorted(done).map(row).join('')}</div>` : ''}` : ''}
+    <div class="tr-new2">${adder}</div>
+    ${n ? `<button class="linkbtn" data-trclear="${g.id}" style="color:var(--danger);margin:10px auto 0;display:block">Delete this trophy list</button>` : ''}</div>`;
+}
+function platCelebrate(g, plat){
+  const ov = document.createElement('div'); ov.className = 'plat-ov';
+  ov.innerHTML = `<div class="plat-card">${medal('plat', 120)}<p class="plat-t">PLATINUM</p><h2>${esc(plat.name)}</h2><p class="set-note" style="margin:0">${esc(g.title)}, every trophy earned</p><button class="btn primary" style="margin-top:14px;min-width:180px">Amazing</button></div>`;
+  ov.addEventListener('click', () => ov.remove()); $('os').appendChild(ov);
+  const r = ov.querySelector('.medal').getBoundingClientRect();
+  [0, 250, 500].forEach((d, i) => setTimeout(() => { const el = document.createElement('div'); el.style.cssText = `position:absolute;left:${r.left + r.width / 2 + (i - 1) * 60}px;top:${r.top + r.height / 2}px;width:1px;height:1px`; $('os').appendChild(el); burstAt(el); burstAt(el); setTimeout(() => el.remove(), 800); }, d));
+}
+/* Put the trophy section into the game panel, right under Status */
+{
+  const _ag = appGame;
+  appGame = function(id){
+    const html = _ag(id), g = games.find(x => x.id === id);
+    return html.replace('<fieldset class="group"><legend>Details</legend>', trophySection(g) + '<fieldset class="group"><legend>Details</legend>');
+  };
+  const _od = openDrawer;
+  openDrawer = function(id){ if (id !== drawerGame){ trOpen = trophiesOf(games.find(g => g.id === id)).length > 0; trFilter = 'all'; trEdit = null; trPaste = false; } _od(id); };
+}
+/* Trophy totals on the Stats page */
+{
+  const _vn = viewNumbers;
+  viewNumbers = function(){
+    const html = _vn(), withT = games.filter(g => trophiesOf(g).length);
+    if (!withT.length) return html;
+    const all = withT.flatMap(trophiesOf), earned = all.filter(t => t.earned), full = withT.filter(g => trDone(g) === trophiesOf(g).length).length;
+    const card = `<div class="bx glass w2"><h3>Trophies</h3><div class="goal-top"><span class="huge">${earned.length}</span><span class="sub">of ${all.length} earned</span></div>
+      <div class="tr-types">${['plat','gold','silver','bronze','none'].filter(k => all.some(t => (t.type || 'none') === k))
+        .map(k => `<span title="${TTYPES[k][0]}">${medal(k, 20)}<b>${earned.filter(t => (t.type || 'none') === k).length}<small>/${all.filter(t => (t.type || 'none') === k).length}</small></b></span>`).join('')}</div>
+      <div class="bar" style="margin-top:10px"><div class="b" style="width:${all.length ? earned.length / all.length * 100 : 0}%"></div></div>
+      <p class="sub" style="margin:6px 0 0">${full} of ${withT.length} trophy list${withT.length===1?'':'s'} complete</p></div>`;
+    return html.replace('<div class="bento">', '<div class="bento">' + card);
+  };
+}
+function addTrophy(g, name, desc, type){
+  if (!name.trim()) return;
+  (g.trophies ||= []).push({ id:newTid(), name:name.trim().slice(0, 80), desc:(desc || '').trim().slice(0, 140), type, earned:null });
+}
+function burstAt(el){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !el) return;
+  const r = el.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+  for (let i = 0; i < 12; i++){ const p = document.createElement('i'), a = Math.random() * Math.PI * 2, dd = 30 + Math.random() * 40;
+    p.className = 'tspark'; p.style.cssText = `left:${x}px;top:${y}px;--dx:${Math.cos(a) * dd}px;--dy:${Math.sin(a) * dd}px;background:${['#F2C14E','#7FE7FF','#FF9FD8','#8CFFC9'][i % 4]}`;
+    $('os').appendChild(p); setTimeout(() => p.remove(), 700); }
+}
+document.addEventListener('click', e => {
+  const t = e.target, g = trGameNow(); if (!g || !t.closest('#drawer')) return;
+  if (t.closest('#trOpenBtn')){ trOpen = !trOpen; renderDrawer(); if (trOpen && !trophiesOf(g).length) setTimeout(() => $('trNew')?.focus(), 50); return; }
+  const tt = t.closest('[data-trtoggle]');
+  if (tt){ const tr = trophiesOf(g).find(x => x.id === tt.dataset.trtoggle); if (!tr) return; snapshot();
+    const list = trophiesOf(g), before = trDone(g) / list.length;
+    tr.earned = tr.earned ? null : Date.now(); if (tr.earned) burstAt(tt);
+    const after = trDone(g) / list.length, done = list.every(x => x.earned); save(); trRefresh();
+    if (tr.earned){
+      const row = document.querySelector(`#drawer [data-trtoggle="${tr.id}"]`)?.closest('.trow2'); if (row) row.classList.add('just');
+      if (tr.type === 'plat') platCelebrate(g, tr);
+      const mile = [[1,'Every trophy earned! ✦'],[.75,'75% there!'],[.5,'Halfway there!'],[.25,'25% done, nice start']].find(([m]) => before < m && after >= m);
+      toast(mile ? `${g.title}: ${mile[1]}` : `Earned: ${tr.name}`, true);
+    }
+    return; }
+  const ty = t.closest('[data-trtype]'); if (ty){ trType = ty.dataset.trtype; const v = $('trNew')?.value || ''; renderDrawer(); const n = $('trNew'); if (n){ n.value = v; n.focus(); } return; }
+  if (t.id === 'trAdd'){ const v = $('trNew').value; if (!v.trim()) return $('trNew').focus(); addTrophy(g, v, '', trType); save(); trRefresh(); setTimeout(() => $('trNew')?.focus(), 30); return; }
+  if (t.id === 'trPasteToggle'){ trPaste = !trPaste; renderDrawer(); setTimeout(() => (trPaste ? $('trPasteBox') : $('trNew'))?.focus(), 30); return; }
+  if (t.id === 'trPasteAdd'){ const lines = $('trPasteBox').value.split('\n').map(l => l.trim()).filter(Boolean); if (!lines.length) return;
+    snapshot(); lines.forEach(l => { const m = l.split(/\s+[-–—:]\s+/); addTrophy(g, m[0], m.slice(1).join(' - '), trType); }); trPaste = false; save(); trRefresh(); toast(`Added ${lines.length} trophies`, true); return; }
+  const tf = t.closest('[data-trf]'); if (tf){ trFilter = tf.dataset.trf; renderDrawer(); return; }
+  const te = t.closest('[data-tredit]'); if (te){ trEdit = te.dataset.tredit; renderDrawer(); setTimeout(() => $('trEName')?.focus(), 30); return; }
+  if (t.closest('[data-trcancel]')){ trEdit = null; renderDrawer(); return; }
+  const tet = t.closest('[data-tretype]'); if (tet){ const tr = trophiesOf(g).find(x => x.id === trEdit); if (tr){ const nm = $('trEName').value, ds = $('trEDesc').value, ms = $('trEMiss')?.checked; tr.type = tet.dataset.tretype; renderDrawer(); $('trEName').value = nm; $('trEDesc').value = ds; if ($('trEMiss')) $('trEMiss').checked = ms; } return; }
+  const ts = t.closest('[data-trsave]'); if (ts){ const tr = trophiesOf(g).find(x => x.id === ts.dataset.trsave); if (tr){ tr.name = $('trEName').value.trim() || tr.name; tr.desc = $('trEDesc').value.trim(); tr.missable = !!$('trEMiss')?.checked; } trEdit = null; save(); trRefresh(); return; }
+  const tp = t.closest('[data-trpin]'); if (tp){ const tr = trophiesOf(g).find(x => x.id === tp.dataset.trpin); if (tr){ tr.pinned = !tr.pinned; save(); trRefresh(); } return; }
+  if (t.closest('#trEarnedToggle')){ trShowEarned = !trShowEarned; renderDrawer(); return; }
+  const td = t.closest('[data-trdel]'); if (td){ snapshot(); g.trophies = trophiesOf(g).filter(x => x.id !== td.dataset.trdel); trEdit = null; save(); trRefresh(); toast('Trophy deleted', true); return; }
+  const tc = t.closest('[data-trclear]'); if (tc){
+    if (tc.dataset.armed !== '1'){ tc.dataset.armed = '1'; tc.textContent = 'Tap again to delete the whole list'; setTimeout(() => { if (tc.isConnected){ tc.dataset.armed = ''; tc.textContent = 'Delete this trophy list'; } }, 3000); return; }
+    snapshot(); g.trophies = []; save(); trRefresh(); toast('Trophy list deleted', true); return; }
+});
+document.addEventListener('keydown', e => {
+  if (e.target.id === 'trNew' && e.key === 'Enter'){ e.preventDefault(); $('trAdd')?.click(); }
+  if ((e.target.id === 'trEName' || e.target.id === 'trEDesc') && e.key === 'Enter'){ e.preventDefault(); document.querySelector('[data-trsave]')?.click(); }
+});
+
+document.addEventListener('change', e => { if (e.target.id === 'trSort'){ trSort = e.target.value; renderDrawer(); } });
+/* Trophy polish: tap anywhere on a row, reorder, guide link, quick start, colored sparkles */
+document.addEventListener('click', e => {
+  const t = e.target, g = trGameNow(); if (!g || !t.closest('#drawer')) return;
+  const r = t.closest('[data-trrow]');
+  if (r && !t.closest('button,a,input')){ r.querySelector('.tcheck')?.click(); return; }
+  const mv = t.closest('[data-trmove]');
+  if (mv){ const list = trophiesOf(g), i = list.findIndex(x => x.id === mv.dataset.trmove), j = i + +mv.dataset.dir; if (j < 0 || j >= list.length) return;
+    const nm = $('trEName')?.value, ds = $('trEDesc')?.value; [list[i], list[j]] = [list[j], list[i]]; save(); renderDrawer();
+    if ($('trEName')) { $('trEName').value = nm; $('trEDesc').value = ds; } return; }
+  if (t.id === 'trGuideEditBtn'){ trGuideEdit = true; renderDrawer(); setTimeout(() => $('trGuideIn')?.focus(), 30); return; }
+  if (t.id === 'trGuideSave'){ let v = $('trGuideIn').value.trim(); if (v && !/^https?:\/\//i.test(v)) v = 'https://' + v; g.trGuide = v || null; trGuideEdit = false; save(); renderDrawer(); if (v) toast('Guide link saved'); return; }
+  if (t.id === 'trQuickPlat'){ addTrophy(g, 'Platinum', 'Earn every other trophy', 'plat'); save(); trRefresh(); setTimeout(() => $('trNew')?.focus(), 30); return; }
+  if (t.id === 'trPasteToggle2'){ trPaste = true; renderDrawer(); setTimeout(() => $('trPasteBox')?.focus(), 30); return; }
+}, true);
+document.addEventListener('keydown', e => { if (e.target.id === 'trGuideIn' && e.key === 'Enter'){ e.preventDefault(); $('trGuideSave')?.click(); } });
+/* new rows slide in */
+addTrophy = (orig => function(g, name, desc, type){ orig(g, name, desc, type); const last = trophiesOf(g)[trophiesOf(g).length - 1]; trJustAdded = last && last.id; setTimeout(() => { trJustAdded = null; }, 600); })(addTrophy);
+/* sparkles in the trophy's own color */
+burstAt = function(el){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !el) return;
+  const row = el.closest?.('[data-trrow]'), c = row ? getComputedStyle(row).getPropertyValue('--tc').trim() : '#F2C14E';
+  const r = el.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+  for (let i = 0; i < 16; i++){ const p = document.createElement('i'), a = Math.random() * Math.PI * 2, dd = 30 + Math.random() * 50;
+    p.className = 'tspark'; p.style.cssText = `left:${x}px;top:${y}px;--dx:${Math.cos(a) * dd}px;--dy:${Math.sin(a) * dd}px;background:${i % 3 ? c : '#fff'}`;
+    $('os').appendChild(p); setTimeout(() => p.remove(), 700); }
+};
+{ const _od = openDrawer; openDrawer = function(id){ if (id !== drawerGame) trGuideEdit = false; _od(id); }; }
+
 load().then(() => openWin(games.length ? 'library' : 'player'));
 // swipe the drawer down (phone) or right (computer) to dismiss it
 (() => { let sx = null, sy = null; const d = $('drawer');
