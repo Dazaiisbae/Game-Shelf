@@ -1938,6 +1938,468 @@ fieldset.group > legend{position:absolute;top:13px;left:14px;padding:0 !importan
 
 
 .walls button[data-wallphoto] i.wp-photo{width:100%;align-self:stretch}
+
+/* ===== Update banner ===== */
+.upd-banner{position:absolute;left:12px;right:12px;top:calc(env(safe-area-inset-top) + 58px);z-index:9970;max-width:520px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:18px;color:var(--ink);
+  background:var(--win-bg);border:1px solid var(--edge);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 12px 30px rgba(0,20,50,.3);animation:pop .3s ease-out}
+.upd-banner span{flex:1;min-width:0;display:flex;flex-direction:column;font-size:14px}
+.upd-banner small{font-size:12px;font-weight:600;color:var(--soft)}
+.upd-banner .linkbtn{color:var(--soft)}
+
+/* ===== Gear tab ===== */
+.chips-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:8px}
+.filters .chips-row{flex-wrap:wrap;overflow:visible}
+.changer .chips-row{margin:0}
+.trsec .chips-row{margin:0 0 8px}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.gear{max-width:760px;margin:0 auto}
+.gear-add{width:100%;padding:13px;margin-bottom:6px}
+.gear-sec{margin-top:16px}
+.gear-sec h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:15px;font-weight:900}
+.gear-sec h3 svg{width:20px;height:20px;color:var(--aqua-deep)}
+.gear-sec h3 span{font-size:11px;padding:1px 8px;border-radius:999px;background:var(--tint);border:1px solid var(--edge)}
+.gear-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.gear-card{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border-radius:16px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.gear-card:active{transform:scale(.99)}
+.gear-card.wish{border-style:dashed}
+.gear-card.sold{opacity:.6}
+.gear-art{flex:0 0 56px;width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(150deg,#7FD3F5,#6F7BF5 55%,#B49CFF) center/cover;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 8px rgba(0,30,60,.2)}
+.gear-art svg{width:30px;height:30px;filter:drop-shadow(0 1px 1px rgba(0,30,60,.35))}
+.gear-art.big{width:84px;height:84px;flex-basis:84px;border-radius:22px}
+.gear-art.big svg{width:46px;height:46px}
+.gear-art.sm{width:40px;height:40px;flex-basis:40px;border-radius:10px}
+.gear-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.gear-t b{font-size:15px;font-weight:900;overflow-wrap:anywhere}
+.gear-t small{font-size:12px;font-weight:600;color:var(--soft)}
+.gear-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.gtag{font-style:normal;font-size:10px;font-weight:900;padding:2px 7px;border-radius:999px;background:var(--tint);border:1px solid var(--edge)}
+.gtag.games{background:rgba(46,155,224,.15);border-color:rgba(46,155,224,.4);color:var(--aqua-deep)}
+.gtag.wish{background:rgba(180,156,255,.2);border-color:rgba(180,156,255,.5)}
+.gtag.c0,.gtag.c1{background:rgba(47,191,143,.15);border-color:rgba(47,191,143,.45);color:#1E9E73}
+.gtag.c3{background:rgba(233,169,32,.15);border-color:rgba(233,169,32,.45);color:#A87300}
+.gtag.c4{background:rgba(217,70,90,.15);border-color:rgba(217,70,90,.45);color:#C02F44}
+.gear-card .chev{color:var(--soft);font-size:20px}
+.gear-empty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 10px}
+.gear-empty h3{margin:12px 0 4px}
+.gear-empty p{margin:0;color:var(--soft);font-weight:600;max-width:340px}
+.gear-soldbtn{display:block;margin:16px auto 8px;color:var(--aqua-deep)}
+.gear-ov{align-items:flex-end}
+@media (min-width:760px){ .gear-ov{align-items:center}}
+.gear-form{width:min(560px,100%);max-height:90%;display:flex;flex-direction:column;border-radius:22px;color:var(--ink);background:var(--win-bg);border:1px solid var(--edge);
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 -10px 40px rgba(0,20,50,.3)}
+.gf-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px}
+.gf-head b{font-size:18px;font-weight:900}
+.gf-head .btn.round{width:32px;height:32px;padding:0}
+.gf-scroll{overflow:auto;padding:0 16px 8px;-webkit-overflow-scrolling:touch}
+.gf-scroll .d-l{display:block;margin:12px 0 5px}
+.gf-scroll .search{margin:0;padding:10px 12px;width:100%}
+.gf-types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.gf-types button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px;border-radius:12px;border:2px solid transparent;background:var(--field);color:inherit;font:inherit;font-size:12px;font-weight:800}
+.gf-types button svg{width:24px;height:24px;color:var(--aqua-deep)}
+.gf-types button[aria-pressed=true]{border-color:var(--accent);background:var(--tint)}
+.gf-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gf-seg{display:flex;gap:6px}
+.gf-seg.wrap{flex-wrap:wrap}
+.gf-seg button{flex:1 0 auto;padding:9px 10px;border-radius:999px;border:1px solid var(--edge);background:var(--field);color:inherit;font:inherit;font-size:13px;font-weight:800}
+.gf-seg button[aria-pressed=true]{color:#fff;background:linear-gradient(180deg,#6CC6F5,#2E9BE0 50%,#1F86CC 51%,#3AA8EA);border-color:rgba(255,255,255,.6)}
+.gf-scroll textarea.bk{width:100%;min-height:70px;font:inherit;font-size:14px;padding:8px 10px;border-radius:10px;border:1px solid var(--edge);background:var(--field);color:var(--ink)}
+.gf-foot{display:flex;gap:8px;padding:10px 16px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--pane-line)}
+.gear .st-strip span{letter-spacing:.02em;font-size:10px}
+.gl-noise{position:absolute;inset:-50%;background:repeating-radial-gradient(circle at 30% 40%,rgba(255,255,255,.06) 0 1px,transparent 1px 3px);animation:glNoise .2s steps(3) infinite}
+.gl-bars{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 0 40%,rgba(255,60,172,.25) 40% 42%,transparent 42% 70%,rgba(45,226,230,.25) 70% 71%,transparent 71%);animation:glBars calc(1.2s * var(--k)) steps(5) forwards}
+.gl-title{position:relative;z-index:2;font-weight:900;font-size:clamp(30px,8.5vw,60px);letter-spacing:.12em;color:#fff;animation:glMain calc(1.3s * var(--k)) steps(1) forwards}
+.gl-title::before,.gl-title::after{content:attr(data-t);position:absolute;inset:0}
+.gl-title::before{color:#FF3CAC;animation:glA calc(1.3s * var(--k)) steps(1) forwards;mix-blend-mode:screen}
+.gl-title::after{color:#2DE2E6;animation:glB calc(1.3s * var(--k)) steps(1) forwards;mix-blend-mode:screen}
+:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=autumn]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFB067,#E8722A 50%,#C9581A 51%,#F08A3A) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=winter]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#BFE7FF,#4FB6F2 50%,#2E8FD0 51%,#7FCBF5) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=holidays]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FF8A8A,#D9363E 50%,#B0222A 51%,#E85A5A) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=halloween]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#C9A0FF,#7A3FE0 50%,#5B22C0 51%,#9B6BF0) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=spring]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFC4DD,#FF7FB0 50%,#E0508F 51%,#FF9CC4) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=summer]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFE27A,#F2A922 50%,#D68A0A 51%,#F7BE3F) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=valentine]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFB3D1,#FF4D8D 50%,#D92E6E 51%,#FF7FB0) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .btn.primary,:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .gp-status button[aria-pressed=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .chip-btn[aria-pressed=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .seg-mini button[aria-pressed=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .st-tabs button[aria-selected=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .q-tabs button[aria-selected=true],:root[data-season=newyear]:is([data-slvl=normal],[data-slvl=festive]) .gf-seg button[aria-pressed=true]{background:linear-gradient(180deg,#FFE9A8,#E9B43C 50%,#C7861A 51%,#F2C14E) !important;border-color:rgba(255,255,255,.6) !important;color:#fff !important}
+.cc-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:30px;margin-left:8px;border-radius:999px;border:1px solid var(--edge);background:var(--field);color:var(--soft);cursor:pointer}
+.cc-btn svg{width:18px;height:18px}
+.cc-ov{position:absolute;inset:0;z-index:9960;background:rgba(5,15,35,0);transition:background .25s}
+.cc-ov.show{background:rgba(5,15,35,.35)}
+.cc-sheet{position:absolute;left:10px;right:10px;top:max(8px,env(safe-area-inset-top));max-width:560px;margin:0 auto;padding:10px 12px 12px;border-radius:26px;color:var(--ink);
+  background:var(--win-bg);border:1px solid var(--edge);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);box-shadow:0 18px 50px rgba(0,20,50,.35);
+  transform:translateY(-120%);transition:transform .3s cubic-bezier(.2,.9,.3,1.05)}
+.cc-ov.show .cc-sheet{transform:none}
+.cc-grab{width:42px;height:5px;border-radius:3px;margin:0 auto 10px;background:var(--pane-line)}
+.cc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:420px){ .cc-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cc-tile{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:92px;padding:10px;border-radius:18px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer;transition:transform .12s}
+.cc-tile:active{transform:scale(.96)}
+.cc-i{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:4px;background:var(--tint);color:var(--aqua-deep)}
+.cc-i svg{width:19px;height:19px}
+.cc-tile b{font-size:13px;font-weight:900;line-height:1.15}
+.cc-tile small{font-size:11px;font-weight:700;color:var(--soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.cc-tile.on{background:linear-gradient(180deg,#6CC6F5,#2E9BE0);border-color:rgba(255,255,255,.5);color:#fff}
+.cc-tile.on small{color:rgba(255,255,255,.85)}
+.cc-tile.on .cc-i{background:rgba(255,255,255,.25);color:#fff}
+.cc-hint{margin:10px 0 0;text-align:center;font-size:11px;font-weight:700;color:var(--soft)}
+.g2-h{margin:14px 2px 8px;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.g2-show{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.g2-show::-webkit-scrollbar{display:none}
+.g2-hero{flex:0 0 150px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px;border-radius:20px;border:1px solid rgba(255,255,255,.6);color:#fff;font:inherit;text-align:left;cursor:pointer;
+  background:linear-gradient(160deg,var(--ga),var(--gb));box-shadow:0 10px 24px rgba(0,30,80,.22),inset 0 1px 0 rgba(255,255,255,.5);position:relative;overflow:hidden}
+.g2-hero::after{content:"";position:absolute;left:-20%;right:-20%;top:-60%;height:90%;background:radial-gradient(ellipse,rgba(255,255,255,.45),transparent 65%);pointer-events:none}
+.g2-hi{display:flex;width:56px;height:56px;margin-bottom:6px;color:#fff;filter:drop-shadow(0 3px 6px rgba(0,0,0,.25))}
+.g2-hi svg{width:100%;height:100%}
+.g2-hp{width:100%;aspect-ratio:16/10;margin-bottom:6px;border-radius:12px;background:center/cover no-repeat;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.g2-hero > b{font-size:16px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.g2-hero > small{font-size:11px;font-weight:700;opacity:.9;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
+.g2-hs{display:flex;gap:8px;margin-top:8px;font-size:11px;font-weight:700}
+.g2-hs span{padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.25)}
+.g2-hs b{font-size:13px}
+.g2-attn{display:flex;gap:10px;align-items:center;margin:6px 0 10px;padding:10px 12px;border-radius:14px;background:rgba(255,190,90,.18);border:1px solid rgba(240,150,40,.45)}
+.g2-attn > span:first-child{font-size:22px}
+.g2-attn span{display:flex;flex-direction:column}
+.g2-attn b{font-size:13px;font-weight:900}
+.g2-attn small{font-size:12px;font-weight:600;color:var(--soft)}
+.g2-bar{position:sticky;top:-2px;z-index:3;display:flex;gap:8px;align-items:center;margin:4px -4px 6px;padding:6px 4px;background:var(--win-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:14px}
+.g2-chips{flex:1;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0}
+.g2-chips::-webkit-scrollbar{display:none}
+.g2-chips .chip-btn{flex:0 0 auto}
+.g2-art{flex:0 0 auto;width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(160deg,var(--ga,#9FB4D9),var(--gb,#6F84B0)) center/cover no-repeat;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 8px rgba(0,30,80,.18)}
+.g2-art[style*="background-image"]{background-size:cover}
+.g2-art svg{width:26px;height:26px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.2))}
+.g2-art.big{width:84px;height:84px;border-radius:22px}
+.g2-art.big svg{width:46px;height:46px}
+.g2-list{display:flex;flex-direction:column;gap:8px}
+.g2-card{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:18px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.g2-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.g2-t b{font-size:15px;font-weight:900}
+.g2-t small{font-size:12px;font-weight:600;color:var(--soft)}
+.g2-num{display:flex;flex-direction:column;align-items:center;padding:4px 10px;border-radius:12px;background:var(--tint);border:1px solid var(--edge)}
+.g2-num b{font-size:17px;font-weight:900;line-height:1}
+.g2-num small{font-size:10px;font-weight:800;color:var(--soft)}
+.g2-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.g2-tile{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:12px;border-radius:18px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.g2-tile .g2-art{margin-bottom:6px}
+.g2-tile b{font-size:14px;font-weight:900;line-height:1.2}
+.g2-tile small{font-size:11px;font-weight:600;color:var(--soft)}
+.g2-tile.wish,.g2-card.wish{border-style:dashed}
+.g2-tile.sold,.g2-card.sold{opacity:.6}
+.gear-sec h3 em{margin-left:auto;font-style:normal;font-size:12px;font-weight:800;color:var(--soft)}
+.g2-ov{align-items:flex-end}
+.g2-det{width:min(480px,100%);max-height:92%;overflow:auto;border-radius:26px 26px 0 0;background:var(--win-bg);border:1px solid var(--edge);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);box-shadow:0 -12px 40px rgba(0,20,50,.3);color:var(--ink);animation:pop .25s ease-out}
+.g2-dhero{position:relative;height:170px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--ga),var(--gb));overflow:hidden}
+.g2-dhero::after{content:"";position:absolute;left:-10%;right:-10%;top:-50%;height:80%;background:radial-gradient(ellipse,rgba(255,255,255,.5),transparent 65%)}
+.g2-di{display:flex;width:96px;height:96px;color:#fff;filter:drop-shadow(0 6px 12px rgba(0,0,0,.25))}
+.g2-di svg{width:100%;height:100%}
+.g2-dp{position:absolute;inset:0;background:center/cover no-repeat}
+.g2-x{position:absolute;top:10px;right:10px;z-index:2}
+.g2-dbody{padding:14px 16px 20px}
+.g2-dbody h2{margin:2px 0 2px;font-size:24px}
+.g2-sub{margin:0;font-size:13px;font-weight:700;color:var(--soft)}
+.g2-sf{margin:12px 0 0}
+.g2-facts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
+.g2-facts div{display:flex;flex-direction:column;padding:8px 10px;border-radius:12px;background:var(--pane);border:1px solid var(--pane-line)}
+.g2-facts span{font-size:11px;font-weight:800;color:var(--soft);text-transform:uppercase;letter-spacing:.04em}
+.g2-facts b{font-size:14px;font-weight:900}
+.g2-notes{margin:12px 0 0;padding:10px 12px;border-radius:12px;background:var(--tint);font-size:13px;font-weight:600;white-space:pre-wrap}
+.g2-games{display:flex;flex-direction:column;gap:6px}
+.g2-games button{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:12px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.g2-games span{display:flex;flex-direction:column;min-width:0}
+.g2-games b{font-size:13px;font-weight:800}
+.g2-games small{font-size:11px;color:var(--soft);font-weight:600}
+.g2-sys{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.g2-sys .g2-hero{flex:none;min-width:0;width:auto}
+.g2-hs{flex-wrap:wrap;row-gap:4px}
+.g2-bar .g2-chips{flex-wrap:wrap;overflow:visible;row-gap:6px}
+.g2-bar{flex-wrap:wrap;align-items:flex-start}
+.g2-sys .g2-hi{width:40px;height:40px;margin-bottom:4px}
+.g2-sys .g2-hero{padding:10px 12px 12px}
+.g2-sys .g2-hs:empty{display:none}
+.cc-head{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
+.cc-head div{display:flex;flex-direction:column;align-items:center;padding:8px 4px;border-radius:14px;background:var(--pane);border:1px solid var(--pane-line)}
+.cc-head b{font-size:18px;font-weight:900}
+.cc-head span{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.cc-bar{margin-bottom:10px}
+.cc-binder{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;padding-bottom:10px}
+.cc{position:relative;display:block;aspect-ratio:5/7;padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer;font-size:9.4px;perspective:1200px;transition:transform .15s}
+.cc:active{transform:scale(.97)}
+.cc-face{position:absolute;inset:0;display:flex;flex-direction:column;border-radius:1.4em;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;text-align:left;
+  padding:.8em;gap:.55em;background:linear-gradient(165deg,#fff,#EEF3FA);color:#1B2A44;box-shadow:0 .6em 1.6em rgba(0,25,70,.28),inset 0 0 0 .32em var(--rim,#C9D3E2),inset 0 0 0 .45em #fff}
+.cc-top{display:flex;align-items:center;gap:.4em;padding:.15em .3em 0}
+.cc-top b{flex:1;min-width:0;font-size:1.45em;font-weight:900;line-height:1.05;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.cc-hp{display:flex;align-items:baseline;gap:.25em;font-size:1.5em;font-weight:900;color:#D9365A}
+.cc-hp small{font-size:.48em;font-weight:900;letter-spacing:.06em;color:#7A8AA6}
+.cc-art{position:relative;flex:1;min-height:0;border-radius:.9em;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--ga),var(--gb));box-shadow:inset 0 0 0 .2em rgba(255,255,255,.75),inset 0 -1.4em 2em rgba(0,0,0,.12);overflow:hidden}
+.cc-art::after{content:"";position:absolute;left:-30%;right:-30%;top:-55%;height:85%;background:radial-gradient(ellipse,rgba(255,255,255,.55),transparent 65%)}
+.cc-ic{display:flex;width:46%;aspect-ratio:1;color:#fff;filter:drop-shadow(0 .4em .6em rgba(0,0,0,.28))}
+.cc-ic svg{width:100%;height:100%}
+.cc-photo{position:absolute;inset:0;background:center/cover no-repeat}
+.cc-spark{position:absolute;width:.9em;height:.9em;background:#fff;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);opacity:.85;z-index:1}
+.cc-spark.s1{top:14%;left:12%}
+.cc-spark.s2{top:22%;right:14%;transform:scale(.6)}
+.cc-spark.s3{bottom:16%;right:20%;transform:scale(.8)}
+.cc-type{font-size:.82em;font-weight:900;letter-spacing:.08em;color:#5A6A86;padding:0 .3em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.cc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.35em}
+.cc-stats div{display:flex;flex-direction:column;align-items:center;padding:.35em .1em;border-radius:.7em;background:rgba(27,42,68,.06)}
+.cc-stats b{font-size:1.25em;font-weight:900;line-height:1.1}
+.cc-stats span{font-size:.7em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#7A8AA6}
+.cc-foot{display:flex;justify-content:space-between;font-size:.78em;font-weight:900;letter-spacing:.04em;color:#7A8AA6;padding:0 .3em}
+.rar-holo{--rim:#B49CFF}
+.rar-holo .cc-foot span:first-child{background:linear-gradient(90deg,#5FD8FF,#B49CFF,#FF7FC8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rar-holo .cc-foil{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color-dodge;opacity:.55;background:linear-gradient(115deg,transparent 20%,rgba(95,216,255,.6) 35%,rgba(180,156,255,.6) 45%,rgba(255,127,200,.6) 55%,rgba(255,224,102,.6) 65%,transparent 80%);background-size:250% 100%;background-position:30% 0}
+.rar-holo{background:linear-gradient(165deg,#F3F0FF,#E7F7FF 50%,#FFEAF6)}
+.rar-gold{--rim:#F2C14E;background:linear-gradient(165deg,#FFFBEA,#FFF1C4)}
+.rar-gold .cc-foil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.55) 48%,transparent 60%)}
+.rar-silver{--rim:#C3CED9}
+.rar-bronze{--rim:#D9A27A;background:linear-gradient(165deg,#FFF6EE,#F6E4D6)}
+.rar-dmg{--rim:#9AA4B2;background:linear-gradient(165deg,#F1F3F6,#DCE1E8)}
+.rar-dmg .cc-art{filter:saturate(.55)}
+.rar-plain{--rim:#DCE3EE}
+.rar-ghost{--rim:transparent;background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 .22em rgba(255,255,255,.75);color:var(--ink);border:.2em dashed rgba(255,255,255,.7)}
+.rar-ghost .cc-art{filter:grayscale(1) opacity(.45)}
+.rar-ghost .cc-type,.rar-ghost .cc-foot,.rar-ghost .cc-stats span{color:var(--soft)}
+.rar-ghost .cc-stats div{background:rgba(255,255,255,.12)}
+.cc-stamp{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%) rotate(-16deg);padding:.2em .7em;border:.25em solid #D9365A;border-radius:.5em;color:#D9365A;font-size:1.7em;font-weight:900;letter-spacing:.12em;background:rgba(255,255,255,.7)}
+.cc-warn{position:absolute;top:.6em;right:.6em;width:1.8em;height:1.8em;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#F07A2A;color:#fff;font-weight:900;font-size:1.1em;box-shadow:0 0 0 .18em #fff}
+.cc .cc-back{transform:rotateY(180deg)}
+.cc-view{position:absolute;inset:0;z-index:9955;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,12,35,0);transition:background .25s}
+.cc-view.show{background:rgba(5,12,35,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.cc-x{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px}
+.cc-stage{display:flex;align-items:center;gap:8px;width:100%;justify-content:center}
+.cc.big{width:min(76vw,340px);font-size:min(4.3vw,19px);cursor:pointer;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.9,.3,1)}
+.cc.big:active{transform:none}
+.cc.big .cc-face{transition:none}
+.cc.big.flipped{transform:rotateY(180deg)}
+.cc.big .rar-holo .cc-foil,.cc.big .rar-gold .cc-foil{animation:foilMove 4s ease-in-out infinite}
+@keyframes foilMove{50%{background-position:90% 0}}
+.cc.big.in-r{animation:ccInR .3s ease-out}
+.cc.big.in-l{animation:ccInL .3s ease-out}
+@keyframes ccInR{from{transform:translateX(40%) rotate(6deg);opacity:0}}
+@keyframes ccInL{from{transform:translateX(-40%) rotate(-6deg);opacity:0}}
+.cc-nav{flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.15);color:#fff;font:700 24px/1 system-ui;cursor:pointer}
+.cc-tip{margin:14px 0 0;font-size:12px;font-weight:700;color:rgba(255,255,255,.8)}
+.cc-back{padding:1em;gap:.6em;background:linear-gradient(165deg,#F7FAFF,#E6EEF9)}
+.cc-bh{display:flex;align-items:center;gap:.5em;padding:.5em .6em;border-radius:.9em;color:#fff;background:linear-gradient(160deg,var(--ga),var(--gb))}
+.cc-bh b{font-size:1.2em;font-weight:900}
+.cc-bdisc{width:1.8em;height:1.8em;border-radius:50%;flex:0 0 auto;background:radial-gradient(circle closest-side,transparent 0 16%,#fff 17% 29%,transparent 30%),conic-gradient(#5FD8FF,#9B7BFF,#FF7FC8,#FFE066,#5FF2B0,#5FD8FF)}
+.cc-rows{display:grid;grid-template-columns:1fr 1fr;gap:.35em}
+.cc-rows div{display:flex;flex-direction:column;padding:.35em .55em;border-radius:.6em;background:rgba(27,42,68,.06)}
+.cc-rows span{font-size:.62em;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#7A8AA6}
+.cc-rows b{font-size:.85em;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-notes{margin:0;padding:.5em .6em;border-radius:.6em;background:rgba(27,42,68,.06);font-size:.75em;font-weight:600;max-height:4.5em;overflow:hidden}
+.cc-sub{margin:.2em 0 0;font-size:.65em;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#7A8AA6}
+.cc-games{display:flex;flex-direction:column;gap:.25em;flex:0 0 auto}
+.cc-games button{display:flex;justify-content:space-between;gap:.5em;padding:.3em .55em;border-radius:.55em;border:0;background:rgba(27,42,68,.06);color:inherit;font:inherit;font-size:.75em;font-weight:800;text-align:left;cursor:pointer;overflow:hidden;white-space:nowrap}
+.cc-games small{color:#7A8AA6;font-weight:700}
+.cc-actions{margin-top:auto;display:flex;gap:.4em}
+.cc-actions .btn{flex:1;font-size:.8em;padding:.6em}
+@media (prefers-reduced-motion:reduce){ .cc.big{transition:none} .cc.big .cc-foil{animation:none}}
+.cc-face.cc-back{overflow-y:auto;overscroll-behavior:contain}
+.cc-games button{flex:0 0 auto;min-height:1.9em;align-items:center}
+.cc-face{background:linear-gradient(165deg,var(--pane),rgba(255,255,255,.05));color:var(--ink);
+  box-shadow:0 .6em 1.6em rgba(0,25,70,.2),0 0 0 .2em var(--rim,rgba(255,255,255,.55)),inset 0 0 0 .12em rgba(255,255,255,.55),inset 0 .14em 0 rgba(255,255,255,.7)}
+.cc-face::before{content:"";position:absolute;left:-25%;right:-25%;top:-40%;height:55%;background:radial-gradient(ellipse,rgba(255,255,255,.32),transparent 70%);pointer-events:none}
+.cc-type,.cc-foot,.cc-stats span,.cc-hp small,.cc-rows span,.cc-sub,.cc-games small{color:var(--soft)}
+.cc-stats div,.cc-rows div,.cc-notes,.cc-games button{background:var(--tint);border:1px solid var(--edge)}
+.cc-hp{color:#FF5E99}
+.rar-holo,.rar-gold,.rar-silver,.rar-bronze,.rar-dmg,.rar-plain{background:linear-gradient(165deg,var(--pane),rgba(255,255,255,.05))}
+.rar-holo{--rim:#C9B8FF;box-shadow:0 .6em 1.6em rgba(120,90,255,.3),0 0 0 .2em #C9B8FF,0 0 1.2em .1em rgba(180,156,255,.55),inset 0 0 0 .12em rgba(255,255,255,.6),inset 0 .14em 0 rgba(255,255,255,.7)}
+.rar-holo .cc-foil{opacity:.35}
+.rar-gold{--rim:#F2C14E;box-shadow:0 .6em 1.6em rgba(200,150,30,.28),0 0 0 .2em #F2C14E,0 0 1em rgba(242,193,78,.45),inset 0 0 0 .12em rgba(255,255,255,.6),inset 0 .14em 0 rgba(255,255,255,.7)}
+.rar-silver{--rim:rgba(255,255,255,.85)}
+.rar-bronze{--rim:#E0A77E}
+.rar-dmg{--rim:#9AA4B2}
+.rar-plain{--rim:rgba(255,255,255,.5)}
+.rar-ghost{background:rgba(255,255,255,.06);box-shadow:none;border:.2em dashed rgba(255,255,255,.6)}
+.cc-stamp{background:var(--win-bg)}
+.cc-back{background:linear-gradient(165deg,var(--pane),rgba(255,255,255,.05))}
+.cc.big .cc-face{background:var(--win-bg);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.cc.big .rar-holo{background:linear-gradient(165deg,var(--win-bg),var(--win-bg)),var(--win-bg)}
+.cc.big .cc-face,.cc.big .rar-holo{background:linear-gradient(165deg,rgba(255,255,255,.9),rgba(232,242,255,.82))}
+@media (prefers-color-scheme:dark){ .cc.big .cc-face,.cc.big .rar-holo{background:linear-gradient(165deg,rgba(30,44,86,.92),rgba(16,26,58,.9))}}
+.cc{aspect-ratio:4/5}
+.cc.big{aspect-ratio:5/7}
+.cc-face.fa{padding:0;background:linear-gradient(160deg,var(--ga),var(--gb));color:#fff;align-items:center;justify-content:center;
+  box-shadow:0 .7em 1.6em rgba(0,30,80,.25),0 0 0 .16em var(--rim,rgba(255,255,255,.65)),inset 0 .14em 0 rgba(255,255,255,.55)}
+.cc-face.fa::before{content:"";position:absolute;left:-25%;right:-25%;top:-48%;height:80%;background:radial-gradient(ellipse,rgba(255,255,255,.48),transparent 66%);pointer-events:none;z-index:1}
+.fa-ic{display:flex;width:42%;aspect-ratio:1;margin-bottom:22%;color:#fff;filter:drop-shadow(0 .45em .7em rgba(0,0,0,.25))}
+.fa-ic svg{width:100%;height:100%}
+.fa-photo{position:absolute;inset:0;background:center/cover no-repeat}
+.fa-badge{position:absolute;top:.7em;right:.7em;z-index:2;padding:.25em .7em;border-radius:999px;font-size:1.05em;font-weight:900;letter-spacing:.04em;background:rgba(255,255,255,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.cc-face.fa .cc-warn{top:.7em;left:.7em;right:auto;z-index:2}
+.fa-strip{position:absolute;left:.7em;right:.7em;bottom:.7em;z-index:2;display:flex;flex-direction:column;gap:.15em;padding:.7em .85em;border-radius:1em;text-align:left;
+  background:rgba(255,255,255,.26);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+.fa-strip b{font-size:1.55em;font-weight:900;line-height:1.1;text-shadow:0 1px 2px rgba(0,0,0,.2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.fa-strip small{font-size:1.05em;font-weight:700;opacity:.95;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.fa-strip em{font-style:normal;font-size:.85em;font-weight:900;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.cc-face.fa .cc-spark{z-index:1}
+.cc-face.fa.rar-holo{--rim:#E2D4FF;box-shadow:0 .7em 1.6em rgba(120,90,255,.35),0 0 0 .16em #E2D4FF,0 0 1.3em .15em rgba(180,156,255,.6),inset 0 .14em 0 rgba(255,255,255,.55)}
+.cc-face.fa.rar-holo .cc-foil{z-index:1;opacity:.45}
+.cc-face.fa.rar-gold{--rim:#FFD86B;box-shadow:0 .7em 1.6em rgba(200,150,30,.3),0 0 0 .16em #FFD86B,0 0 1em rgba(255,216,107,.5),inset 0 .14em 0 rgba(255,255,255,.55)}
+.cc-face.fa.rar-gold .cc-foil{z-index:1}
+.cc-face.fa.rar-bronze{--rim:#F2C4A0}
+.cc-face.fa.rar-dmg{filter:saturate(.6)}
+.cc-face.fa.rar-ghost{background:rgba(255,255,255,.08);border:.18em dashed rgba(255,255,255,.75);box-shadow:none}
+.cc-face.fa.rar-ghost .fa-ic{color:rgba(255,255,255,.7);filter:none}
+.cc-face.fa.rar-ghost .fa-strip{background:rgba(255,255,255,.14)}
+.cc-face.fa .cc-stamp{z-index:3}
+.cc.big .cc-face.fa{background:linear-gradient(160deg,var(--ga),var(--gb))}
+.cc.big .cc-face.fa.rar-ghost{background:rgba(255,255,255,.1)}
+.cc.big .fa-ic{margin-bottom:30%}
+.g3 .g2-h{margin:14px 2px 8px}
+.gv-seg{flex:0 0 auto}
+.gv-seg button svg{width:18px;height:18px}
+.gbento{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:88px;grid-auto-flow:dense;gap:10px}
+@media (min-width:620px){ .gbento{grid-template-columns:repeat(4,1fr)}}
+.g3 .bt{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:11px 13px;border-radius:22px;border:0;color:#fff;font:inherit;text-align:left;cursor:pointer;
+  background:linear-gradient(150deg,var(--a),var(--b));box-shadow:0 6px 16px rgba(0,30,80,.18),inset 0 1px 0 rgba(255,255,255,.55),inset 0 0 0 1px rgba(255,255,255,.25);transition:transform .12s}
+.g3 .bt:active{transform:scale(.97)}
+.g3 .bt::after{content:"";position:absolute;left:-20%;right:-20%;top:-60%;height:90%;background:radial-gradient(ellipse,rgba(255,255,255,.42),transparent 65%);pointer-events:none}
+.g3 .bt b{position:relative;z-index:1;font-size:15px;font-weight:900;line-height:1.15;text-shadow:0 1px 2px rgba(0,0,0,.18);max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.g3 .bt small{position:relative;z-index:1;font-size:11.5px;font-weight:700;opacity:.92;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.g3 .bt-ic{position:absolute;right:11px;bottom:9px;display:flex;width:32px;height:32px;opacity:.95;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
+.g3 .bt-ic svg{width:100%;height:100%}
+.g3 .bt.tall{grid-row:span 2}
+.g3 .bt.tall .g3 .bt-ic{width:54px;height:54px;right:14px;bottom:14px}
+.g3 .bt.big{grid-row:span 2;grid-column:span 2;padding:14px 16px}
+.g3 .bt.big b{font-size:26px}
+.g3 .bt.big small{font-size:13px}
+.g3 .bt.big .g3 .bt-ic{width:86px;height:86px;right:18px;bottom:16px}
+.g3 .bt-nums{position:absolute;left:14px;bottom:13px;z-index:1;display:flex;gap:6px;flex-wrap:wrap;max-width:60%}
+.g3 .bt-nums span{padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.28);font-size:12px;font-weight:900;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.g3 .bt-photo{position:absolute;inset:0;background:center/cover no-repeat}
+.g3 .bt-photo + b,.g3 .bt-photo ~ small{text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.g3 .bt-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),transparent 55%)}
+.g3 .bt-warn,.gl-warn{position:absolute;top:9px;right:10px;z-index:2;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#F07A2A;color:#fff;font-size:12px;font-weight:900;box-shadow:0 0 0 2px #fff}
+.g3 .bt.wish{background:rgba(255,255,255,.1);border:2px dashed rgba(255,255,255,.75);box-shadow:none;color:var(--ink)}
+.g3 .bt.wish b,.g3 .bt.wish small{text-shadow:none}
+.g3 .bt.wish .g3 .bt-ic{color:var(--soft)}
+.g3 .bt.sold{filter:saturate(.4);opacity:.75}
+.gl-list{display:flex;flex-direction:column;gap:8px}
+.gl-row{position:relative;display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px;border-radius:20px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.gl-th{flex:0 0 auto;width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(150deg,var(--a),var(--b)) center/cover no-repeat;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 8px rgba(0,30,80,.18)}
+.gl-th[style*="background-image"]{background-size:cover}
+.gl-th svg{width:30px;height:30px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.2))}
+.gl-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.gl-t b{font-size:15.5px;font-weight:900}
+.gl-t small{font-size:12px;font-weight:600;color:var(--soft);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.gl-bar{display:block;height:6px;margin-top:5px;border-radius:3px;background:var(--tint);overflow:hidden;max-width:180px}
+.gl-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--a),var(--b))}
+.gl-n{display:flex;flex-direction:column;align-items:flex-end;font-size:20px;font-weight:900;line-height:1}
+.gl-n small{font-size:9px;font-weight:900;color:var(--soft);margin-top:2px}
+.gl-row .gl-warn{top:6px;right:auto;left:6px}
+.gl-row.wish{border-style:dashed}
+.gl-row.wish .gl-th{filter:grayscale(.6) opacity(.7)}
+.gl-row.sold{opacity:.6}
+.g3 .g2-bar{position:static;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;justify-content:flex-end;margin:6px 0 2px;padding:0}
+.g3 .g2-bar .g2-chips{order:2;flex:1 0 100%;flex-wrap:wrap}
+.g3 .g2-bar .gv-seg{order:1;margin-right:auto}
+.g3 .g2-bar > .btn{order:1}
+.g3 .gl-row{padding:8px 12px 8px 8px}
+.g3 .gl-th{width:48px;height:48px;border-radius:14px}
+.g3 .gl-th svg{width:26px;height:26px}
+.gv-seg[hidden]{display:none !important}
+.g3 .g2-bar > .btn{margin-left:auto}
+.bt2{position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;padding:10px;border-radius:20px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer;transition:transform .12s}
+.bt2:active{transform:scale(.97)}
+.bt2::after{content:"";position:absolute;left:-20%;right:-20%;top:-70%;height:90%;background:radial-gradient(ellipse,rgba(255,255,255,.28),transparent 65%);pointer-events:none}
+.bt2-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;position:relative;z-index:1}
+.bt2-t b{font-size:15px;font-weight:900;line-height:1.15;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.bt2-t small{font-size:12px;font-weight:600;color:var(--soft);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.bt2 .gl-th{width:46px;height:46px;border-radius:14px;position:relative;z-index:1}
+.bt2 .gl-th svg{width:24px;height:24px}
+.bt2-bar{position:absolute;left:12px;right:12px;bottom:9px;margin:0;max-width:none;z-index:1}
+.bt2.small .bt2-t{margin-bottom:6px}
+.bt2.tall{grid-row:span 2;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:12px}
+.bt2.tall .gl-th{width:64px;height:64px;border-radius:18px;margin-bottom:4px}
+.bt2.tall .gl-th svg{width:34px;height:34px}
+.bt2.tall .bt2-t{flex:0 0 auto;width:100%}
+.bt2.tall .bt2-t b{font-size:17px}
+.bt2.tall .bt2-bar{bottom:14px;left:12px;right:12px}
+.bt2.big{grid-row:span 2;grid-column:span 2;gap:16px;padding:16px}
+.bt2.big .gl-th{width:104px;height:104px;border-radius:26px;order:2}
+.bt2.big .gl-th svg{width:56px;height:56px}
+.bt2.big .bt2-t b{font-size:26px}
+.bt2.big .bt2-t small{font-size:13px}
+.bt2-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.bt2-chips i{font-style:normal;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:900;background:var(--tint);border:1px solid var(--edge)}
+.bt2.big .bt2-bar{left:16px;right:136px;bottom:16px}
+.bt2 .gl-warn{top:6px;left:6px;right:auto}
+.bt2.wish{border-style:dashed}
+.bt2.wish .gl-th{filter:grayscale(.6) opacity(.7)}
+.bt2.sold{opacity:.6}
+.bt2::before,.gl-row::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at 18% 40%,var(--a),transparent 62%);opacity:.2}
+.bt2.big::before{background:radial-gradient(circle at 82% 45%,var(--a),transparent 60%),radial-gradient(circle at 10% 100%,var(--b),transparent 55%);opacity:.26}
+.bt2.tall::before{background:radial-gradient(circle at 30% 22%,var(--a),transparent 62%);opacity:.24}
+.gl-row{overflow:hidden}
+.gl-row > *{position:relative;z-index:1}
+.bt2.wish::before,.gl-row.wish::before{opacity:.08}
+@media (prefers-color-scheme:dark){ .bt2::before,.gl-row::before{opacity:.28} .bt2.big::before{opacity:.34}}
+.gl-th svg,.bt2 .gl-th svg{stroke-width:1.9}
+.gl-warn.worn,.cc-warn.worn{background:#F5B82E;color:#5A3A00}
+.gl-warn.repair,.cc-warn.repair{background:#E5484D;color:#fff}
+.gl-warn.repair svg,.cc-warn.repair svg{width:62%;height:62%}
+.gc-worn{color:#C98A00;font-weight:800}
+.gc-repair{color:#D63A40;font-weight:800}
+@media (prefers-color-scheme:dark){ .gc-worn{color:#F5C451} .gc-repair{color:#FF7A7E}}
+.gc-new{color:#0FA88A;font-weight:800}
+.gc-great{color:#2E9A4F;font-weight:800}
+@media (prefers-color-scheme:dark){ .gc-new{color:#5FF2C9} .gc-great{color:#7BE39A}}
+.bt2-chips i.gc-new,.bt2-chips i.gc-great,.bt2-chips i.gc-worn,.bt2-chips i.gc-repair{border-color:currentColor}
+.g3 .st-strip div{min-width:0;padding-left:4px;padding-right:4px}
+.g3 .st-strip span{font-size:clamp(8px,2.25vw,11px);letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.g3 .st-strip b{font-size:clamp(17px,5vw,22px)}
+.gear-addtop{display:inline-flex;align-items:center;gap:5px;margin-left:auto;margin-right:8px;padding:6px 13px 6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.6);color:#fff;font:inherit;font-size:14px;font-weight:900;cursor:pointer;
+  background:linear-gradient(180deg,#6CC6F5,#2E9BE0 50%,#1F86CC 51%,#3AA8EA);box-shadow:0 3px 10px rgba(30,120,200,.35),inset 0 1px 0 rgba(255,255,255,.6)}
+.gear-addtop svg{width:16px;height:16px}
+.stage-h .gear-addtop + .test-badge{margin-left:0}
+.g3 .g2-bar > .btn[data-gearnew]{display:none}
+.g3 .g2-bar{margin-top:8px}
+.cc-x2{display:flex;gap:.4em;flex-wrap:wrap}
+.cc-x2 .btn{flex:1;font-size:.78em;padding:.55em .6em}
+.gx-meter{padding:12px;border-radius:16px;background:var(--pane);border:1px solid var(--pane-line);margin-bottom:10px}
+.gx-mtop{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+.gx-mtop b{font-size:18px;font-weight:900}
+.gx-mtop span{font-size:12px;font-weight:700;color:var(--soft)}
+.gx-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--tint);border:1px solid var(--edge)}
+.gx-bar i{display:block;height:100%;background:linear-gradient(180deg,var(--a),var(--b));border-right:1px solid rgba(255,255,255,.6)}
+.gx-bar i:nth-child(2n){filter:brightness(1.15)}
+.gx-bar i.other{background:repeating-linear-gradient(45deg,#9FB0C8 0 4px,#B8C6D9 4px 8px)}
+.gx-warn{margin:8px 0 0;font-size:12px;font-weight:800;color:#D63A40}
+.gx-tip{display:flex;flex-direction:column;gap:2px;margin-top:10px;padding:10px 12px;border-radius:14px;background:rgba(95,242,176,.14);border:1px solid rgba(47,191,143,.45)}
+.gx-tip b{font-size:13px}
+.gx-tip small{font-size:12px;color:var(--soft);font-weight:600}
+.gx-list{display:flex;flex-direction:column;gap:6px}
+.gx-row{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:12px;background:var(--pane);border:1px solid var(--pane-line)}
+.gx-row > span{flex:1;min-width:0;display:flex;flex-direction:column}
+.gx-row b{font-size:13px;font-weight:800;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.gx-row small{font-size:11px;color:var(--soft);font-weight:600}
+.gx-gb{width:72px !important;margin:0 !important;padding:7px 8px !important;text-align:right}
+.gx-add{display:flex;gap:6px;align-items:center;margin-top:10px}
+.gx-add select{flex:1;min-width:0;border-radius:10px}
+.gx-cond{font-size:14px;font-weight:700}
+.gx-log{display:flex;flex-direction:column;gap:6px}
+.gx-entry{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:12px;background:var(--pane);border:1px solid var(--pane-line);border-left:4px solid #9FB0C8}
+.gx-entry.k-issue{border-left-color:#E5484D}
+.gx-entry.k-tried{border-left-color:#F5B82E}
+.gx-entry.k-fixed{border-left-color:#2FBF8F}
+.gx-entry.k-note{border-left-color:#6CC6F5}
+.gx-e{font-size:18px}
+.gx-entry > span:nth-child(2){flex:1;min-width:0}
+.gx-entry b{font-size:13px;font-weight:900}
+.gx-entry p{margin:2px 0;font-size:13px;font-weight:600}
+.gx-entry small{font-size:11px;color:var(--soft);font-weight:700}
+.gx-full{color:#D63A40;font-weight:900}
+.bt2-chips i.gx-full{border-color:#D63A40}
+@media (prefers-color-scheme:dark){ .gx-full{color:#FF7A7E}}
+.gx-row .cd{flex:0 0 auto;width:30px;height:30px}
+.gear-addtop.btn.primary{padding:6px 13px 6px 10px;border-radius:999px;font-size:14px}
+.g2-h,.gn-rsec h4,.sky2 .d-l,.gn .d-l{margin:16px 2px 8px;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.gn-row,.gn-match,.gn-rule,.gn-night,.rec-item,.gx-row,.gx-entry,.gl-row,.bt2,.g2-attn,.gn-live,.qr-steps,.gt-note,.gt-obj,.sky-row{border-radius:18px}
+.gn .st-strip,.sky2 .st-strip,.g3 .st-strip{margin-bottom:10px}
+.g3 .g2-bar > .btn[data-gearnew]{display:inline-flex !important;order:0;margin:0 0 4px;margin-left:0 !important;padding:7px 14px;border-radius:999px}
+.g3 .g2-bar{justify-content:flex-start}
+
+.spin-btn.btn.primary{padding:14px 40px;border-radius:999px;font-size:17px;font-weight:900}
 </style>
 </head>
 <body>
@@ -2389,7 +2851,7 @@ function viewSpin(){
     <label class="check-row"><input type="checkbox" id="spinInOrder" ${spinInOrder?'checked':''}>Play series in order</label>
     <div class="spin-stage"><div class="spin-disc" id="spinDisc" style="transform:rotate(${spinAngle}deg)">${disc}</div></div>
     <p class="pool">${pool.length} game${pool.length===1?'':'s'} in the spin${held ? `, ${held} sequel${held===1?'':'s'} waiting on earlier games` : ''}</p>
-    <button class="aqua spin-btn" id="spinBtn" ${pool.length && !spinning ? '' : 'disabled'}>${spinResult ? 'Spin again' : 'Spin'}</button>
+    <button class="btn primary aqua spin-btn" id="spinBtn" ${pool.length && !spinning ? '' : 'disabled'}>${spinResult ? 'Spin again' : 'Spin'}</button>
     ${result}</div>`;
 }
 function doSpin(){
@@ -2840,7 +3302,7 @@ function renderStage(animate){
   $('stageTitle').textContent = APPS[currentApp].title;
   $('stageIcon').innerHTML = ICONS[APPS[currentApp].icon];
   body.classList.toggle('flush', currentApp === 'library' && games.length > 0);
-  body.innerHTML = ({ player:appPlayer, library:appLibrary, stats:appStats, timeline:() => viewTimeline(), spin:() => viewSpin(), settings:appSettings })[currentApp]();
+  body.innerHTML = ({ gear:() => appGear(), player:appPlayer, library:appLibrary, stats:appStats, timeline:() => viewTimeline(), spin:() => viewSpin(), settings:appSettings })[currentApp]();
   if (!animate){ body.scrollTop = st; const l2 = body.querySelector('#libList'); if (l2) l2.scrollTop = ist; }
   const stage = $('stage'); stage.classList.remove('swap'); if (animate){ void stage.offsetWidth; stage.classList.add('swap'); }
   if (currentApp === 'timeline') initTimeline();
@@ -4068,6 +4530,29 @@ document.addEventListener('change', e => { const s = dsched();
   if (e.target.id === 'dsWake'){ s.wake = e.target.value || '08:00'; savePrefs(); } });
 
 /* ===================================================================
+   "Update available" banner. The app knows its own version; every so often
+   it peeks at the copy on GitHub, and if that's newer it offers to update.
+   =================================================================== */
+const APP_VERSION = 'v16';
+const upd = { at:0, found:false };
+async function updCheck(){
+  if (!/^https?:/.test(location.protocol) || upd.found) return;
+  try{ const r = await fetch(location.pathname + '?gscheck=' + Date.now(), { cache:'no-store' }); if (!r.ok) return; upd.at = Date.now();
+    const m = (await r.text()).match(/const APP_VERSION = '([^']+)'/); if (m && m[1] !== APP_VERSION){ upd.found = true; updBanner(m[1]); } }catch(e){}
+}
+function updBanner(){ if ($('updBanner')) return; const b = document.createElement('div'); b.id = 'updBanner'; b.className = 'upd-banner';
+  b.innerHTML = `<span>✨ <b>New version ready</b><small>Tap to update Game Shelf</small></span><button class="btn primary" id="updGo">Update</button><button class="linkbtn" id="updLater" aria-label="Later">Later</button>`;
+  $('os').appendChild(b); }
+document.addEventListener('click', async e => {
+  if (e.target.id === 'updGo'){ e.target.textContent = 'Updating…';
+    try{ const reg = await navigator.serviceWorker?.getRegistration?.(); if (reg) await reg.update(); }catch(err){}
+    try{ const keys = await caches?.keys?.(); if (keys) await Promise.all(keys.map(k => caches.delete(k))); }catch(err){}
+    location.reload(); }
+  if (e.target.id === 'updLater'){ $('updBanner')?.remove(); setTimeout(() => { upd.found = false; }, 30 * 60 * 1000); }
+});
+setTimeout(updCheck, 3000); setInterval(updCheck, 10 * 60 * 1000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden && Date.now() - upd.at > 60 * 1000) updCheck(); });
+/* ===================================================================
    Settings, organized: a short menu of sections instead of one long page.
    Every panel keeps working as before; this just sorts them into pages.
    =================================================================== */
@@ -4231,6 +4716,480 @@ document.addEventListener('click', e => {
 });
 
 
+
+/* ===================================================================
+   Gear shelf: consoles, controllers, and accessories you own (or want).
+   Lives in its own tab, saved with your settings so it's in every backup.
+   =================================================================== */
+const GEAR_TYPES = {
+  console:   { name:'Consoles',    one:'Console',    icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 17v2M17 17v2M7 11h4"/><circle cx="16" cy="11.5" r="1.3" fill="currentColor"/></svg>' },
+  handheld:  { name:'Handhelds',   one:'Handheld',   icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="4"/><rect x="7" y="8.5" width="10" height="7" rx="1"/><path d="M4.5 11h1M5 10.5v1"/><circle cx="19.3" cy="11" r=".8" fill="currentColor"/></svg>' },
+  controller:{ name:'Controllers', one:'Controller', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a4 4 0 0 1 3.9 3.2l.9 4.6a2.3 2.3 0 0 1-4 1.9L16 16H8l-1.8 1.7a2.3 2.3 0 0 1-4-1.9l.9-4.6A4 4 0 0 1 7 8z"/><path d="M8 11v3M6.5 12.5h3"/><circle cx="15.5" cy="12" r=".9" fill="currentColor"/><circle cx="17.5" cy="13.5" r=".9" fill="currentColor"/></svg>' },
+  audio:     { name:'Headsets & audio', one:'Headset', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>' },
+  accessory: { name:'Accessories', one:'Accessory',  icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v4M15 3v4M7 7h10v4a5 5 0 0 1-10 0z"/><path d="M12 16v5"/></svg>' },
+  other:     { name:'Other',       one:'Item',       icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg>' }
+};
+const GEAR_COND = ['New', 'Great', 'Good', 'Worn', 'Needs repair'];
+ICONS.gear = GEAR_TYPES.controller.icon;
+APPS.gear = { title:'Gear', icon:'gear', w:680, h:760 };
+FEATURES.push({ id:'gear', name:'Gear tab', desc:'Track your consoles, controllers, and accessories', def:false, isNew:true, tab:'gear' });
+{ const i = ALL_TASKS.indexOf('settings'); ALL_TASKS.splice(i < 0 ? ALL_TASKS.length : i, 0, 'gear'); }
+const gearList = () => (prefs.gear ||= []);
+let gearEdit = null, gearDraft = null, gearShowSold = false;
+const gearGames = it => { if (!it.name) return 0; const n = norm(it.name), m = norm(it.model || '');
+  return games.filter(g => consolesOf(g).some(c => { const k = norm(c); return k && (k === n || k === m || k === n + m); })).length; };
+function gearCard(it){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, gc = (it.type === 'console' || it.type === 'handheld') && it.status !== 'wish' ? gearGames(it) : 0;
+  const sub = [it.model, it.color].filter(Boolean).join(', ');
+  return `<button class="gear-card ${it.status === 'wish' ? 'wish' : ''} ${it.status === 'sold' ? 'sold' : ''}" data-gearopen="${it.id}">
+    <span class="gear-art" ${it.photo ? `style="background-image:url('${it.photo}')"` : ''}>${it.photo ? '' : t.icon}</span>
+    <span class="gear-t"><b>${esc(it.name || t.one)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}
+      <span class="gear-tags">${it.status === 'wish' ? '<i class="gtag wish">Wishlist</i>' : it.status === 'sold' ? '<i class="gtag sold">Sold</i>' : it.cond ? `<i class="gtag c${GEAR_COND.indexOf(it.cond)}">${esc(it.cond)}</i>` : ''}${it.qty > 1 ? `<i class="gtag">×${it.qty}</i>` : ''}${gc ? `<i class="gtag games">${gc} game${gc === 1 ? '' : 's'}</i>` : ''}</span></span>
+    <span class="chev">›</span></button>`;
+}
+function appGear(){
+  const list = gearList(), owned = list.filter(x => x.status !== 'wish' && x.status !== 'sold'), wish = list.filter(x => x.status === 'wish'), sold = list.filter(x => x.status === 'sold');
+  const count = k => owned.filter(x => x.type === k).reduce((a, x) => a + (x.qty || 1), 0);
+  const value = owned.reduce((a, x) => a + (x.price || 0) * (x.qty || 1), 0);
+  const strip = `<div class="st-strip"><div><b>${count('console') + count('handheld')}</b><span>systems</span></div><div><b>${count('controller')}</b><span>controllers</span></div>
+    <div><b>${count('audio') + count('accessory') + count('other')}</b><span>accessories</span></div><div><b>${value ? `${prefs.currency || '$'}${Math.round(value)}` : wish.length}</b><span>${value ? 'spent' : 'on wishlist'}</span></div></div>`;
+  const groups = Object.entries(GEAR_TYPES).map(([k, t]) => { const items = owned.filter(x => x.type === k); return items.length ? `<section class="gear-sec"><h3>${t.icon}${t.name}<span>${items.reduce((a, x) => a + (x.qty || 1), 0)}</span></h3><div class="gear-grid">${items.map(gearCard).join('')}</div></section>` : ''; }).join('');
+  const empty = !list.length ? `<div class="gear-empty"><span class="gear-art big">${GEAR_TYPES.controller.icon}</span><h3>Your gear shelf is empty</h3><p>Add your consoles, controllers, headsets, and accessories. Consoles show how many of your games they play.</p></div>` : '';
+  return `<div class="gear">${strip}<button class="btn primary gear-add" data-gearnew>+ Add gear</button>${empty}${groups}
+    ${wish.length ? `<section class="gear-sec"><h3>✦ Wishlist<span>${wish.length}</span></h3><div class="gear-grid">${wish.map(gearCard).join('')}</div></section>` : ''}
+    ${sold.length ? `<button class="linkbtn gear-soldbtn" data-gearsold>${gearShowSold ? 'Hide' : 'Show'} sold or traded (${sold.length})</button>${gearShowSold ? `<div class="gear-grid">${sold.map(gearCard).join('')}</div>` : ''}` : ''}</div>`;
+}
+/* add / edit form */
+function gearForm(){
+  const d = gearDraft, known = [...new Set([...consoles(), ...gearList().map(x => x.name).filter(Boolean)])];
+  const ov = $('gearSheet') || document.createElement('div'); ov.id = 'gearSheet'; ov.className = 'tm-ov gear-ov';
+  ov.innerHTML = `<div class="gear-form" role="dialog" aria-label="${gearEdit ? 'Edit gear' : 'Add gear'}"><div class="gf-head"><b>${gearEdit ? 'Edit gear' : 'Add gear'}</b><button class="btn round" data-gearclose aria-label="Close">✕</button></div>
+    <div class="gf-scroll">
+      <p class="d-l">Type</p><div class="gf-types">${Object.entries(GEAR_TYPES).map(([k, t]) => `<button data-geartype="${k}" aria-pressed="${d.type===k}">${t.icon}<span>${t.one}</span></button>`).join('')}</div>
+      <label class="d-l" for="gfName">Name</label><input class="search" id="gfName" value="${esc(d.name || '')}" placeholder="${d.type === 'controller' ? 'DualSense, Pro Controller...' : d.type === 'console' || d.type === 'handheld' ? 'PS5, Switch 2...' : 'Name'}" list="gfNames" autocomplete="off">
+      <datalist id="gfNames">${known.map(k => `<option value="${esc(k)}">`).join('')}</datalist>
+      <div class="gf-two"><div><label class="d-l" for="gfModel">Model or edition</label><input class="search" id="gfModel" value="${esc(d.model || '')}" placeholder="OLED, Slim, Digital..." autocomplete="off"></div>
+        <div><label class="d-l" for="gfColor">Color</label><input class="search" id="gfColor" value="${esc(d.color || '')}" placeholder="White, Neon..." autocomplete="off"></div></div>
+      <p class="d-l">Status</p><div class="gf-seg">${[['own','I own it'],['wish','Wishlist'],['sold','Sold or traded']].map(([k, l]) => `<button data-gearstatus="${k}" aria-pressed="${(d.status || 'own')===k}">${l}</button>`).join('')}</div>
+      ${(d.status || 'own') === 'own' ? `<p class="d-l">Condition</p><div class="gf-seg wrap">${GEAR_COND.map(c => `<button data-gearcond="${c}" aria-pressed="${d.cond===c}">${c}</button>`).join('')}</div>` : ''}
+      <div class="gf-two"><div><label class="d-l" for="gfQty">How many</label><input class="search" id="gfQty" type="number" min="1" inputmode="numeric" value="${d.qty || 1}"></div>
+        <div><label class="d-l" for="gfPrice">Price paid</label><input class="search" id="gfPrice" inputmode="decimal" value="${d.price ?? ''}" placeholder="${prefs.currency || '$'}0"></div></div>
+      <label class="d-l" for="gfDate">Got it on</label><input class="search" id="gfDate" type="date" value="${d.got ? toInput(d.got) : ''}">
+      <label class="d-l" for="gfNotes">Notes</label><textarea class="bk" id="gfNotes" rows="3" placeholder="Stick drift on the left, came with a case...">${esc(d.notes || '')}</textarea>
+      <div class="set-row" style="margin-top:10px"><label class="btn" for="gfPhoto">${d.photo ? 'Change photo' : 'Add photo'}</label><input type="file" id="gfPhoto" accept="image/*" class="vh">${d.photo ? '<button class="btn" data-gearnophoto>Remove photo</button>' : ''}${d.photo ? `<span class="gear-art sm" style="background-image:url('${d.photo}')"></span>` : ''}</div>
+    </div>
+    <div class="gf-foot">${gearEdit ? `<button class="btn" data-geardel style="color:var(--danger)">Delete</button>` : ''}<button class="btn primary" data-gearsave style="margin-left:auto;min-width:120px">Save</button></div></div>`;
+  if (!ov.isConnected) $('os').appendChild(ov);
+}
+function gearKeep(){ const d = gearDraft; if (!d || !$('gfName')) return;
+  d.name = $('gfName').value.trim(); d.model = $('gfModel').value.trim(); d.color = $('gfColor').value.trim(); d.notes = $('gfNotes').value.trim();
+  d.qty = Math.max(1, parseInt($('gfQty').value) || 1); const pr = parseFloat(String($('gfPrice').value).replace(/[^0-9.]/g, '')); d.price = isNaN(pr) ? null : pr;
+  d.got = $('gfDate').value ? fromInput($('gfDate').value) : null; }
+function gearOpen(id){ gearEdit = id || null; const it = id && gearList().find(x => x.id === id);
+  gearDraft = it ? { ...it } : { type:'console', status:'own', qty:1 }; gearForm(); setTimeout(() => !id && $('gfName')?.focus(), 60); }
+function gearClose(){ $('gearSheet')?.remove(); gearEdit = null; gearDraft = null; }
+document.addEventListener('click', e => {
+  const t = e.target;
+  if (t.closest('[data-gearnew]')) return gearOpen(null);
+  const op = t.closest('[data-gearopen]'); if (op) return gearOpen(op.dataset.gearopen);
+  if (t.closest('[data-gearsold]')){ gearShowSold = !gearShowSold; renderStage(false); return; }
+  if (!t.closest('#gearSheet')) return;
+  if (t.closest('[data-gearclose]') || t.id === 'gearSheet') return gearClose();
+  const ty = t.closest('[data-geartype]'); if (ty){ gearKeep(); gearDraft.type = ty.dataset.geartype; gearForm(); return; }
+  const stt = t.closest('[data-gearstatus]'); if (stt){ gearKeep(); gearDraft.status = stt.dataset.gearstatus; gearForm(); return; }
+  const cd = t.closest('[data-gearcond]'); if (cd){ gearKeep(); gearDraft.cond = gearDraft.cond === cd.dataset.gearcond ? null : cd.dataset.gearcond; gearForm(); return; }
+  if (t.closest('[data-gearnophoto]')){ gearKeep(); gearDraft.photo = null; gearForm(); return; }
+  if (t.closest('[data-geardel]')){ const b = t.closest('[data-geardel]'); if (b.dataset.armed !== '1'){ b.dataset.armed = '1'; b.textContent = 'Tap again to delete'; return; }
+    prefs.gear = gearList().filter(x => x.id !== gearEdit); savePrefs(); gearClose(); renderStage(false); toast('Gear deleted'); return; }
+  if (t.closest('[data-gearsave]')){ gearKeep(); const d = gearDraft; if (!d.name){ $('gfName').focus(); $('gfName').placeholder = 'Give it a name to save'; return; }
+    if (gearEdit){ const i = gearList().findIndex(x => x.id === gearEdit); gearList()[i] = d; } else gearList().push({ ...d, id: newTid ? newTid() : Date.now().toString(36) });
+    savePrefs(); const added = !gearEdit; gearClose(); renderStage(false); toast(added ? `Added ${d.name} to your gear` : 'Gear saved'); return; }
+});
+document.addEventListener('change', async e => {
+  if (e.target.id !== 'gfPhoto' || !e.target.files[0]) return;
+  try{ gearKeep(); gearDraft.photo = await readCover(e.target.files[0]); gearForm(); }catch(err){ toast('That photo could not be loaded. Try a different one.'); }
+});
+
+
+/* ===================================================================
+   Gear, upgraded: a "Your setup" showcase of your systems, colors per
+   kind of gear, filter chips, a heads-up for gear that needs attention,
+   compact tiles for controllers and accessories, and a detail page for
+   each item (with the games and hours on each system).
+   =================================================================== */
+const GEAR_COL = { console:['#B49CFF','#6F4FE0'], handheld:['#6FE3D3','#1FA596'], controller:['#FFC27A','#F07A2A'], audio:['#FF9FD0','#D9468A'], accessory:['#9BEFA8','#34B15F'], other:['#B8C8E6','#6F84B0'] };
+let gearFilter = 'all';
+const gearOn = it => { if (!it.name) return []; const n = norm(it.name), m = norm(it.model || ''); return games.filter(g => consolesOf(g).some(c => { const k = norm(c); return k && (k === n || k === m || k === n + m); })); };
+const gearAge = t => { if (!t) return ''; const m = Math.floor((Date.now() - t) / (30.44 * 864e5)); return m < 1 ? 'new this month' : m < 12 ? `${m} month${m === 1 ? '' : 's'}` : `${Math.floor(m / 12)} year${m >= 24 ? 's' : ''}${m % 12 ? ` ${m % 12} mo` : ''}`; };
+const gearArt = (it, big) => { const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other;
+  return it.photo ? `<span class="g2-art ${big ? 'big' : ''}" style="background-image:url('${it.photo}')"></span>` : `<span class="g2-art ${big ? 'big' : ''}" style="--ga:${a};--gb:${b}">${t.icon}</span>`; };
+gearCard = function(it){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, sys = it.type === 'console' || it.type === 'handheld', on = sys && it.status === 'own' ? gearOn(it) : [];
+  const sub = [it.model, it.color].filter(Boolean).join(' · ');
+  const tags = `${it.status === 'wish' ? '<i class="gtag wish">Wishlist</i>' : it.status === 'sold' ? '<i class="gtag sold">Sold</i>' : it.cond ? `<i class="gtag c${GEAR_COND.indexOf(it.cond)}">${esc(it.cond)}</i>` : ''}${it.qty > 1 ? `<i class="gtag">×${it.qty}</i>` : ''}${it.status === 'wish' && it.price ? `<i class="gtag">${prefs.currency || '$'}${Math.round(it.price)}</i>` : ''}`;
+  if (sys) return `<button class="g2-card ${it.status}" data-gearopen="${it.id}">${gearArt(it)}<span class="g2-t"><b>${esc(it.name || t.one)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}<span class="gear-tags">${tags}</span></span>
+    ${on.length ? `<span class="g2-num"><b>${on.length}</b><small>games</small></span>` : ''}<span class="chev">›</span></button>`;
+  return `<button class="g2-tile ${it.status}" data-gearopen="${it.id}">${gearArt(it)}<b>${esc(it.name || t.one)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}<span class="gear-tags">${tags}</span></button>`;
+};
+appGear = function(){
+  const list = gearList(), owned = list.filter(x => x.status === 'own' || !x.status), wish = list.filter(x => x.status === 'wish'), sold = list.filter(x => x.status === 'sold');
+  const cnt = ks => owned.filter(x => ks.includes(x.type)).reduce((a, x) => a + (x.qty || 1), 0), cur = prefs.currency || '$';
+  const spent = owned.reduce((a, x) => a + (x.price || 0) * (x.qty || 1), 0);
+  if (!list.length) return `<div class="gear"><div class="gear-empty"><span class="g2-art big" style="--ga:#FFC27A;--gb:#F07A2A">${GEAR_TYPES.controller.icon}</span><h3>Your gear shelf is empty</h3><p>Add your consoles, controllers, headsets, and accessories. Systems show how many of your games they play.</p></div><button class="btn primary gear-add" data-gearnew>+ Add gear</button></div>`;
+  const systems = owned.filter(x => x.type === 'console' || x.type === 'handheld').map(x => ({ x, on: gearOn(x) })).sort((a, b) => b.on.length - a.on.length);
+  const strip = `<div class="st-strip"><div><b>${cnt(['console','handheld'])}</b><span>systems</span></div><div><b>${cnt(['controller'])}</b><span>controllers</span></div><div><b>${cnt(['audio','accessory','other'])}</b><span>accessories</span></div><div><b>${spent ? cur + Math.round(spent) : wish.length}</b><span>${spent ? 'spent' : 'on wishlist'}</span></div></div>`;
+  const show = systems.length ? `<p class="g2-h">Your setup</p><div class="g2-show">${systems.map(({ x, on }) => { const [a, b] = GEAR_COL[x.type], hrs = on.reduce((s, g) => s + (g.hours || 0), 0);
+      return `<button class="g2-hero" data-gearopen="${x.id}" style="--ga:${a};--gb:${b}">${x.photo ? `<span class="g2-hp" style="background-image:url('${x.photo}')"></span>` : `<span class="g2-hi">${GEAR_TYPES[x.type].icon}</span>`}
+        <b>${esc(x.name)}</b><small>${esc([x.model, x.color].filter(Boolean).join(' · ') || GEAR_TYPES[x.type].one)}</small><span class="g2-hs"><span><b>${on.length}</b> games</span>${hrs ? `<span><b>${Math.round(hrs)}</b>h</span>` : ''}</span></button>`; }).join('')}</div>` : '';
+  const needs = owned.filter(x => x.cond === 'Needs repair' || x.cond === 'Worn');
+  const attention = needs.length ? `<div class="g2-attn"><span>🔧</span><span><b>${needs.length} item${needs.length === 1 ? '' : 's'} could use some care</b><small>${needs.map(x => `${esc(x.name)} (${x.cond.toLowerCase()})`).join(', ')}</small></span></div>` : '';
+  const F = [['all','All'],['sys','Systems'],['controller','Controllers'],['audio','Audio'],['accessory','Accessories'],['wish',`Wishlist${wish.length ? ' ' + wish.length : ''}`]];
+  const chips = `<div class="chips-row g2-chips">${F.map(([k, l]) => `<button class="chip-btn" data-gearf="${k}" aria-pressed="${gearFilter === k}">${l}</button>`).join('')}</div>`;
+  const sec = (title, icon, items, wide) => items.length ? `<section class="gear-sec"><h3>${icon}${title}<span>${items.reduce((a, x) => a + (x.qty || 1), 0)}</span></h3><div class="${wide ? 'g2-list' : 'g2-grid'}">${items.map(gearCard).join('')}</div></section>` : '';
+  const of = ks => owned.filter(x => ks.includes(x.type));
+  let body = '';
+  const sysTile = x => { const [a, b] = GEAR_COL[x.type], on = gearOn(x), hrs = on.reduce((s2, g) => s2 + (g.hours || 0), 0), sub = [x.model, x.color].filter(Boolean).join(' · ');
+    return `<button class="g2-hero" data-gearopen="${x.id}" style="--ga:${a};--gb:${b}">${x.photo ? `<span class="g2-hp" style="background-image:url('${x.photo}')"></span>` : `<span class="g2-hi">${GEAR_TYPES[x.type].icon}</span>`}
+      <b>${esc(x.name || GEAR_TYPES[x.type].one)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}
+      <span class="g2-hs">${on.length ? `<span><b>${on.length}</b> games</span>` : ''}${hrs ? `<span><b>${Math.round(hrs)}</b>h</span>` : ''}${x.cond ? `<span>${esc(x.cond)}</span>` : ''}${x.qty > 1 ? `<span>×${x.qty}</span>` : ''}</span></button>`; };
+  const sysSec = (title, icon, items) => items.length ? `<section class="gear-sec"><h3>${icon}${title}<span>${items.reduce((a, x) => a + (x.qty || 1), 0)}</span></h3><div class="g2-sys">${items.sort((p, q) => gearOn(q).length - gearOn(p).length).map(sysTile).join('')}</div></section>` : '';
+  if (gearFilter === 'all' || gearFilter === 'sys'){ body += sysSec('Consoles', GEAR_TYPES.console.icon, of(['console'])) + sysSec('Handhelds', GEAR_TYPES.handheld.icon, of(['handheld'])); }
+  if (gearFilter === 'all' || gearFilter === 'controller') body += sec('Controllers', GEAR_TYPES.controller.icon, of(['controller']));
+  if (gearFilter === 'all' || gearFilter === 'audio') body += sec('Headsets & audio', GEAR_TYPES.audio.icon, of(['audio']));
+  if (gearFilter === 'all' || gearFilter === 'accessory') body += sec('Accessories', GEAR_TYPES.accessory.icon, of(['accessory'])) + sec('Other', GEAR_TYPES.other.icon, of(['other']));
+  if (gearFilter === 'all' || gearFilter === 'wish'){ const wt = wish.reduce((a, x) => a + (x.price || 0), 0);
+    body += wish.length ? `<section class="gear-sec"><h3>✦ Wishlist<span>${wish.length}</span>${wt ? `<em>${cur}${Math.round(wt)} total</em>` : ''}</h3><div class="g2-grid">${wish.map(gearCard).join('')}</div></section>` : (gearFilter === 'wish' ? '<p class="set-note" style="text-align:center;padding:16px">Nothing on your gear wishlist yet.</p>' : ''); }
+  if (!body) body = '<p class="set-note" style="text-align:center;padding:16px">Nothing here yet.</p>';
+  const soldB = sold.length && gearFilter === 'all' ? `<button class="linkbtn gear-soldbtn" data-gearsold>${gearShowSold ? 'Hide' : 'Show'} sold or traded (${sold.length})</button>${gearShowSold ? `<div class="g2-grid">${sold.map(gearCard).join('')}</div>` : ''}` : '';
+  return `<div class="gear g2">${strip}${attention}<div class="g2-bar">${chips}<button class="btn primary" data-gearnew>+ Add</button></div>${body}${soldB}</div>`;
+};
+function gearDetail(id){
+  const it = gearList().find(x => x.id === id); if (!it) return; const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, cur = prefs.currency || '$';
+  const sys = it.type === 'console' || it.type === 'handheld', on = sys ? gearOn(it) : [], hrs = on.reduce((s, g) => s + (g.hours || 0), 0), beat = on.filter(g => g.status === 'beaten').length;
+  const top = on.slice().sort((x, y) => (y.hours || 0) - (x.hours || 0)).slice(0, 6);
+  const facts = [it.cond && ['Condition', it.cond], it.qty > 1 && ['How many', '×' + it.qty], it.price != null && ['Paid', cur + (+it.price).toFixed(2).replace(/\.00$/, '')], it.got && ['Had it for', gearAge(it.got)], it.got && ['Got it', fmtDate(it.got)]].filter(Boolean);
+  const ov = document.createElement('div'); ov.className = 'tm-ov g2-ov'; ov.id = 'gearDet';
+  ov.innerHTML = `<div class="g2-det"><div class="g2-dhero" style="--ga:${a};--gb:${b}">${it.photo ? `<span class="g2-dp" style="background-image:url('${it.photo}')"></span>` : `<span class="g2-di">${t.icon}</span>`}
+      <button class="btn round g2-x" data-gdclose aria-label="Close">✕</button></div>
+    <div class="g2-dbody"><p class="tm-e">${esc(t.one)}${it.status === 'wish' ? ' · Wishlist' : it.status === 'sold' ? ' · Sold' : ''}</p><h2>${esc(it.name || t.one)}</h2>${[it.model, it.color].filter(Boolean).length ? `<p class="g2-sub">${esc([it.model, it.color].filter(Boolean).join(' · '))}</p>` : ''}
+      ${sys && on.length ? `<div class="ab-facts g2-sf"><div><b>${on.length}</b><span>games</span></div><div><b>${beat}</b><span>beaten</span></div><div><b>${Math.round(hrs)}h</b><span>played</span></div></div>` : ''}
+      ${facts.length ? `<div class="g2-facts">${facts.map(([k, v]) => `<div><span>${k}</span><b>${esc(String(v))}</b></div>`).join('')}</div>` : ''}
+      ${it.notes ? `<p class="g2-notes">${esc(it.notes)}</p>` : ''}
+      ${top.length ? `<p class="d-l" style="margin:14px 0 6px">Most played on it</p><div class="g2-games">${top.map(g => `<button data-game="${g.id}">${discHTML(g, 34)}<span><b>${esc(g.title)}</b><small>${g.hours ? fmtH(g.hours) : ST[g.status].long}</small></span></button>`).join('')}</div>` : ''}
+      <div class="set-row" style="margin-top:14px"><button class="btn primary" data-gdedit="${it.id}" style="flex:1">Edit</button>${sys && on.length ? `<button class="btn" data-gdlib="${esc(it.name)}" style="flex:1">See its games</button>` : ''}</div></div></div>`;
+  $('os').appendChild(ov);
+  ov.addEventListener('click', e => {
+    if (e.target === ov || e.target.closest('[data-gdclose]')) return ov.remove();
+    const ed = e.target.closest('[data-gdedit]'); if (ed){ ov.remove(); gearOpen(ed.dataset.gdedit); return; }
+    const lb = e.target.closest('[data-gdlib]'); if (lb){ ov.remove(); lib.q = lb.dataset.gdlib; openWin('library'); return; }
+    if (e.target.closest('[data-game]')) ov.remove();
+  });
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-gearopen]'); if (o && !e.target.closest('#gearSheet')){ e.stopImmediatePropagation(); gearDetail(o.dataset.gearopen); return; }
+  const f = e.target.closest('[data-gearf]'); if (f){ gearFilter = f.dataset.gearf; renderStage(false); }
+}, true);
+
+
+/* ===================================================================
+   Gear as collector cards. Every item is a shiny trading card in your
+   binder, all visible at once. Condition sets the rarity (New is a holo
+   rare, Great gold, Good silver, Worn bronze). Tap a card to hold it up
+   big, tap again to flip it over, swipe or use the arrows for the next card.
+   Wishlist items are "not collected yet" outlines; sold ones get a stamp.
+   =================================================================== */
+const RARITY = { 'New':['holo','Holo rare','★★★★'], 'Great':['gold','Rare','★★★'], 'Good':['silver','Uncommon','★★'], 'Worn':['bronze','Common','★'], 'Needs repair':['dmg','Battle-worn','✚'] };
+let cardView = null;
+function gearDeck(){ const order = ['console','handheld','controller','audio','accessory','other'], list = gearList();
+  return [...list].sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type) || (a.status === 'wish') - (b.status === 'wish') || (a.status === 'sold') - (b.status === 'sold')); }
+function gearCardFace(it, idx, total){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, sys = it.type === 'console' || it.type === 'handheld';
+  const on = sys && it.status === 'own' ? gearOn(it) : [], hrs = on.reduce((s, g) => s + (g.hours || 0), 0);
+  const [rc, rn, rs] = it.status === 'wish' ? ['ghost','Not collected','☆'] : RARITY[it.cond] || ['plain','Standard','★'];
+  const yrs = it.got ? Math.max(0, (Date.now() - it.got) / (365.25 * 864e5)) : null;
+  const stats = sys ? [[on.length || '–', 'Games'], [hrs ? Math.round(hrs) + 'h' : '–', 'Played'], [yrs != null ? (yrs < 1 ? '<1y' : Math.floor(yrs) + 'y') : '–', 'Owned']]
+    : [[it.qty > 1 ? '×' + it.qty : '×1', 'Owned'], [it.cond ? it.cond.split(' ')[0] : '–', 'Condition'], [yrs != null ? (yrs < 1 ? '<1y' : Math.floor(yrs) + 'y') : '–', 'Had for']];
+  return `<div class="cc-face cc-front rar-${rc}" style="--ga:${a};--gb:${b}">
+    <div class="cc-top"><b>${esc(it.name || t.one)}</b>${sys && on.length ? `<span class="cc-hp"><small>GAMES</small>${on.length}</span>` : it.qty > 1 ? `<span class="cc-hp">×${it.qty}</span>` : ''}</div>
+    <div class="cc-art">${it.photo ? `<span class="cc-photo" style="background-image:url('${it.photo}')"></span>` : `<span class="cc-ic">${t.icon}</span>`}<i class="cc-spark s1"></i><i class="cc-spark s2"></i><i class="cc-spark s3"></i></div>
+    <div class="cc-type">${esc(t.one.toUpperCase())}${[it.model, it.color].filter(Boolean).length ? ' · ' + esc([it.model, it.color].filter(Boolean).join(' · ')) : ''}</div>
+    <div class="cc-stats">${stats.map(([v, l]) => `<div><b>${esc(String(v))}</b><span>${l}</span></div>`).join('')}</div>
+    <div class="cc-foot"><span>${rs} ${rn}</span><span>#${String(idx + 1).padStart(2, '0')}/${String(total).padStart(2, '0')}</span></div>
+    ${it.status === 'sold' ? '<span class="cc-stamp">TRADED</span>' : ''}${gearWarn(it, 'cc-warn')}<span class="cc-foil"></span></div>`;
+}
+function gearCardBack(it){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, cur = prefs.currency || '$', sys = it.type === 'console' || it.type === 'handheld';
+  const on = sys ? gearOn(it) : [], top = on.slice().sort((x, y) => (y.hours || 0) - (x.hours || 0)).slice(0, 4);
+  const rows = [['Type', t.one], it.model && ['Model', it.model], it.color && ['Color', it.color], it.cond && ['Condition', it.cond], it.qty > 1 && ['How many', '×' + it.qty],
+    it.price != null && ['Paid', cur + (+it.price).toFixed(2).replace(/\.00$/, '')], it.got && ['Got it', fmtDate(it.got)], it.got && ['Had it for', gearAge(it.got)]].filter(Boolean);
+  return `<div class="cc-face cc-back" style="--ga:${a};--gb:${b}"><div class="cc-bh"><span class="cc-bdisc"></span><b>${esc(it.name || t.one)}</b></div>
+    <div class="cc-rows">${rows.map(([k, v]) => `<div><span>${k}</span><b>${esc(String(v))}</b></div>`).join('')}</div>
+    ${it.notes ? `<p class="cc-notes">${esc(it.notes)}</p>` : ''}
+    ${top.length ? `<p class="cc-sub">Most played on it</p><div class="cc-games">${top.map(g => `<button data-game="${g.id}">${esc(g.title)}<small>${g.hours ? fmtH(g.hours) : ST[g.status].short}</small></button>`).join('')}</div>` : ''}
+    <div class="cc-actions"><button class="btn primary" data-gdedit="${it.id}">Edit</button>${sys && on.length ? `<button class="btn" data-gdlib="${esc(it.name)}">See its games</button>` : ''}</div></div>`;
+}
+appGear = function(){
+  const list = gearList(), deck = gearDeck(), cur = prefs.currency || '$';
+  if (!list.length) return `<div class="gear"><div class="gear-empty"><span class="g2-art big" style="--ga:#FFC27A;--gb:#F07A2A">${GEAR_TYPES.controller.icon}</span><h3>Start your collection</h3><p>Every console, controller, and headset you add becomes a collector card. New gear is a holo rare!</p></div><button class="btn primary gear-add" data-gearnew>+ Add your first card</button></div>`;
+  const owned = list.filter(x => x.status === 'own' || !x.status), holo = owned.filter(x => x.cond === 'New').length, spent = owned.reduce((s, x) => s + (x.price || 0) * (x.qty || 1), 0);
+  const F = [['all','All'],['sys','Systems'],['controller','Controllers'],['audio','Audio'],['accessory','Accessories'],['wish','Wishlist']];
+  const keep = it => gearFilter === 'all' ? it.status !== 'sold' || gearShowSold : gearFilter === 'sys' ? (it.type === 'console' || it.type === 'handheld') && it.status !== 'wish' : gearFilter === 'wish' ? it.status === 'wish' : gearFilter === 'accessory' ? (it.type === 'accessory' || it.type === 'other') && it.status !== 'wish' : it.type === gearFilter && it.status !== 'wish';
+  const shown = deck.filter(keep), sold = list.filter(x => x.status === 'sold').length;
+  return `<div class="gear cards">
+    <div class="cc-head"><div><b>${owned.reduce((s, x) => s + 1, 0)}</b><span>cards</span></div><div><b>${holo}</b><span>holo rares</span></div><div><b>${list.filter(x => x.status === 'wish').length}</b><span>wanted</span></div><div><b>${spent ? cur + Math.round(spent) : '–'}</b><span>spent</span></div></div>
+    <div class="g2-bar cc-bar"><div class="chips-row g2-chips">${F.map(([k, l]) => `<button class="chip-btn" data-gearf="${k}" aria-pressed="${gearFilter === k}">${l}</button>`).join('')}</div><button class="btn primary" data-gearnew>+ Add</button></div>
+    <div class="cc-binder">${shown.map(it => `<button class="cc" data-gearopen="${it.id}" aria-label="${esc(it.name || '')}">${gearCardFace(it, deck.indexOf(it), deck.length)}</button>`).join('') || '<p class="set-note" style="grid-column:1/-1;text-align:center;padding:16px">No cards here yet.</p>'}</div>
+    ${sold && gearFilter === 'all' ? `<button class="linkbtn gear-soldbtn" data-gearsold>${gearShowSold ? 'Hide' : 'Show'} traded cards (${sold})</button>` : ''}</div>`;
+};
+gearDetail = function(id){
+  const deck = gearDeck(), i = deck.findIndex(x => x.id === id); if (i < 0) return; cardView = { i, flipped:false };
+  const ov = $('ccView') || document.createElement('div'); ov.id = 'ccView'; ov.className = 'cc-view';
+  const draw = () => { const it = deck[cardView.i];
+    ov.innerHTML = `<button class="btn round cc-x" data-ccclose aria-label="Close">✕</button>
+      <div class="cc-stage"><button class="cc-nav" data-ccnav="-1" aria-label="Previous card">‹</button>
+        <div class="cc big ${cardView.flipped ? 'flipped' : ''}" data-ccflip>${gearCardFace(it, cardView.i, deck.length)}${gearCardBack(it)}</div>
+        <button class="cc-nav" data-ccnav="1" aria-label="Next card">›</button></div>
+      <p class="cc-tip">Tap the card to flip it · swipe for the next one</p>`; };
+  draw();
+  if (!ov.isConnected){ $('os').appendChild(ov); requestAnimationFrame(() => ov.classList.add('show'));
+    let sx = null; ov.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive:true });
+    ov.addEventListener('touchend', e => { if (sx == null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 60){ cardView.i = (cardView.i + (dx < 0 ? 1 : -1) + deck.length) % deck.length; cardView.flipped = false; draw(); ov.querySelector('.cc.big').classList.add(dx < 0 ? 'in-r' : 'in-l'); } });
+    ov.addEventListener('click', e => {
+      if (e.target === ov || e.target.closest('[data-ccclose]')){ ov.classList.remove('show'); setTimeout(() => ov.remove(), 220); return; }
+      const nv = e.target.closest('[data-ccnav]'); if (nv){ const d = +nv.dataset.ccnav; cardView.i = (cardView.i + d + deck.length) % deck.length; cardView.flipped = false; draw(); ov.querySelector('.cc.big').classList.add(d > 0 ? 'in-r' : 'in-l'); return; }
+      const ed = e.target.closest('[data-gdedit]'); if (ed){ ov.remove(); gearOpen(ed.dataset.gdedit); return; }
+      const lb = e.target.closest('[data-gdlib]'); if (lb){ ov.remove(); lib.q = lb.dataset.gdlib; openWin('library'); return; }
+      if (e.target.closest('[data-game]')){ ov.remove(); return; }
+      if (e.target.closest('[data-ccflip]')){ cardView.flipped = !cardView.flipped; ov.querySelector('.cc.big').classList.toggle('flipped', cardView.flipped); }
+    }); }
+};
+
+
+/* Gear cards, full-art style: the whole card is color (or your photo), with a frosted strip for the name. */
+gearCardFace = function(it, idx, total){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, sys = it.type === 'console' || it.type === 'handheld';
+  const on = sys && it.status === 'own' ? gearOn(it) : [], hrs = on.reduce((s, g) => s + (g.hours || 0), 0);
+  const [rc, rn, rs] = it.status === 'wish' ? ['ghost','Wanted','☆'] : RARITY[it.cond] || ['plain','',''];
+  const line = it.status === 'wish' ? (it.price ? `Wanted · ${prefs.currency || '$'}${Math.round(it.price)}` : 'Wanted')
+    : sys ? [on.length ? `${on.length} games` : '', hrs ? `${Math.round(hrs)}h` : '', !on.length ? [it.model, it.color].filter(Boolean).join(' · ') || t.one : ''].filter(Boolean).join(' · ')
+    : [it.cond, [it.model, it.color].filter(Boolean).join(' · ')].filter(Boolean).join(' · ') || t.one;
+  const badge = it.qty > 1 ? `×${it.qty}` : rs && it.status !== 'wish' ? rs : '';
+  return `<div class="cc-face fa rar-${rc}" style="--ga:${a};--gb:${b}">
+    ${it.photo ? `<span class="fa-photo" style="background-image:url('${it.photo}')"></span>` : `<span class="fa-ic">${gearIcon(it)}</span>`}
+    <i class="cc-spark s1"></i><i class="cc-spark s2"></i><i class="cc-spark s3"></i>
+    ${badge ? `<span class="fa-badge">${esc(badge)}</span>` : ''}${gearWarn(it, 'cc-warn')}
+    <span class="fa-strip"><b>${esc(it.name || t.one)}</b><small>${esc(line)}</small>${rn && it.status !== 'wish' ? `<em>${rn}</em>` : ''}</span>
+    ${it.status === 'sold' ? '<span class="cc-stamp">TRADED</span>' : ''}<span class="cc-foil"></span></div>`;
+};
+
+
+/* ===================================================================
+   Gear, two views with a switch: Bento (glossy mixed-size tiles, your
+   most-played system biggest) and List (big thumbnails, details, and a
+   bar for how much each system gets played). Tap anything for its card.
+   =================================================================== */
+const gearView = () => 'mix';
+function gearSub(it){ const sys = it.type === 'console' || it.type === 'handheld', on = sys && it.status === 'own' ? gearOn(it) : [];
+  if (it.status === 'wish') return it.price ? `Wanted · ${prefs.currency || '$'}${Math.round(it.price)}` : 'Wanted';
+  if (sys && on.length) return `${on.length} games`;
+  return [it.qty > 1 ? '×' + it.qty : '', it.cond].filter(Boolean).join(' · ') || [it.model, it.color].filter(Boolean).join(' · ') || (GEAR_TYPES[it.type] || GEAR_TYPES.other).one; }
+function bentoTile(it, size){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, on = gearOn(it), hrs = on.reduce((s, g) => s + (g.hours || 0), 0);
+  const warn = it.cond === 'Needs repair' || it.cond === 'Worn';
+  return `<button class="bt ${size} ${it.status}" data-gearopen="${it.id}" style="--a:${a};--b:${b}">${it.photo ? `<span class="bt-photo" style="background-image:url('${it.photo}')"></span>` : ''}
+    <b>${esc(it.name || t.one)}</b><small>${esc(size === 'big' ? [it.model, it.color].filter(Boolean).join(' · ') || t.one : gearSub(it))}</small>
+    ${size === 'big' ? `<span class="bt-nums">${on.length ? `<span>${on.length} games</span>` : ''}${hrs ? `<span>${Math.round(hrs)}h</span>` : ''}${it.cond ? `<span>${esc(it.cond)}</span>` : ''}</span>` : ''}
+    ${it.photo ? '' : `<span class="bt-ic">${t.icon}</span>`}${warn ? '<span class="bt-warn">!</span>' : ''}${it.status === 'sold' ? '<span class="cc-stamp">TRADED</span>' : ''}</button>`;
+}
+function listRow(it, maxGames){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, sys = it.type === 'console' || it.type === 'handheld', on = sys && it.status === 'own' ? gearOn(it) : [];
+  const details = [it.model, it.color, it.cond].filter(Boolean).join(' · ') || t.one;
+  return `<button class="gl-row ${it.status}" data-gearopen="${it.id}" style="--a:${a};--b:${b}"><span class="gl-th" ${it.photo ? `style="background-image:url('${it.photo}')"` : ''}>${it.photo ? '' : gearIcon(it)}</span>
+    <span class="gl-t"><b>${esc(it.name || t.one)}</b><small>${it.status === 'wish' ? esc(gearSub(it)) : [esc([it.model, it.color].filter(Boolean).join(' · ')), condSpan(it.cond)].filter(Boolean).join(' · ') || esc(t.one)}</small>${on.length ? `<span class="gl-bar"><i style="width:${Math.max(6, Math.round(on.length / maxGames * 100))}%"></i></span>` : ''}</span>
+    ${on.length ? `<span class="gl-n">${on.length}<small>GAMES</small></span>` : it.qty > 1 ? `<span class="gl-n">×${it.qty}</span>` : ''}${gearWarn(it, 'gl-warn')}</button>`;
+}
+appGear = function(){
+  const list = gearList(), cur = prefs.currency || '$';
+  if (!list.length) return `<div class="gear"><div class="gear-empty"><span class="g2-art big" style="--ga:#FFC27A;--gb:#F07A2A">${GEAR_TYPES.controller.icon}</span><h3>Your gear shelf is empty</h3><p>Add your consoles, controllers, headsets, and accessories. Systems show how many of your games they play.</p></div><button class="btn primary gear-add" data-gearnew>+ Add gear</button></div>`;
+  const owned = list.filter(x => x.status === 'own' || !x.status), wish = list.filter(x => x.status === 'wish'), sold = list.filter(x => x.status === 'sold');
+  const cnt = ks => owned.filter(x => ks.includes(x.type)).reduce((a, x) => a + (x.qty || 1), 0), spent = owned.reduce((s, x) => s + (x.price || 0) * (x.qty || 1), 0);
+  const isSys = x => x.type === 'console' || x.type === 'handheld';
+  const pick = x => gearFilter === 'all' || (gearFilter === 'sys' ? isSys(x) : gearFilter === 'accessory' ? x.type === 'accessory' || x.type === 'other' : x.type === gearFilter);
+  const systems = owned.filter(x => isSys(x) && pick(x)).sort((p, q) => gearOn(q).length - gearOn(p).length || (q.price || 0) - (p.price || 0));
+  const rest = owned.filter(x => !isSys(x) && pick(x)).sort((p, q) => ['controller','audio','accessory','other'].indexOf(p.type) - ['controller','audio','accessory','other'].indexOf(q.type));
+  const wants = gearFilter === 'all' || gearFilter === 'wish' ? wish : [];
+  const view = gearView(), maxG = Math.max(1, ...owned.filter(isSys).map(x => gearOn(x).length));
+  const F = [['all','All'],['sys','Systems'],['controller','Controllers'],['audio','Audio'],['accessory','Accessories'],['wish','Wishlist']];
+  const head = `<div class="st-strip"><div><b>${cnt(['console','handheld'])}</b><span>systems</span></div><div><b>${cnt(['controller'])}</b><span>controllers</span></div><div><b>${cnt(['audio','accessory','other'])}</b><span>extras</span></div><div><b>${spent ? cur + Math.round(spent) : wish.length}</b><span>${spent ? 'spent' : 'wanted'}</span></div></div>
+    <div class="g2-bar"><div class="chips-row g2-chips">${F.map(([k, l]) => `<button class="chip-btn" data-gearf="${k}" aria-pressed="${gearFilter === k}">${l}</button>`).join('')}</div>
+      <span class="seg-mini gv-seg" hidden><button data-gearview="bento" aria-pressed="${view === 'bento'}" aria-label="Bento view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="11" height="11" rx="2"/><rect x="16" y="3" width="5" height="5" rx="1.5"/><rect x="16" y="10" width="5" height="11" rx="1.5"/><rect x="3" y="16" width="11" height="5" rx="1.5"/></svg></button><button data-gearview="list" aria-pressed="${view === 'list'}" aria-label="List view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="5" height="5" rx="1.5"/><rect x="3" y="15" width="5" height="5" rx="1.5"/><path d="M11 6.5h10M11 17.5h10"/></svg></button></span>
+      <button class="btn primary" data-gearnew>+ Add</button></div>`;
+  let body = '';
+  if (view === 'mix'){
+    if (systems.length) body += `<p class="g2-h">Systems</p><div class="gbento">${systems.map((x, i) => bentoTile(x, i === 0 && gearFilter !== 'wish' ? 'big' : gearOn(x).length >= 10 ? 'tall' : 'small').replace('</button>', gearOn(x).length ? `<span class="bt-bar"><i style="width:${Math.max(6, Math.round(gearOn(x).length / maxG * 100))}%"></i></span></button>` : '</button>')).join('')}</div>`;
+    if (rest.length) body += `<p class="g2-h">Controllers & more</p><div class="gl-list">${rest.map(x => listRow(x, maxG)).join('')}</div>`;
+    if (wants.length) body += `<p class="g2-h">Wishlist${wants.some(w => w.price) ? ` · ${cur}${Math.round(wants.reduce((s2, w) => s2 + (w.price || 0), 0))}` : ''}</p><div class="gl-list">${wants.map(x => listRow(x, maxG)).join('')}</div>`;
+  } else if (view === 'bento'){
+    const tiles = (items, sys) => items.map((x, i) => bentoTile(x, sys && i === 0 && gearFilter !== 'wish' ? 'big' : sys && gearOn(x).length >= 10 ? 'tall' : 'small')).join('');
+    if (systems.length) body += `<p class="g2-h">Systems</p><div class="gbento">${tiles(systems, true)}</div>`;
+    if (rest.length) body += `<p class="g2-h">Controllers & more</p><div class="gbento">${tiles(rest, false)}</div>`;
+    if (wants.length) body += `<p class="g2-h">Wishlist${wants.some(w => w.price) ? ` · ${cur}${Math.round(wants.reduce((s, w) => s + (w.price || 0), 0))}` : ''}</p><div class="gbento">${tiles(wants, false)}</div>`;
+  } else {
+    if (systems.length) body += `<p class="g2-h">Systems</p><div class="gl-list">${systems.map(x => listRow(x, maxG)).join('')}</div>`;
+    if (rest.length) body += `<p class="g2-h">Controllers & more</p><div class="gl-list">${rest.map(x => listRow(x, maxG)).join('')}</div>`;
+    if (wants.length) body += `<p class="g2-h">Wishlist</p><div class="gl-list">${wants.map(x => listRow(x, maxG)).join('')}</div>`;
+  }
+  if (!body) body = '<p class="set-note" style="text-align:center;padding:16px">Nothing here yet.</p>';
+  if (sold.length && gearFilter === 'all') body += `<button class="linkbtn gear-soldbtn" data-gearsold>${gearShowSold ? 'Hide' : 'Show'} sold or traded (${sold.length})</button>${gearShowSold ? `<div class="gl-list">${sold.map(x => listRow(x, maxG)).join('')}</div>` : ''}`;
+  return `<div class="gear g3">${head}${body}</div>`;
+};
+document.addEventListener('click', e => { const v = e.target.closest('[data-gearview]'); if (v){ prefs.gearView = v.dataset.gearview; savePrefs(); renderStage(false); } });
+
+
+/* Bento tiles in the same glass style as the list rows: frosted panel, colorful thumbnail, dark text, colored play bar. */
+bentoTile = function(it, size){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, on = gearOn(it), hrs = on.reduce((s, g) => s + (g.hours || 0), 0);
+  const maxG = Math.max(1, ...gearList().filter(x => (x.type === 'console' || x.type === 'handheld') && x.status !== 'wish').map(x => gearOn(x).length));
+  const sub = size === 'big' ? [it.model, it.color].filter(Boolean).join(' · ') || t.one : gearSub(it);
+  const warn = it.cond === 'Needs repair' || it.cond === 'Worn';
+  return `<button class="bt2 ${size} ${it.status}" data-gearopen="${it.id}" style="--a:${a};--b:${b}">
+    <span class="gl-th" ${it.photo ? `style="background-image:url('${it.photo}')"` : ''}>${it.photo ? '' : gearIcon(it)}</span>
+    <span class="bt2-t"><b>${esc(it.name || t.one)}</b><small>${size === 'big' ? esc(sub) : gearSubHTML(it)}</small>
+      ${size === 'big' ? `<span class="bt2-chips">${on.length ? `<i>${on.length} games</i>` : ''}${hrs ? `<i>${Math.round(hrs)}h played</i>` : ''}${it.cond ? `<i class="${COND_CLS[it.cond] || ''}">${esc(it.cond)}${it.cond === 'New' ? ' ✦' : ''}</i>` : ''}</span>` : ''}</span>
+    ${on.length ? `<span class="gl-bar bt2-bar"><i style="width:${Math.max(6, Math.round(on.length / maxG * 100))}%"></i></span>` : ''}
+    ${gearWarn(it, 'gl-warn')}</button>`;
+};
+appGear = (orig => function(){ return orig().replace(/<span class="bt-bar"><i style="width:\d+%"><\/i><\/span><\/button>/g, '</button>'); })(appGear);
+
+
+/* Device-shaped icons for gear, picked from the name (generic shapes, no logos), and a soft color glow on tiles. */
+const GI = (d, extra = '') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const GEAR_ICONS = {
+  tower:   GI('<path d="M8.5 2.5h7l1 16h-9z"/><path d="M12 2.5v16"/><path d="M6.5 21.5h11"/><path d="M9.5 18.5l-.8 3M14.5 18.5l.8 3"/>'),
+  box:     GI('<rect x="2.5" y="8" width="19" height="9" rx="2"/><path d="M5.5 12.5h6"/><circle cx="17.5" cy="12.5" r="1.2" fill="currentColor"/><path d="M5 17v2M19 17v2"/>'),
+  vr:      GI('<path d="M3 9.5a2.5 2.5 0 0 1 2.5-2.5h13A2.5 2.5 0 0 1 21 9.5v4a3 3 0 0 1-3 3h-2.2l-1.6-2a1.5 1.5 0 0 0-2.4 0l-1.6 2H6a3 3 0 0 1-3-3z"/><path d="M7 7c0-2 2-3.5 5-3.5S17 5 17 7"/>'),
+  remote:  GI('<rect x="8.5" y="2.5" width="7" height="19" rx="3"/><path d="M12 5.5v3M10.5 7h3"/><circle cx="12" cy="12.5" r="1" fill="currentColor"/><path d="M10.8 16.5h2.4M10.8 18.5h2.4"/>'),
+  hybrid:  GI('<rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M6 6.5H4.8A2.3 2.3 0 0 0 2.5 8.8v6.4a2.3 2.3 0 0 0 2.3 2.3H6M18 6.5h1.2a2.3 2.3 0 0 1 2.3 2.3v6.4a2.3 2.3 0 0 1-2.3 2.3H18"/><circle cx="4.5" cy="10" r=".9" fill="currentColor"/><circle cx="19.5" cy="14" r=".9" fill="currentColor"/>'),
+  clam:    GI('<rect x="5" y="2.5" width="14" height="8.5" rx="1.8"/><rect x="5" y="13" width="14" height="8.5" rx="1.8"/><rect x="7.5" y="4.5" width="9" height="4.5" rx=".6"/><path d="M8 17h2M9 16v2"/><circle cx="15.5" cy="17" r=".9" fill="currentColor"/>'),
+  wide:    GI('<rect x="1.5" y="7" width="21" height="10" rx="5"/><rect x="7.5" y="9" width="9" height="6" rx="1"/><path d="M4 12h2M5 11v2"/><circle cx="19" cy="11" r=".8" fill="currentColor"/><circle cx="19" cy="13.5" r=".8" fill="currentColor"/>'),
+  pc:      GI('<rect x="2.5" y="3.5" width="19" height="12.5" rx="1.8"/><path d="M9 20.5h6M12 16v4.5"/>'),
+  joycon:  GI('<path d="M10.5 3.5H8a3.5 3.5 0 0 0-3.5 3.5v10A3.5 3.5 0 0 0 8 20.5h2.5z"/><path d="M13.5 3.5H16A3.5 3.5 0 0 1 19.5 7v10a3.5 3.5 0 0 1-3.5 3.5h-2.5z"/><circle cx="7.5" cy="8.5" r="1.2"/><circle cx="16.5" cy="14.5" r="1.2"/>'),
+  pad:     GEAR_TYPES.controller.icon,
+  headset: GEAR_TYPES.audio.icon,
+  buds:    GI('<path d="M7 4.5a3 3 0 0 1 3 3v1.5a3 3 0 0 1-3 3 3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3z"/><path d="M8 12v7.5"/><path d="M17 4.5a3 3 0 0 0-3 3v1.5a3 3 0 0 0 3 3 3 3 0 0 0 3-3V7.5a3 3 0 0 0-3-3z"/><path d="M16 12v7.5"/>'),
+  dock:    GI('<path d="M4 20.5h16"/><path d="M6 20.5l1.5-9h9l1.5 9"/><path d="M9 11.5V5.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6"/>'),
+  plug:    GEAR_TYPES.accessory.icon,
+  other:   GEAR_TYPES.other.icon
+};
+function gearIcon(it){
+  const n = ((it.name || '') + ' ' + (it.model || '')).toLowerCase();
+  if (/quest|\bvr\b|psvr|vive|valve index|vision pro/.test(n)) return GEAR_ICONS.vr;
+  if (it.type === 'controller'){ if (/joy-?con/.test(n)) return GEAR_ICONS.joycon; if (/wii ?remote|wiimote/.test(n)) return GEAR_ICONS.remote; return GEAR_ICONS.pad; }
+  if (it.type === 'audio') return /bud|airpod|earphone|in-ear/.test(n) ? GEAR_ICONS.buds : GEAR_ICONS.headset;
+  if (/\bwii\b(?! ?u)/.test(n)) return GEAR_ICONS.remote;
+  if (/\bpc\b|laptop|desktop|gaming rig|mac\b/.test(n)) return GEAR_ICONS.pc;
+  if (/\bds\b|3ds|dsi|2ds/.test(n)) return GEAR_ICONS.clam;
+  if (/switch/.test(n)) return GEAR_ICONS.hybrid;
+  if (/psp|vita|portal|steam deck|rog ally|legion go|game ?boy|ayaneo/.test(n)) return GEAR_ICONS.wide;
+  if (/ps5|playstation 5|series x/.test(n)) return GEAR_ICONS.tower;
+  if (it.type === 'console') return GEAR_ICONS.box;
+  if (it.type === 'handheld') return GEAR_ICONS.wide;
+  if (/dock|charg|stand|station/.test(n)) return GEAR_ICONS.dock;
+  return it.type === 'accessory' ? GEAR_ICONS.plug : GEAR_ICONS.other;
+}
+
+
+/* worn and needs-repair gear get different badges: amber "!" for worn, red wrench for repair */
+const gearWarn = (it, base) => it.cond === 'Needs repair' ? `<span class="${base} repair" title="Needs repair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0-5.3 5L4 16.7 7.3 20l5.2-5.2a4 4 0 0 0 5-5.3l-2.4 2.4-2.3-.7-.7-2.3z"/></svg></span>` : it.cond === 'Worn' ? `<span class="${base} worn" title="Worn">!</span>` : '';
+
+
+/* condition colors, best to worst: New mint ✦, Great green, Good plain, Worn amber, Needs repair red */
+const COND_CLS = { 'New':'gc-new', 'Great':'gc-great', 'Good':'', 'Worn':'gc-worn', 'Needs repair':'gc-repair' };
+const condSpan = c => c ? (COND_CLS[c] ? `<span class="${COND_CLS[c]}">${esc(c)}${c === 'New' ? ' ✦' : ''}</span>` : esc(c)) : '';
+function gearSubHTML(it){ const sys = it.type === 'console' || it.type === 'handheld', on = sys && it.status === 'own' ? gearOn(it) : [];
+  if (it.status === 'wish' || (sys && on.length)) return esc(gearSub(it));
+  const parts = [it.qty > 1 ? '×' + it.qty : '', it.cond ? condSpan(it.cond) : ''].filter(Boolean);
+  return parts.length ? parts.join(' · ') : esc([it.model, it.color].filter(Boolean).join(' · ') || (GEAR_TYPES[it.type] || GEAR_TYPES.other).one); }
+
+
+/* ===================================================================
+   Gear extras: Storage & installed games for systems, and a Care log
+   for anything worn or broken (marking it fixed updates the condition).
+   Open them from the back of any gear card.
+   =================================================================== */
+const gearById = id => gearList().find(x => x.id === id);
+const gb = n => n >= 1000 ? (n / 1000).toFixed(n % 1000 ? 1 : 0) + ' TB' : Math.round(n) + ' GB';
+function gearStorage(it){ const st = it.storage || {}, inst = (it.installed || []).map(x => ({ ...x, g: games.find(g => g.id === x.gid) })).filter(x => x.g);
+  const used = inst.reduce((s, x) => s + (+x.gb || 0), 0) + (+st.other || 0); return { total: +st.total || 0, used, inst, other: +st.other || 0 }; }
+let gxSheet = null;
+function gxOpen(kind, id){ gxSheet = { kind, id, logKind:'issue' }; gxDraw(); }
+function gxClose(){ $('gxSheet')?.remove(); gxSheet = null; renderStage(false); }
+function gxDraw(){
+  const it = gearById(gxSheet.id); if (!it) return gxClose(); const [a, b] = GEAR_COL[it.type] || GEAR_COL.other;
+  let body = '', title = '';
+  if (gxSheet.kind === 'storage'){
+    title = `Storage · ${esc(it.name)}`; const S = gearStorage(it), pct = S.total ? Math.min(100, S.used / S.total * 100) : 0;
+    const onSys = gearOn(it).filter(g => !(it.installed || []).some(x => x.gid === g.id)).sort((p, q) => p.title.localeCompare(q.title));
+    const tips = S.inst.filter(x => ['beaten','dropped','skip'].includes(x.g.status)).sort((p, q) => (+q.gb || 0) - (+p.gb || 0));
+    body = `<div class="gx-meter" style="--a:${a};--b:${b}"><div class="gx-mtop"><b>${S.total ? `${gb(S.used)} of ${gb(S.total)}` : gb(S.used) + ' used'}</b><span>${S.total ? `${gb(Math.max(0, S.total - S.used))} free` : 'Add the total size to see free space'}</span></div>
+        <div class="gx-bar">${S.inst.sort((p, q) => (+q.gb || 0) - (+p.gb || 0)).map(x => `<i style="width:${S.total ? (+x.gb || 0) / S.total * 100 : 0}%" title="${esc(x.g.title)}"></i>`).join('')}${S.other && S.total ? `<i class="other" style="width:${S.other / S.total * 100}%"></i>` : ''}</div>
+        ${S.total && pct >= 85 ? `<p class="gx-warn">Almost full: ${Math.round(pct)}% used</p>` : ''}</div>
+      <div class="gf-two"><div><label class="d-l" for="gxTotal">Total storage (GB)</label><input class="search" id="gxTotal" inputmode="decimal" value="${(it.storage || {}).total || ''}" placeholder="825"></div>
+        <div><label class="d-l" for="gxOther">System and other (GB)</label><input class="search" id="gxOther" inputmode="decimal" value="${(it.storage || {}).other || ''}" placeholder="0"></div></div>
+      ${tips.length ? `<div class="gx-tip"><b>🧹 Could free up ${gb(tips.reduce((s, x) => s + (+x.gb || 0), 0))}</b><small>${tips.map(x => `${esc(x.g.title)} (${ST[x.g.status].short.toLowerCase()}, ${gb(+x.gb || 0)})`).join(', ')}</small></div>` : ''}
+      <p class="d-l" style="margin:14px 0 6px">Installed games (${S.inst.length})</p>
+      <div class="gx-list">${S.inst.length ? S.inst.map(x => `<div class="gx-row">${discHTML(x.g, 30)}<span><b>${esc(x.g.title)}</b><small>${ST[x.g.status].long}</small></span>
+          <input class="search gx-gb" data-gxsize="${x.gid}" inputmode="decimal" value="${x.gb || ''}" placeholder="GB" aria-label="Size in GB"><button class="tedit" data-gxrm="${x.gid}" aria-label="Uninstall">✕</button></div>`).join('') : '<p class="set-note" style="margin:0">Nothing marked as installed yet.</p>'}</div>
+      ${onSys.length ? `<div class="gx-add"><select id="gxPick" aria-label="Game to add">${onSys.map(g => `<option value="${g.id}">${esc(g.title)}</option>`).join('')}</select><input class="search gx-gb" id="gxNewGb" inputmode="decimal" placeholder="GB"><button class="btn primary" data-gxadd>Add</button></div>`
+        : `<p class="set-note" style="margin:8px 0 0">${gearOn(it).length ? 'Every game on this system is marked installed.' : 'Games show up here once their console matches this system\u2019s name.'}</p>`}`;
+  } else {
+    title = `Care log · ${esc(it.name)}`; const log = (it.log || []).slice().sort((p, q) => q.at - p.at);
+    const K = { issue:['⚠️','Problem'], tried:['🛠️','Tried a fix'], fixed:['✅','Fixed'], note:['📝','Note'] };
+    body = `<div class="gx-cond">Condition: ${it.cond ? condSpan(it.cond) : '<span>not set</span>'}</div>
+      <p class="d-l" style="margin:12px 0 6px">Add an entry</p><div class="gf-seg wrap">${Object.entries(K).map(([k, [e, l]]) => `<button data-gxkind="${k}" aria-pressed="${gxSheet.logKind === k}">${e} ${l}</button>`).join('')}</div>
+      <textarea class="bk" id="gxText" rows="2" placeholder="${{ issue:'Left stick drifts up', tried:'Cleaned the stick with alcohol', fixed:'Replaced the stick module', note:'Bought a charging dock' }[gxSheet.logKind]}" style="width:100%;margin-top:8px"></textarea>
+      ${gxSheet.logKind === 'fixed' ? '<p class="set-note" style="margin:4px 0 0">Saving a fix marks this as <b>Good</b>.</p>' : gxSheet.logKind === 'issue' && !['Worn','Needs repair'].includes(it.cond) ? '<p class="set-note" style="margin:4px 0 0">Saving a problem marks this as <b>Needs repair</b>.</p>' : ''}
+      <button class="btn primary" data-gxlog style="width:100%;margin-top:8px;padding:11px">Save entry</button>
+      <p class="d-l" style="margin:16px 0 6px">History</p>
+      <div class="gx-log">${log.length ? log.map(e => `<div class="gx-entry k-${e.kind}"><span class="gx-e">${K[e.kind][0]}</span><span><b>${K[e.kind][1]}</b>${e.text ? `<p>${esc(e.text)}</p>` : ''}<small>${fmtDate(e.at)}</small></span><button class="tedit" data-gxdel="${e.id}" aria-label="Delete entry">✕</button></div>`).join('') : '<p class="set-note" style="margin:0">No entries yet. Log problems and fixes here to keep track of what you tried.</p>'}</div>`;
+  }
+  const ov = $('gxSheet') || document.createElement('div'); ov.id = 'gxSheet'; ov.className = 'tm-ov gear-ov';
+  ov.innerHTML = `<div class="gear-form" role="dialog" aria-label="${title}"><div class="gf-head"><b>${title}</b><button class="btn round" data-gxclose aria-label="Close">✕</button></div><div class="gf-scroll">${body}</div></div>`;
+  if (!ov.isConnected){ $('os').appendChild(ov); ov.addEventListener('click', gxClick); ov.addEventListener('change', gxChange); }
+}
+function gxClick(e){
+  const it = gearById(gxSheet?.id); if (!it) return; const t = e.target;
+  if (t === e.currentTarget || t.closest('[data-gxclose]')) return gxClose();
+  const k = t.closest('[data-gxkind]'); if (k){ gxSheet.logKind = k.dataset.gxkind; gxDraw(); return; }
+  if (t.closest('[data-gxlog]')){ const text = $('gxText').value.trim(), kind = gxSheet.logKind; if (!text && kind !== 'fixed'){ $('gxText').focus(); return; }
+    (it.log ||= []).push({ id:newTid(), at:Date.now(), kind, text });
+    if (kind === 'fixed'){ it.cond = 'Good'; toast(`🎉 ${it.name} is fixed! Marked as Good.`); }
+    else if (kind === 'issue' && !['Worn','Needs repair'].includes(it.cond)){ it.cond = 'Needs repair'; toast(`Marked ${it.name} as Needs repair`); }
+    savePrefs(); gxDraw(); return; }
+  const dl = t.closest('[data-gxdel]'); if (dl){ it.log = (it.log || []).filter(x => x.id !== dl.dataset.gxdel); savePrefs(); gxDraw(); return; }
+  if (t.closest('[data-gxadd]')){ const gid = $('gxPick').value, size = parseFloat($('gxNewGb').value) || 0; (it.installed ||= []).push({ gid, gb: size }); savePrefs(); gxDraw(); return; }
+  const rm = t.closest('[data-gxrm]'); if (rm){ it.installed = (it.installed || []).filter(x => x.gid !== rm.dataset.gxrm); savePrefs(); gxDraw(); return; }
+}
+function gxChange(e){
+  const it = gearById(gxSheet?.id); if (!it) return; const t = e.target, num = v => { const n = parseFloat(String(v).replace(/[^0-9.]/g, '')); return isNaN(n) ? null : n; };
+  if (t.id === 'gxTotal' || t.id === 'gxOther'){ it.storage = { ...(it.storage || {}), [t.id === 'gxTotal' ? 'total' : 'other']: num(t.value) }; savePrefs(); gxDraw(); }
+  const sz = t.dataset && t.dataset.gxsize; if (sz){ const x = (it.installed || []).find(y => y.gid === sz); if (x){ x.gb = num(t.value) || 0; savePrefs(); gxDraw(); } }
+}
+/* buttons on the back of each card */
+gearCardBack = (orig => function(it){ const html = orig(it), sys = it.type === 'console' || it.type === 'handheld', S = sys ? gearStorage(it) : null, n = (it.log || []).length;
+  const extra = `<div class="cc-x2">${sys ? `<button class="btn" data-gxopen="storage|${it.id}">💾 Storage${S.total ? ` · ${Math.round(S.used / S.total * 100)}%` : ''}</button>` : ''}<button class="btn" data-gxopen="care|${it.id}">🔧 Care log${n ? ` · ${n}` : ''}</button></div>`;
+  return html.replace('<div class="cc-actions">', extra + '<div class="cc-actions">'); })(gearCardBack);
+document.addEventListener('click', e => { const o = e.target.closest('[data-gxopen]'); if (!o) return; e.stopPropagation(); const [kind, id] = o.dataset.gxopen.split('|'); $('ccView')?.remove(); gxOpen(kind, id); }, true);
+/* storage shows on the system tiles too */
+bentoTile = (orig => function(it, size){ let html = orig(it, size); const sys = it.type === 'console' || it.type === 'handheld'; if (!sys) return html; const S = gearStorage(it); if (!S.total || !S.used) return html;   // only once there's something to show
+  const pct = Math.round(S.used / S.total * 100), cls = pct >= 85 ? 'gx-full' : '';
+  if (size === 'big') return html.replace('<span class="bt2-chips">', `<span class="bt2-chips"><i class="${cls}">💾 ${pct}% full</i>`);
+  return html.replace(/(<span class="bt2-t"><b>[^<]*<\/b><small>)([\s\S]*?)(<\/small>)/, (m, a2, b2, c2) => `${a2}${b2} · <span class="${cls}">${pct}% full</span>${c2}`); })(bentoTile);
+
+
+
+/* one name per thing: the Spin tab is "What to Play" everywhere */
+APPS.spin.title = 'What to Play';
 
 load().then(() => {
   wallPhotoLoad();
