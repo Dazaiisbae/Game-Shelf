@@ -2400,6 +2400,173 @@ fieldset.group > legend{position:absolute;top:13px;left:14px;padding:0 !importan
 .g3 .g2-bar{justify-content:flex-start}
 
 .spin-btn.btn.primary{padding:14px 40px;border-radius:999px;font-size:17px;font-weight:900}
+/* ===== Reworked game panel ===== */
+.gp2-hero{position:relative;margin:-4px -4px 10px;padding:16px 14px 14px;border-radius:22px;overflow:hidden;isolation:isolate;border:1px solid rgba(255,255,255,.6)}
+.gp2-bg{position:absolute;inset:-20px;z-index:-1;background:linear-gradient(160deg,hsl(var(--h,200) 75% 70%),hsl(calc(var(--h,200) + 60) 70% 50%));filter:saturate(1.1)}
+.gp2-bg.photo{background:var(--cov) center/cover no-repeat;filter:blur(22px) saturate(1.4) brightness(.85);transform:scale(1.2)}
+.gp2-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.25))}
+.gp2-hero .gp-top{color:#fff}
+.gp2-hero .gp-top h2,.gp2-hero .gp-top b{text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.gp2-hero .gp-top small,.gp2-hero .gp-top p,.gp2-hero .gp-top span:not(.cd){color:rgba(255,255,255,.92) !important}
+.gp2-tabs{position:sticky;top:-2px;z-index:3;display:flex;gap:4px;padding:4px;margin:0 0 10px;border-radius:999px;background:var(--win-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--edge)}
+.gp2-tabs button{flex:1;padding:9px 6px;border-radius:999px;border:0;background:none;color:var(--soft);font:inherit;font-size:13px;font-weight:900;cursor:pointer}
+.gp2-tabs button small{font-size:11px;opacity:.8}
+.gp2-tabs button[aria-selected=true]{color:#fff;background:var(--pill-accent);box-shadow:0 3px 10px rgba(30,110,200,.3),inset 0 1px 0 rgba(255,255,255,.6)}
+.gp2-pane{display:none}
+.gp2[data-tab=overview] .p-overview,.gp2[data-tab=trophies] .p-trophies,.gp2[data-tab=info] .p-info{display:block;animation:pop .2s ease-out}
+/* ===== Reworked Now Playing ===== */
+.np2{margin:0 0 14px}
+.np2-card{position:relative;overflow:hidden;isolation:isolate;padding:14px;border-radius:24px;color:#fff;border:1px solid rgba(255,255,255,.6);box-shadow:0 12px 30px rgba(0,30,80,.22)}
+.np2-top{display:flex;align-items:center;justify-content:space-between;min-height:30px}
+.np2-k{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;opacity:.92;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.np2-nav{display:flex;gap:6px}.np2-nav .btn.round{width:30px;height:30px;padding:0;background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5);color:#fff}
+.np2-main{display:flex;align-items:center;gap:14px;margin-top:4px}
+.np2-disc{flex:0 0 auto;filter:drop-shadow(0 8px 14px rgba(0,0,0,.3))}
+.np2-disc .cd{animation:spin 14s linear infinite}
+.np2-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.np2-t b{font-size:21px;font-weight:900;line-height:1.15;text-shadow:0 1px 4px rgba(0,0,0,.35);overflow-wrap:anywhere}
+.np2-t small{font-size:12.5px;font-weight:700;opacity:.92}
+.np2-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.np2-chips i{font-style:normal;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:800;background:rgba(255,255,255,.24);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.np2-note{display:flex;gap:8px;align-items:flex-start;margin-top:12px;padding:10px 12px;border-radius:16px;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.np2-note p{margin:0;font-size:14px;font-weight:700;line-height:1.35}.np2-note small{display:block;margin-top:3px;font-size:11.5px;opacity:.9}
+.np2-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.np2-actions .btn:not(.primary){background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.55);color:#fff}
+.np2-actions .btn.round{width:40px;height:40px;padding:0;display:inline-flex;align-items:center;justify-content:center}.np2-actions .btn.round svg{width:18px;height:18px}
+.np2-go{flex:1 1 140px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:15px;padding:11px}
+.np2-go .bi{width:16px;height:16px}
+@media (prefers-reduced-motion:reduce){ .np2-disc .cd{animation:none} }
+:root[data-lite] .np2-disc .cd{animation:none}
+/* the list under it matches the app's glass rows */
+.qlist .qi,.qlist li,.qlist .q-row{border-radius:16px}
+/* ===== Reworked Library toolbar ===== */
+.ltool2{display:flex;align-items:center;gap:8px;margin:0 0 10px}
+.lt2-folder{flex:0 1 38%;min-width:0;display:block !important}
+.lt2-folder select{width:100%;margin:0;padding:9px 28px 9px 12px;border-radius:999px;font-weight:800;font-size:13px}
+.lt2-search{flex:1 1 auto;min-width:0;position:relative;display:flex;align-items:center}
+.lt2-search svg{position:absolute;left:11px;width:16px;height:16px;color:var(--soft);pointer-events:none}
+.lt2-search input{width:100%;margin:0;padding:9px 12px 9px 33px;border-radius:999px}
+.lt2-menu,.lt2-add{flex:0 0 auto;width:38px;height:38px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+.lt2-menu svg,.lt2-add svg{width:18px;height:18px}
+.lt2-menu[aria-expanded=true]{background:var(--tint);border-color:var(--accent)}
+.lt2-pop{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px 12px;margin:-2px 0 12px;padding:12px;border-radius:18px;background:var(--pane);border:1px solid var(--pane-line)}
+.lt2-pop[hidden]{display:none}
+.lt2-pop .d-l{margin:0}.lt2-pop select{margin:0;width:100%;border-radius:12px}
+.lt2-pop .vt{justify-self:start}
+.lt2-sorted{margin:-4px 2px 8px;font-size:12px;font-weight:700;color:var(--soft)}
+@media (min-width:760px){ .lt2-folder{display:none !important} }
+/* the seasonal greeting is slimmer in Library */
+.stage[data-app=library] .season-hello,#stageBody > .season-hello{padding:8px 12px}
+#stageBody > .season-hello .se-big{font-size:22px}#stageBody > .season-hello small{display:none}
+/* ===== Reworked Features page ===== */
+label.feat{display:flex;align-items:center;gap:12px}
+.feat-ic{flex:0 0 auto;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;background:var(--tint);border:1px solid var(--edge);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+label.feat .feat-t{flex:1;min-width:0}
+.feat-where{display:inline-block;margin-top:4px;padding:2px 8px;border-radius:999px;font-style:normal;font-size:10.5px;font-weight:800;color:var(--soft);background:var(--field);border:1px solid var(--edge)}
+.feat-sum{margin:0 0 12px;padding:12px 14px;border-radius:16px;background:var(--tint);border:1px solid var(--edge);font-size:14px;font-weight:700}
+.feat-sum b{font-size:20px}.feat-sum small{display:block;margin-top:3px;font-size:12px;font-weight:600;color:var(--soft)}
+
+:root{--pill-accent:linear-gradient(180deg,#6CC6F5,#2E9BE0 50%,#1F86CC 51%,#3AA8EA)}
+.np2-nav{align-items:center}.np2-nav .btn.round svg{width:15px;height:15px}
+.np2-actions{flex-wrap:nowrap}.np2-go{flex:1 1 auto}
+.feat-where{align-self:flex-start;max-width:100%}
+label.feat .feat-t{display:flex;flex-direction:column;align-items:flex-start}
+.lt2-folder{flex:0 0 116px !important;max-width:116px !important}
+.lt2-folder select{min-width:0 !important;padding:9px 22px 9px 11px !important;font-size:12.5px !important;background-position:right 7px center}
+.lt2-search input::placeholder{font-size:13px}
+/* ===== Pill bars ===== */
+:root{--pill-accent:linear-gradient(180deg,#6CC6F5,#2E9BE0 50%,#1F86CC 51%,#3AA8EA)}
+/* top: a floating glass pill */
+.stage-h{margin:8px 10px 4px;padding:6px 8px 6px 7px !important;border-radius:999px;border:1px solid rgba(255,255,255,.75) !important;
+  background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.38)) !important;-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);
+  box-shadow:0 8px 22px rgba(0,40,90,.16),inset 0 1px 0 #fff;gap:8px !important;position:relative}
+@media (prefers-color-scheme:dark){ .stage-h{background:linear-gradient(180deg,rgba(40,70,120,.62),rgba(15,30,60,.55)) !important;border-color:rgba(255,255,255,.2) !important;box-shadow:0 8px 22px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.22)} }
+.stage-h .ti{flex:0 0 auto;width:34px !important;height:34px !important;padding:7px;border-radius:50%;color:#fff !important;
+  background:radial-gradient(circle at 35% 28%,rgba(255,255,255,.75),transparent 45%),conic-gradient(from 200deg,#5FD8FF,#9B7BFF,#FF7FC8,#FFE066,#5FF2B0,#5FD8FF);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.85),0 3px 8px rgba(60,60,160,.25)}
+.stage-h .ti svg{width:100%;height:100%;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+.stage-h h1{font-size:19px !important;font-weight:900}
+.hdr-chip{flex:0 1 auto;min-width:0;margin-right:auto;padding:4px 10px;border-radius:999px;font-size:11.5px;font-weight:800;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.85)}
+@media (prefers-color-scheme:dark){ .hdr-chip{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)} }
+.stage-h .test-badge{margin-left:0 !important}
+.stage-h::after{left:30px !important;right:30px !important}
+/* bottom: a floating glass dock with labels */
+.taskbar{left:10px !important;right:10px !important;bottom:calc(8px + env(safe-area-inset-bottom) * .55) !important;height:68px !important;padding:0 6px !important;border-radius:28px;
+  border:1px solid rgba(255,255,255,.75) !important;background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.4)) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(1.6) !important;backdrop-filter:blur(22px) saturate(1.6) !important;box-shadow:0 10px 28px rgba(0,40,90,.25),inset 0 1px 0 #fff;color:var(--ink) !important}
+@media (prefers-color-scheme:dark){ .taskbar{background:linear-gradient(180deg,rgba(40,70,120,.66),rgba(15,30,60,.6)) !important;border-color:rgba(255,255,255,.2) !important;box-shadow:0 10px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.22)} }
+.taskbar .task{flex-direction:column;gap:2px;height:56px !important;padding:5px 6px !important;border-radius:20px !important;font-size:10px !important;font-weight:800;color:var(--soft) !important;border:0 !important}
+.taskbar .task .ti{width:22px;height:22px;color:inherit !important}
+.taskbar .task .lbl{display:block !important;font-size:10px;line-height:1.1;white-space:nowrap}
+.taskbar .task.cur{color:#fff !important;background:var(--pill-accent) !important;box-shadow:0 4px 12px rgba(30,110,200,.35),inset 0 1px 0 rgba(255,255,255,.6) !important}
+.taskbar .task.cur::after{display:none !important}
+.taskbar .task.cur .ti{color:#fff !important}
+.taskbar .addt{flex:0 0 auto !important}
+.taskbar .addt .lbl{display:none !important}
+:root{--tb:88px}
+/* keep the bottom of each page clear of the floating dock */
+#stageBody{padding-bottom:18px}
+@media (min-width:760px){ .taskbar{left:50% !important;right:auto !important;transform:translateX(-50%);width:min(760px,calc(100% - 24px))} .taskbar .task{flex:1 1 0;max-width:110px} }
+
+.stage-h h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto;min-width:0}
+.hdr-chip{flex-shrink:2}
+@media (max-width:380px){ .hdr-chip{display:none} }
+.taskbar .task{min-width:52px}
+.stage-h h1{flex-shrink:0 !important;overflow:visible !important}
+.hdr-chip[hidden]{display:none !important}
+.stage{bottom:0 !important}
+#stageBody{padding-bottom:calc(96px + env(safe-area-inset-bottom)) !important}
+#seasonDeco{bottom:0 !important;z-index:53}
+.taskbar{z-index:9000}
+.stage-h{border-bottom:1px solid rgba(255,255,255,.75) !important}
+/* ===== Cooler pill bars: holo rims, glossy sheen, a light sweep, a spinning holo orb, jelly active tab ===== */
+.stage-h,.taskbar{border:1.6px solid transparent !important;
+  background:linear-gradient(180deg,rgba(255,255,255,.68),rgba(255,255,255,.40)) padding-box,
+             linear-gradient(100deg,#9FF0FF,#C9B8FF 25%,#FFC4E8 50%,#FFF0B0 75%,#B8FFE0) border-box !important}
+@media (prefers-color-scheme:dark){ .stage-h,.taskbar{background:linear-gradient(180deg,rgba(44,76,130,.68),rgba(14,28,58,.62)) padding-box,
+             linear-gradient(100deg,rgba(127,231,255,.75),rgba(180,156,255,.75) 25%,rgba(255,159,216,.75) 50%,rgba(255,233,138,.7) 75%,rgba(140,255,201,.7)) border-box !important} }
+/* glossy top sheen plus a soft light sweep every few seconds */
+.stage-h::before,.taskbar::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.08) 48%,transparent 52%),
+             linear-gradient(105deg,transparent 42%,rgba(255,255,255,.55) 50%,transparent 58%);
+  background-size:100% 100%,260% 100%;background-repeat:no-repeat;background-position:0 0,140% 0;animation:barSweep 9s ease-in-out infinite}
+.taskbar::before{animation-delay:1.2s}
+@media (prefers-color-scheme:dark){ .stage-h::before,.taskbar::before{background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.02) 48%,transparent 52%),linear-gradient(105deg,transparent 42%,rgba(255,255,255,.22) 50%,transparent 58%);background-size:100% 100%,260% 100%;background-repeat:no-repeat} }
+@keyframes barSweep{0%,62%{background-position:0 0,140% 0}82%,100%{background-position:0 0,-40% 0}}
+.stage-h > *,.taskbar > *{position:relative;z-index:1}
+/* the tab icon is a holo disc that slowly turns */
+.stage-h .ti{background:none !important;overflow:hidden;isolation:isolate}
+.stage-h .ti::before{content:"";position:absolute;inset:-20%;z-index:-1;background:conic-gradient(from 0deg,#5FD8FF,#9B7BFF,#FF7FC8,#FFE066,#5FF2B0,#5FD8FF);animation:orbTurn 12s linear infinite}
+.stage-h .ti::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:50%;background:radial-gradient(circle at 35% 26%,rgba(255,255,255,.8),transparent 46%)}
+@keyframes orbTurn{to{transform:rotate(360deg)}}
+/* the live number gets a glossy little capsule */
+.hdr-chip{background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.5)) !important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 1px 3px rgba(0,40,90,.12) !important;color:var(--ink) !important}
+@media (prefers-color-scheme:dark){ .hdr-chip{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08)) !important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22) !important;color:#EAF4FF !important} }
+/* the active tab is a glossy jelly pill with a soft glow */
+.taskbar .task.cur{position:relative;overflow:hidden}
+.taskbar .task.cur::before{content:"";position:absolute;left:8%;right:8%;top:3px;height:46%;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,.05));pointer-events:none}
+.taskbar .task.cur{box-shadow:0 6px 16px rgba(30,110,200,.35),0 0 18px rgba(127,231,255,.35),inset 0 -2px 4px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.7) !important}
+.taskbar .task .ti{transition:transform .18s cubic-bezier(.3,1.6,.5,1)}
+.taskbar .task:active .ti{transform:scale(.82)}
+.taskbar .task.cur .ti{animation:tabPop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes tabPop{0%{transform:scale(.7)}100%{transform:none}}
+/* calmer when Reduce effects or Reduce Motion is on */
+:root[data-lite] .stage-h::before,:root[data-lite] .taskbar::before,:root[data-lite] .stage-h .ti::before{animation:none}
+@media (prefers-reduced-motion:reduce){ .stage-h::before,.taskbar::before,.stage-h .ti::before,.taskbar .task.cur .ti{animation:none} }
+
+/* lots of tabs in the bar: icons only, so everything fits */
+.taskbar[data-many] .task .lbl{display:none !important}
+.taskbar[data-many] .task{min-width:0 !important;flex:1 1 0 !important;height:48px !important;padding:0 !important;justify-content:center}
+.taskbar[data-many] .task .ti{width:23px;height:23px}
+
+/* Now Playing card corner buttons: real round glass buttons with clear white icons */
+.np2-nav .btn.round{width:34px !important;height:34px !important;min-width:34px;padding:0 !important;border-radius:50% !important;display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(10,25,55,.28) !important;border:1px solid rgba(255,255,255,.6) !important;color:#fff !important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:0 3px 8px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.45) !important}
+.np2-nav .btn.round svg{width:16px !important;height:16px !important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+.np2-nav .btn.round:active{transform:scale(.92)}
+.np2-nav .btn.round[disabled]{opacity:.45}
 </style>
 </head>
 <body>
@@ -4533,7 +4700,7 @@ document.addEventListener('change', e => { const s = dsched();
    "Update available" banner. The app knows its own version; every so often
    it peeks at the copy on GitHub, and if that's newer it offers to update.
    =================================================================== */
-const APP_VERSION = 'v16';
+const APP_VERSION = 'v19';
 const upd = { at:0, found:false };
 async function updCheck(){
   if (!/^https?:/.test(location.protocol) || upd.found) return;
@@ -5190,6 +5357,128 @@ bentoTile = (orig => function(it, size){ let html = orig(it, size); const sys = 
 
 /* one name per thing: the Spin tab is "What to Play" everywhere */
 APPS.spin.title = 'What to Play';
+
+/* ===================================================================
+   Reworks: the game panel (hero + tabs), Now Playing (one clear card),
+   the Library toolbar (one tidy row with a View & sort menu), and the
+   Features page (icons and "where to find it" for every switch).
+   =================================================================== */
+const htmlToFrag = h => { const t = document.createElement('template'); t.innerHTML = h; return t.content; };
+const outer = n => n ? n.outerHTML : '';
+
+/* ---------- 1. Game panel: a big cover header and three tabs ---------- */
+let gpTab = 'overview', gpLast = null;
+appGame = (orig => function(id){
+  const html = orig(id), g = games.find(x => x.id === id); if (!g) return html;
+  if (gpLast !== id){ gpLast = id; gpTab = 'overview'; }
+  const F = document.createElement('div'); F.innerHTML = html; const byLegend = name => [...F.querySelectorAll(':scope > fieldset.group')].find(f => f.querySelector(':scope > legend')?.textContent.trim() === name);
+  const top = F.querySelector(':scope > .gp-top'), status = byLegend('Status'), troph = F.querySelector(':scope > .trsec2, :scope > .trsec'), money = byLegend('Money'), save = byLegend('Save point'),
+    details = byLegend('Details'), order = byLegend('Play order'), actions = F.querySelector(':scope > .gp-actions'), note = F.querySelector(':scope > p.set-note');
+  const used = new Set([top, status, troph, money, save, details, order, actions, note].filter(Boolean));
+  const rest = [...F.children].filter(c => !used.has(c));   // anything else a feature added stays visible on Info
+  const cov = covers[id], hasTr = !!troph, tabs = [['overview','Overview'], ...(hasTr ? [['trophies','Trophies']] : []), ['info','Info']];
+  if (gpTab === 'trophies' && !hasTr) gpTab = 'overview';
+  const tCount = hasTr && typeof trophiesOf === 'function' ? (() => { const T = trophiesOf(g); return T.length ? ` ${T.filter(t => t.earned).length}/${T.length}` : ''; })() : '';
+  return `<div class="gp2" data-tab="${gpTab}">
+    <div class="gp2-hero" style="${cov ? `--cov:url('${cov}')` : `--h:${hue(g.title)}`}"><span class="gp2-bg ${cov ? 'photo' : ''}"></span>${outer(top)}</div>
+    <div class="gp2-tabs" role="tablist">${tabs.map(([k, l]) => `<button role="tab" data-gptab="${k}" aria-selected="${gpTab === k}">${l}${k === 'trophies' ? `<small>${tCount}</small>` : ''}</button>`).join('')}</div>
+    <div class="gp2-pane p-overview">${outer(status)}${outer(save)}${outer(actions)}</div>
+    ${hasTr ? `<div class="gp2-pane p-trophies">${outer(troph)}</div>` : ''}
+    <div class="gp2-pane p-info">${outer(details)}${outer(money)}${outer(order)}${rest.map(outer).join('')}${outer(note)}</div></div>`;
+})(appGame);
+document.addEventListener('click', e => { const t = e.target.closest('[data-gptab]'); if (!t) return; gpTab = t.dataset.gptab; const w = t.closest('.gp2'); if (!w) return;
+  w.dataset.tab = gpTab; w.querySelectorAll('[data-gptab]').forEach(b => b.setAttribute('aria-selected', b.dataset.gptab === gpTab)); });
+
+/* ---------- 2. Now Playing: one clear card for the game you're playing ---------- */
+appPlayer = (orig => function(){
+  const html = orig(), F = htmlToFrag(html), main = F.querySelector('.np-main'), idEl = main && main.querySelector('[data-hour]'); if (!idEl) return html;
+  const g = games.find(x => x.id === idEl.dataset.hour); if (!g) return html;
+  const prev = main.querySelector('[data-ptrack="-1"]'), next = main.querySelector('[data-ptrack="1"]'), playing = games.filter(x => x.status === 'playing').length;
+  const cov = covers[g.id], lo = g.leftOff, sess = typeof gtSess === 'function' && gtSess(), gt = featOn('gametime');
+  const primary = gt ? (sess ? `<button class="btn primary np2-go" data-gtwrap>Wrap up</button>` : `<button class="btn primary np2-go" data-gtstart="${g.id}">${PLAY_I}<span>Game Time</span></button>`)
+    : featOn('timer') ? `<button class="btn primary np2-go tm-go" data-tmstart="${g.id}">${PLAY_I}<span>Start timer</span></button>` : '';
+  const card = `<div class="np2"><div class="np2-card" style="${cov ? `--cov:url('${cov}')` : `--h:${hue(g.title)}`}"><span class="gp2-bg ${cov ? 'photo' : ''}"></span>
+    <div class="np2-top"><span class="np2-k">Now playing${playing > 1 ? ` · ${playing} games` : ''}</span><span class="np2-nav">${playing > 1 ? outer(prev) + outer(next) : ''}
+      <button class="btn round" data-quick="${g.id}" data-to="hold" aria-label="Put on hold" title="Put on hold"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg></button>
+      <button class="btn round" data-game="${g.id}" aria-label="Details" title="Details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></button></span></div>
+    <div class="np2-main"><span class="np2-disc">${discHTML(g, 112)}</span><span class="np2-t"><b>${esc(g.title)}</b>
+      <small>${esc([g.series?.trim() ? seriesOf(g) : '', g.platform].filter(Boolean).join(' · '))}</small>
+      <span class="np2-chips">${g.hours ? `<i>⏱ ${fmtH(g.hours)}</i>` : ''}${g.startedAt ? `<i>since ${fmtDate(g.startedAt)}</i>` : ''}${g.rating ? `<i>${'★'.repeat(g.rating)}</i>` : ''}</span></span></div>
+    ${gt && lo && lo.text ? `<div class="np2-note"><span>📍</span><p>${esc(lo.text)}<small>${typeof agoText === 'function' ? agoText(lo.at) : fmtDate(lo.at)}${g.nextObj ? ` · 🎯 ${esc(g.nextObj)}` : ''}</small></p></div>` : ''}
+    <div class="np2-actions">${primary}<button class="btn" data-hour="${g.id}">+1h</button><button class="btn" data-quick="${g.id}" data-to="beaten">✓ Beaten</button></div></div></div>`;
+  main.replaceWith(htmlToFrag(card)); const w = document.createElement('div'); w.appendChild(F); return w.innerHTML;
+})(appPlayer);
+renderStage = (orig => function(a){ orig(a); if (currentApp === 'player' && $('stageBody')?.querySelector('.np2')) $('stageBody').querySelectorAll(':scope > .gt-hero').forEach(x => x.remove()); })(renderStage);
+
+/* ---------- 3. Library: one tidy toolbar row ---------- */
+let libMenuOpen = false;
+appLibrary = (orig => function(){
+  const html = orig(), F = htmlToFrag(html), nav = F.querySelector('.libnav-m'), tool = F.querySelector('.ltool'); if (!tool) return html;
+  const q = tool.querySelector('#libQ'), sort = tool.querySelector('#libSort'), vt = tool.querySelector('.vt'), add = tool.querySelector('[data-launch="add"]');
+  const sortLabel = sort ? sort.options[sort.selectedIndex]?.textContent : '';
+  const bar = htmlToFrag(`<div class="ltool2">${nav ? `<div class="libnav-m lt2-folder">${nav.innerHTML}</div>` : ''}<span class="lt2-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>${outer(q)}</span>
+    <button class="btn round lt2-menu" data-libmenu aria-expanded="${libMenuOpen}" aria-label="View and sort"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
+    ${add ? `<button class="btn primary round lt2-add" data-launch="add" aria-label="Add a game"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>` : ''}</div>
+    <div class="lt2-pop" ${libMenuOpen ? '' : 'hidden'}><label class="d-l" for="libSort">Sort by</label>${outer(sort)}<p class="d-l">View</p>${outer(vt)}</div>
+    ${!libMenuOpen && sortLabel && sort.value !== 'auto' ? `<p class="lt2-sorted">Sorted: ${esc(sortLabel)}</p>` : ''}`);
+  if (nav) nav.remove(); tool.replaceWith(bar); const w = document.createElement('div'); w.appendChild(F); return w.innerHTML;
+})(appLibrary);
+document.addEventListener('click', e => { if (!e.target.closest('[data-libmenu]')) return; libMenuOpen = !libMenuOpen; renderStage(false); });
+
+/* ---------- 4. Features: an icon and "where to find it" for every switch ---------- */
+const FEAT_META = { player:['💿','Bottom bar'], stats:['📊','Bottom bar'], timeline:['🕰️','Bottom bar'], spin:['🎡','More'], gear:['🎮','More'], gamenight:['🎲','More'], stars:['✨','More'],
+  gametime:['▶️','Now Playing'], timer:['⏱️','Now Playing and game panels'], trophies:['🏆','Game panels'], calendar:['📅','Stats → Playtime'], display:['🖥️','Settings → Display mode'],
+  money:['💰','Game panels and Stats'], coverflow:['🗂️','Library view menu'], recentshelf:['🏅','Top of Library'], looks:['🎨','Settings → Appearance'], season:['🍂','Settings → Appearance'],
+  music:['🎵','Settings → Music'], intro:['🎬','Settings → Startup & icon'], friendrec:['💌','Settings → Friends'], control:['🎛️','Pull down on the top bar'], badge:['🔴','Settings → Startup & icon'] };
+appSettings = (orig => function(){ const html = orig(); if (!html.includes('class="feat"')) return html;
+  const F = htmlToFrag(html);
+  F.querySelectorAll('label.feat').forEach(l => { const id = l.querySelector('[data-feat]')?.dataset.feat, m = FEAT_META[id]; if (!m || l.querySelector('.feat-ic')) return;
+    l.insertAdjacentHTML('afterbegin', `<span class="feat-ic">${m[0]}</span>`); l.querySelector('.feat-t')?.insertAdjacentHTML('beforeend', `<em class="feat-where">${m[1]}</em>`); });
+  const on = FEATURES.filter(f => featOn(f.id)).length, first = F.querySelector('.feat-h');
+  if (first && !F.querySelector('.feat-sum')) first.insertAdjacentHTML('beforebegin', `<div class="feat-sum"><b>${on}</b> of ${FEATURES.length} features on<small>${typeof moreOpen === 'function' ? 'Tabs show in the bottom bar or under More.' : 'Tabs show in the bottom bar.'} Everything else lives where its tag says.</small></div>`);
+  const w = document.createElement('div'); w.appendChild(F); return w.innerHTML; })(appSettings);
+
+if (typeof moreOpen !== 'function'){ ['spin','gear','gamenight','stars'].forEach(k => { if (FEAT_META[k]) FEAT_META[k][1] = 'Bottom bar'; }); }
+
+
+/* ===================================================================
+   Pill bars: the top bar is a floating glass pill with a holo-disc icon,
+   the tab name, and one live number; the bottom bar is a floating glass
+   dock with labels and a glossy pill for the tab you're on.
+   =================================================================== */
+function hdrInfo(app){
+  const n = st => games.filter(g => g.status === st).length;
+  try{
+    if (app === 'player') return '';
+    if (app === 'library') return `${games.length} games`;
+    if (app === 'stats') return `${n('beaten')} beaten`;
+    if (app === 'timeline'){ const y = new Date().getFullYear(); return `${games.filter(g => g.status === 'beaten' && g.finishedAt && new Date(g.finishedAt).getFullYear() === y).length} this year`; }
+    if (app === 'spin') return `${n('backlog')} to play`;
+    if (app === 'gear'){ const s = gearList().filter(x => (x.type === 'console' || x.type === 'handheld') && x.status !== 'wish' && x.status !== 'sold').length; return `${s} system${s === 1 ? '' : 's'}`; }
+    if (app === 'gamenight'){ const m = gnMatches().length; return `${m} match${m === 1 ? '' : 'es'}`; }
+    if (app === 'stars') return `${n('beaten')} lit`;
+    if (app === 'settings') return `${FEATURES.filter(f => featOn(f.id)).length} on`;
+  }catch(e){}
+  return '';
+}
+renderStage = (orig => function(a){ orig(a); const h = $('stage')?.querySelector('.stage-h'); if (!h) return;
+  let c = $('hdrChip'); const t = hdrInfo(currentApp);
+  if (!t){ c?.remove(); return; }
+  if (!c){ c = document.createElement('span'); c.id = 'hdrChip'; c.className = 'hdr-chip'; const h1 = h.querySelector('h1'); h1 ? h1.after(c) : h.appendChild(c); }
+  c.textContent = t; c.hidden = false; requestAnimationFrame(() => { const h1 = h.querySelector('h1'); if (h.scrollWidth > h.clientWidth + 1 || (h1 && h1.scrollWidth > h1.clientWidth + 1) || c.scrollWidth > c.clientWidth + 1) c.hidden = true; }); })(renderStage);
+/* the active tab's pill uses the same color as the main buttons (so it follows the seasons too) */
+function pillAccent(){ let b = $('accentProbe'); if (!b){ b = document.createElement('button'); b.id = 'accentProbe'; b.className = 'btn primary'; b.style.cssText = 'position:absolute;left:-999px;top:-999px;pointer-events:none'; b.setAttribute('aria-hidden', 'true'); b.tabIndex = -1; $('os').appendChild(b); }
+  const bg = getComputedStyle(b).backgroundImage; if (bg && bg !== 'none') document.documentElement.style.setProperty('--pill-accent', bg); }
+applyTheme = (orig => function(){ orig(); requestAnimationFrame(pillAccent); })(applyTheme);
+
+
+/* short dock labels so every tab name fits under its icon */
+const DOCK_LABEL = { player:'Playing', spin:'Pick', gamenight:'Game Night', stars:'Stars', timeline:'Timeline', settings:'Settings' };
+renderTaskbar = (orig => function(){ orig(); document.querySelectorAll('#tasks .task[data-launch]').forEach(t => { const l = t.querySelector('.lbl'), k = t.dataset.launch; if (l && DOCK_LABEL[k]) l.textContent = DOCK_LABEL[k]; }); })(renderTaskbar);
+
+renderTaskbar = (orig => function(){ orig(); const n = document.querySelectorAll('#tasks .task[data-launch]').length, tb = $('taskbar'); if (tb) tb.toggleAttribute('data-many', innerWidth < 760 && n > 5); })(renderTaskbar);
+addEventListener('resize', () => renderTaskbar());
+
 
 load().then(() => {
   wallPhotoLoad();
