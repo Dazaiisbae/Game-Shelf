@@ -2567,6 +2567,15 @@ label.feat .feat-t{display:flex;flex-direction:column;align-items:flex-start}
 .np2-nav .btn.round svg{width:16px !important;height:16px !important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
 .np2-nav .btn.round:active{transform:scale(.92)}
 .np2-nav .btn.round[disabled]{opacity:.45}
+/* dock disc: hidden unless a session is running, then it spins with a soft pulse */
+#tray .mini-np{display:none !important}
+:root[data-live] #tray .mini-np{display:inline-flex !important;position:relative;animation:livePop .35s cubic-bezier(.3,1.6,.5,1)}
+:root[data-live] #tray .mini-np .cd{animation:spin 4s linear infinite}
+:root[data-live] #tray .mini-np::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #FF5E99;animation:livePulse 2s ease-out infinite;pointer-events:none}
+@keyframes livePop{from{transform:scale(.4);opacity:0}}
+@keyframes livePulse{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+:root[data-lite] #tray .mini-np .cd,:root[data-lite] #tray .mini-np::after{animation:none}
+@media (prefers-reduced-motion:reduce){ :root[data-live] #tray .mini-np .cd,:root[data-live] #tray .mini-np::after{animation:none} }
 </style>
 </head>
 <body>
@@ -4700,7 +4709,7 @@ document.addEventListener('change', e => { const s = dsched();
    "Update available" banner. The app knows its own version; every so often
    it peeks at the copy on GitHub, and if that's newer it offers to update.
    =================================================================== */
-const APP_VERSION = 'v19';
+const APP_VERSION = 'v20';
 const upd = { at:0, found:false };
 async function updCheck(){
   if (!/^https?:/.test(location.protocol) || upd.found) return;
@@ -5480,6 +5489,13 @@ renderTaskbar = (orig => function(){ orig(); const n = document.querySelectorAll
 addEventListener('resize', () => renderTaskbar());
 
 
+/* The dock's little disc only appears while a play session or timer is running, spinning as a "you're playing" light. */
+function liveSync(){ const on = typeof timerNow === 'function' && !!timerNow(); document.documentElement.toggleAttribute('data-live', on);
+  const m = document.querySelector('#tray .mini-np'); if (m) m.setAttribute('aria-label', on ? 'Back to your session' : 'Now playing'); }
+render = (orig => function(){ orig(); liveSync(); })(render);
+renderTaskbar = (orig => function(){ orig(); liveSync(); })(renderTaskbar);
+setInterval(liveSync, 4000);
+
 load().then(() => {
   wallPhotoLoad();
   if (/[?&]display\b/.test(location.search)){ prefs.features = { ...(prefs.features || {}), display:true }; savePrefs(); }
@@ -5496,3 +5512,4 @@ load().then(() => {
 </script>
 </body>
 </html>
+
