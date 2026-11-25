@@ -16,3 +16,4 @@ self.addEventListener('fetch', e => {
     return cached || fresh;
   }));
 });
+
