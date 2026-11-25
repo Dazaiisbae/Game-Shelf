@@ -2501,6 +2501,42 @@ label.feat .feat-t{display:flex;flex-direction:column;align-items:flex-start}
 /* No accidental zooming: double-taps don’t zoom, and text boxes are big enough that iPhone doesn’t zoom in when you tap them */
 html,body,button,a,input,select,textarea,label,[data-game]{touch-action:manipulation}
 @media (max-width:759px){ input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea{font-size:16px !important} }
+/* ===== Wrapped ===== */
+.wr-entry{display:flex;align-items:center;gap:12px;width:100%;margin:0 0 12px;padding:12px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.55);color:#fff;font:inherit;text-align:left;cursor:pointer;
+  background:radial-gradient(circle at 15% 30%,rgba(95,242,176,.55),transparent 45%),radial-gradient(circle at 85% 70%,rgba(255,127,200,.55),transparent 50%),linear-gradient(135deg,#1E3A7A,#3A2A8A);box-shadow:0 10px 24px rgba(30,30,120,.3)}
+.wr-entry b{display:block;font-size:17px;font-weight:900}.wr-entry small{font-size:12px;opacity:.88;font-weight:700}.wr-entry > span:nth-child(2){flex:1}
+.wr-entry em{font-style:normal;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.22);font-size:12px}
+.wr-e-disc,.wr-bigdisc{flex:0 0 auto;border-radius:50%;background:radial-gradient(circle closest-side,transparent 0 15%,#fff 16% 27%,transparent 28%),conic-gradient(from 200deg,#5FD8FF,#9B7BFF,#FF7FC8,#FFE066,#5FF2B0,#5FD8FF);box-shadow:0 0 0 2px #fff}
+.wr-e-disc{width:44px;height:44px;animation:spin 8s linear infinite}
+.wrap-ov{position:fixed;inset:0;z-index:100003;color:#fff;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#16285E 0%,#0B1840 50%,#050B24 100%);animation:pop .25s ease-out}
+.wr-bars{position:absolute;left:12px;right:52px;top:calc(12px + env(safe-area-inset-top));display:flex;gap:4px;z-index:3}
+.wr-bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}.wr-bars i b{display:block;height:100%;width:0;background:#fff}
+.wr-bars i{display:block;padding:0;margin:0;border:0;box-shadow:none}.wr-bars i.wr-done b{width:100%}.wr-bars i.wr-now b{animation:wrBar 5.2s linear forwards}
+@keyframes wrBar{to{width:100%}}
+.wr-x{position:absolute;right:10px;top:calc(4px + env(safe-area-inset-top));z-index:4;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:16px;cursor:pointer}
+.wr-tap{position:absolute;top:70px;bottom:0;z-index:2;border:0;background:none;cursor:pointer}.wr-tap.prev{left:0;width:30%}.wr-tap.next{right:0;width:70%}.wr-tap[hidden]{display:none}
+.wr-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:70px 26px 40px;z-index:1}
+.wr-c{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;animation:wrIn .5s cubic-bezier(.2,1.2,.4,1)}
+@keyframes wrIn{from{opacity:0;transform:translateY(24px) scale(.96)}}
+.wr-k{font-size:12px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;opacity:.8}
+.wr-c h1{margin:10px 0 0;font-size:44px;line-height:1.05;font-weight:900;text-shadow:0 0 24px rgba(180,156,255,.6)}
+.wr-c h2{margin:6px 0 0;font-size:32px;line-height:1.1;font-weight:900;overflow-wrap:anywhere}
+.wr-c p{margin:0;font-size:16px;font-weight:600;opacity:.9;line-height:1.4}
+.wr-pre{opacity:.85}
+.wr-num{font-size:96px;line-height:1;font-weight:900;font-variant-numeric:tabular-nums;background:linear-gradient(90deg,#9FF0FF,#C9B8FF,#FFC4E8,#FFF0B0);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(180,156,255,.5))}
+.wr-unit{font-size:20px !important;font-weight:900 !important;margin-top:-4px !important}
+.wr-hero{margin:16px 0 4px}.wr-bigdisc{display:block;width:170px;height:170px;box-shadow:0 0 0 4px #fff,0 0 50px rgba(180,156,255,.7);animation:spin 6s linear infinite}
+.wr-disc{display:inline-flex;filter:drop-shadow(0 10px 20px rgba(0,0,0,.4))}.wr-disc .cd{animation:spin 10s linear infinite}
+.wr-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:6px 0}
+.wr-icon{font-size:76px;line-height:1;margin:6px 0;filter:drop-shadow(0 0 20px rgba(255,255,255,.35))}
+.wr-month{font-size:46px !important;background:linear-gradient(90deg,#5FF2B0,#5FD8FF,#9B7BFF,#FF7FC8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wr-sum{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin:8px 0 6px}
+.wr-sum div{padding:12px 8px;border-radius:16px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}.wr-sum .wide{grid-column:1/-1}
+.wr-sum b{display:block;font-size:22px;font-weight:900;overflow-wrap:anywhere}.wr-sum span{font-size:10.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.wr-share,.wr-again{width:100%;padding:13px !important;font-size:15px !important;position:relative;z-index:5}
+.wr-again{background:rgba(255,255,255,.16) !important;border-color:rgba(255,255,255,.4) !important;color:#fff !important}
+.wr-end ~ .wr-tap,.wrap-ov:has(.wr-end) .wr-tap{display:none}
+@media (prefers-reduced-motion:reduce){ .wr-bigdisc,.wr-disc .cd,.wr-e-disc{animation:none} }
 </style>
 </head>
 <body>
@@ -5843,6 +5879,102 @@ setInterval(() => { const t = timerNow(), w = document.querySelector('.rt2'); if
 
 /* stop pinch-to-zoom (iPhone ignores the page setting for pinches) */
 ['gesturestart','gesturechange','gestureend'].forEach(t => document.addEventListener(t, e => e.preventDefault(), { passive:false }));
+
+/* ===================================================================
+   Game Shelf Wrapped: your year as tap-through story slides (hours,
+   games beaten, your top game and console, your longest session, your
+   play style, your busiest month), ending with a card you can share.
+   =================================================================== */
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+function wrapData(Y){
+  const inY = t => t && new Date(t).getFullYear() === Y;
+  const logs = games.flatMap(g => (g.log || []).filter(e => inY(e.t) && e.h > 0 && e.h <= 16).map(e => ({ g, t:e.t, h:e.h })));
+  const sess = games.flatMap(g => (g.sessions || []).filter(s => inY(s.at)).map(s => ({ g, t:s.at, h:s.ms / 3600000 })));
+  const hours = logs.reduce((a, e) => a + e.h, 0), beaten = games.filter(g => g.status === 'beaten' && inY(g.finishedAt)).sort((a, b) => a.finishedAt - b.finishedAt);
+  const byGame = new Map(); logs.forEach(e => byGame.set(e.g, (byGame.get(e.g) || 0) + e.h));
+  let top = [...byGame.entries()].sort((a, b) => b[1] - a[1])[0];
+  if (!top){ const c = games.filter(g => (inY(g.startedAt) || inY(g.finishedAt) || g.status === 'playing') && g.hours).sort((a, b) => b.hours - a.hours)[0]; if (c) top = [c, c.hours, true]; }
+  const byCon = new Map(); (logs.length ? logs : beaten.map(g => ({ g, h:1 }))).forEach(e => { const c = consolesOf(e.g)[0]; if (c) byCon.set(c, (byCon.get(c) || 0) + e.h); });
+  const con = [...byCon.entries()].sort((a, b) => b[1] - a[1])[0];
+  const longest = [...sess, ...logs].sort((a, b) => b.h - a.h)[0];
+  const byMonth = Array(12).fill(0); logs.forEach(e => byMonth[new Date(e.t).getMonth()] += e.h); beaten.forEach(g => byMonth[new Date(g.finishedAt).getMonth()] += .001);
+  const bm = byMonth.indexOf(Math.max(...byMonth)), busiest = byMonth[bm] > 0 ? bm : -1;
+  const stamps = [...logs, ...sess].map(e => new Date(e.t)), n = stamps.length;
+  const night = stamps.filter(d => d.getHours() >= 22 || d.getHours() < 4).length, morning = stamps.filter(d => d.getHours() >= 5 && d.getHours() < 11).length, wknd = stamps.filter(d => d.getDay() === 0 || d.getDay() === 6).length;
+  const avg = n ? [...logs, ...sess].reduce((a, e) => a + e.h, 0) / n : 0;
+  const style = !n ? null : night / n > .4 ? ['🦉','Night Owl','You do your best gaming after dark.'] : morning / n > .4 ? ['🐦','Early Bird','You like to play before the day gets going.']
+    : wknd / n > .6 ? ['🏖️','Weekend Warrior','Weekends are game time.'] : avg >= 2 ? ['🏃','Marathoner','When you sit down to play, you settle in.'] : ['🎮','Steady Player','A little bit of play, here and there, all year.'];
+  const bySeries = new Map(); beaten.forEach(g => { if (g.series?.trim()){ const s = seriesOf(g); bySeries.set(s, (bySeries.get(s) || 0) + 1); } });
+  const ser = [...bySeries.entries()].sort((a, b) => b[1] - a[1])[0];
+  const added = games.filter(g => { const t = parseInt(String(g.id).slice(0, 8), 36); return t > 1.4e12 && new Date(t).getFullYear() === Y; }).length;
+  return { Y, hours, beaten, top, con, longest, busiest, style, ser, added, logs:logs.length, total:games.reduce((a, g) => a + (g.hours || 0), 0) };
+}
+const wrapH = h => h >= 10 ? `${Math.round(h)}` : (Math.round(h * 10) / 10).toString();
+function wrapSlides(D){
+  const S = [], disc = (g, s) => `<span class="wr-disc">${discHTML(g, s)}</span>`;
+  S.push(`<div class="wr-c"><span class="wr-k">Game Shelf</span><div class="wr-hero"><span class="wr-bigdisc"></span></div><h1>Your ${D.Y}<br>Wrapped</h1><p>Tap to see your year on the shelf</p></div>`);
+  if (D.hours > 0) S.push(`<div class="wr-c"><span class="wr-k">Time played</span><p class="wr-pre">This year you played for</p><b class="wr-num" data-count="${D.hours}">${wrapH(D.hours)}</b><p class="wr-unit">hours</p><p>${D.hours >= 24 ? `That's ${(D.hours / 24).toFixed(1)} whole days.` : D.hours >= 1 ? `That's about ${Math.round(D.hours * 60)} minutes of games.` : 'Every minute counts.'}</p></div>`);
+  else S.push(`<div class="wr-c"><span class="wr-k">Time played</span><p class="wr-pre">Your shelf holds</p><b class="wr-num" data-count="${D.total}">${wrapH(D.total)}</b><p class="wr-unit">hours of play</p><p>Log hours this year and next year's Wrapped will tell the story.</p></div>`);
+  if (D.beaten.length) S.push(`<div class="wr-c"><span class="wr-k">Games beaten</span><b class="wr-num" data-count="${D.beaten.length}">${D.beaten.length}</b><p class="wr-unit">game${D.beaten.length === 1 ? '' : 's'} beaten in ${D.Y}</p><div class="wr-row">${D.beaten.slice(-6).map(g => disc(g, 52)).join('')}</div><p>The first was <b>${esc(D.beaten[0].title)}</b>, the latest <b>${esc(D.beaten[D.beaten.length - 1].title)}</b>.</p></div>`);
+  if (D.top) S.push(`<div class="wr-c"><span class="wr-k">Your top game</span>${disc(D.top[0], 150)}<h2>${esc(D.top[0].title)}</h2><p>${D.top[2] ? `${wrapH(D.top[1])} hours on the clock` : `${wrapH(D.top[1])} hours this year`}${D.top[0].series?.trim() ? ` · ${esc(seriesOf(D.top[0]))}` : ''}</p></div>`);
+  if (D.con) S.push(`<div class="wr-c"><span class="wr-k">Your top console</span><div class="wr-icon">🎮</div><h2>${esc(D.con[0])}</h2><p>${D.logs ? `${wrapH(D.con[1])} hours played on it` : `Where you beat the most games`}</p></div>`);
+  if (D.longest && D.longest.h >= .25) S.push(`<div class="wr-c"><span class="wr-k">Longest session</span><b class="wr-num">${fmtDur(D.longest.h * 3600000)}</b><p>Playing <b>${esc(D.longest.g.title)}</b> on ${new Date(D.longest.t).toLocaleDateString([], { month:'long', day:'numeric' })}.</p></div>`);
+  if (D.style) S.push(`<div class="wr-c"><span class="wr-k">Your play style</span><div class="wr-icon">${D.style[0]}</div><h2>${D.style[1]}</h2><p>${D.style[2]}</p></div>`);
+  if (D.busiest >= 0) S.push(`<div class="wr-c"><span class="wr-k">Busiest month</span><h2 class="wr-month">${MONTHS[D.busiest]}</h2><p>Your most active month on the shelf.</p></div>`);
+  if (D.ser) S.push(`<div class="wr-c"><span class="wr-k">Series of the year</span><div class="wr-icon">✨</div><h2>${esc(D.ser[0])}</h2><p>${D.ser[1]} game${D.ser[1] === 1 ? '' : 's'} beaten in the series.</p></div>`);
+  if (D.added) S.push(`<div class="wr-c"><span class="wr-k">Your shelf grew</span><b class="wr-num" data-count="${D.added}">${D.added}</b><p class="wr-unit">games added</p><p>Now ${games.length} on the shelf.</p></div>`);
+  S.push(`<div class="wr-c wr-end"><span class="wr-k">That's a wrap</span><div class="wr-sum">
+      <div><b>${wrapH(D.hours || D.total)}</b><span>${D.hours ? 'hours played' : 'hours total'}</span></div><div><b>${D.beaten.length}</b><span>beaten</span></div>
+      <div class="wide"><b>${D.top ? esc(D.top[0].title) : '—'}</b><span>top game</span></div>${D.style ? `<div class="wide"><b>${D.style[0]} ${D.style[1]}</b><span>play style</span></div>` : ''}</div>
+      <button class="btn primary wr-share" data-wrshare>Share my Wrapped</button><button class="btn wr-again" data-wragain>Watch again</button></div>`);
+  return S;
+}
+let wrapState = null;
+function wrapOpen(){
+  const D = wrapData(new Date().getFullYear()), S = wrapSlides(D), ov = document.createElement('div'); ov.id = 'wrapView'; ov.className = 'wrap-ov';
+  wrapState = { D, S, i:0, timer:null };
+  ov.innerHTML = `<div class="au-sky"><span class="au-rib r1"></span><span class="au-rib r2"></span><span class="au-rib r3"></span><span class="au-rib r4"></span></div>
+    <div class="wr-bars">${S.map(() => '<i><b></b></i>').join('')}</div><button class="wr-x" data-wrclose aria-label="Close">✕</button>
+    <div class="wr-stage"></div><button class="wr-tap prev" data-wrprev aria-label="Back"></button><button class="wr-tap next" data-wrnext aria-label="Next"></button>`;
+  document.body.appendChild(ov); wrapShow(0);
+  ov.addEventListener('click', e => { const t = e.target;
+    if (t.closest('[data-wrclose]')) return wrapClose();
+    if (t.closest('[data-wrshare]')) return wrapShare();
+    if (t.closest('[data-wragain]')) return wrapShow(0);
+    if (t.closest('[data-wrprev]')) return wrapShow(wrapState.i - 1);
+    if (t.closest('[data-wrnext]')) return wrapShow(wrapState.i + 1); });
+}
+function wrapClose(){ clearTimeout(wrapState?.timer); $('wrapView')?.remove(); wrapState = null; }
+function wrapShow(i){
+  const st = wrapState, ov = $('wrapView'); if (!st || !ov) return; if (i < 0) i = 0; if (i >= st.S.length) return; st.i = i; clearTimeout(st.timer);
+  ov.querySelector('.wr-stage').innerHTML = st.S[i];
+  ov.querySelectorAll('.wr-bars i').forEach((b, k) => { b.className = k < i ? 'wr-done' : k === i ? 'wr-now' : ''; });
+  ov.querySelector('.wr-tap.next').hidden = i === st.S.length - 1;
+  ov.querySelectorAll('[data-count]').forEach(el => { const to = +el.dataset.count, t0 = performance.now(); const step = now => { const p = Math.min(1, (now - t0) / 900); el.textContent = wrapH(to * (1 - Math.pow(1 - p, 3))); if (p < 1 && el.isConnected) requestAnimationFrame(step); }; requestAnimationFrame(step); });
+  if (i < st.S.length - 1) st.timer = setTimeout(() => wrapShow(i + 1), 5200);
+}
+/* a share card drawn on a canvas, saved through the share sheet */
+async function wrapShare(){
+  const D = wrapState.D, W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  const bg = x.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#16285E'); bg.addColorStop(1, '#050B24'); x.fillStyle = bg; x.fillRect(0, 0, W, H);
+  [['#5FF2B0',200,260],['#9B7BFF',880,420],['#FF7FC8',300,900],['#5FD8FF',820,1150]].forEach(([col, cx, cy]) => { const r = x.createRadialGradient(cx, cy, 0, cx, cy, 460); r.addColorStop(0, col + '88'); r.addColorStop(1, col + '00'); x.fillStyle = r; x.fillRect(0, 0, W, H); });
+  const cx = W / 2, cy = 330, R = 170, cg = x.createConicGradient ? x.createConicGradient(-1.2, cx, cy) : null;
+  if (cg){ ['#5FD8FF','#9B7BFF','#FF7FC8','#FFE066','#5FF2B0','#5FD8FF'].forEach((col, k) => cg.addColorStop(k / 5, col)); x.fillStyle = cg; } else x.fillStyle = '#9B7BFF';
+  x.beginPath(); x.arc(cx, cy, R, 0, Math.PI * 2); x.fill(); x.lineWidth = 10; x.strokeStyle = '#fff'; x.stroke();
+  x.fillStyle = '#fff'; x.beginPath(); x.arc(cx, cy, 46, 0, Math.PI * 2); x.fill(); x.fillStyle = '#16285E'; x.beginPath(); x.arc(cx, cy, 20, 0, Math.PI * 2); x.fill();
+  x.textAlign = 'center'; x.fillStyle = '#fff'; x.font = '900 84px -apple-system, system-ui, sans-serif'; x.fillText(`My ${D.Y} Wrapped`, cx, 640);
+  const rows = [[wrapH(D.hours || D.total), D.hours ? 'hours played' : 'hours total'], [String(D.beaten.length), 'games beaten'], [D.top ? D.top[0].title : '—', 'top game'], [D.style ? `${D.style[0]} ${D.style[1]}` : (D.con ? D.con[0] : '—'), D.style ? 'play style' : 'top console']];
+  rows.forEach(([v, l], k) => { const y = 780 + k * 130; x.font = '900 64px -apple-system, system-ui, sans-serif'; let txt = v; while (x.measureText(txt).width > 900 && txt.length > 4) txt = txt.slice(0, -2); if (txt !== v) txt = txt.trim() + '…';
+    x.fillStyle = '#fff'; x.fillText(txt, cx, y); x.font = '800 30px -apple-system, system-ui, sans-serif'; x.fillStyle = 'rgba(255,255,255,.7)'; x.fillText(l.toUpperCase(), cx, y + 44); });
+  x.font = '900 30px -apple-system, system-ui, sans-serif'; x.fillStyle = 'rgba(255,255,255,.85)'; x.fillText('GAME SHELF  ·  MOURNHOUR STUDIOS', cx, H - 70);
+  const blob = await new Promise(r => c.toBlob(r, 'image/png')), file = new File([blob], `game-shelf-wrapped-${D.Y}.png`, { type:'image/png' });
+  try{ if (navigator.canShare && navigator.canShare({ files:[file] })){ await navigator.share({ files:[file], title:`My ${D.Y} Game Shelf Wrapped` }); return; } }catch(e){ if (e && e.name === 'AbortError') return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); toast('Saved your Wrapped card');
+}
+/* the way in: a glossy card at the top of Stats */
+renderStage = (orig => function(a){ orig(a); if (currentApp !== 'stats' || !games.length) return; const b = $('stageBody'); if (!b || b.querySelector('.wr-entry')) return;
+  b.insertAdjacentHTML('afterbegin', `<button class="wr-entry" data-wropen><span class="wr-e-disc"></span><span><b>Your ${new Date().getFullYear()} Wrapped</b><small>Your year on the shelf, in stories</small></span><em>▶</em></button>`); })(renderStage);
+document.addEventListener('click', e => { if (e.target.closest('[data-wropen]')) wrapOpen(); });
 
 load().then(() => {
   loadSnaps().then(dailySnap);
