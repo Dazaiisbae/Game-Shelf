@@ -2537,6 +2537,135 @@ html,body,button,a,input,select,textarea,label,[data-game]{touch-action:manipula
 .wr-again{background:rgba(255,255,255,.16) !important;border-color:rgba(255,255,255,.4) !important;color:#fff !important}
 .wr-end ~ .wr-tap,.wrap-ov:has(.wr-end) .wr-tap{display:none}
 @media (prefers-reduced-motion:reduce){ .wr-bigdisc,.wr-disc .cd,.wr-e-disc{animation:none} }
+
+.wr-mini{display:flex;align-items:center;gap:10px;width:100%;margin:14px 0 4px;padding:9px 12px;border-radius:16px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;font-size:13.5px;font-weight:800;cursor:pointer;text-align:left}
+.wr-mini > span:nth-child(2){flex:1}.wr-mini em{font-style:normal;color:var(--soft);font-size:16px}
+.wr-mini .wr-e-disc{width:28px;height:28px}
+/* ===== Gear cards, redesigned ===== */
+.cc-face.gx2{background:linear-gradient(160deg,var(--ga),var(--gb));border:1.5px solid rgba(255,255,255,.65);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.gx2-blur{position:absolute;inset:-10%;background-size:cover;background-position:center;filter:blur(22px) saturate(1.4) brightness(.8);transform:scale(1.1)}
+.gx2-plain{background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.45),transparent 55%),linear-gradient(160deg,var(--ga),var(--gb));filter:none}
+.gx2-win{position:relative;z-index:1;margin:1.1em 1.1em 0;height:56%;border-radius:1em;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55),0 10px 24px rgba(0,0,0,.35)}
+.gx2-win img{width:100%;height:100%;object-fit:contain}
+.gx2-icon{background:rgba(255,255,255,.18);color:#fff}.gx2-icon svg{width:46%;height:46%;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.gx2-rar{position:absolute;z-index:2;top:1.6em;left:1.6em;padding:.25em .8em;border-radius:999px;font-size:.78em;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.45);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.rar-holo .gx2-rar{background:linear-gradient(90deg,#7FE7FF,#B49CFF,#FF9FD8,#FFE98A);color:#2A1E5A}
+.gx2-info{position:relative;z-index:1;margin:auto 1.1em 1.1em;padding:.9em 1em 1em;border-radius:1em;display:flex;flex-direction:column;gap:.2em;color:#fff;background:rgba(10,20,45,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.gx2-info b{font-size:1.9em;font-weight:900;line-height:1.05;overflow-wrap:anywhere}
+.gx2-info small{font-size:.95em;font-weight:700;opacity:.85}
+.gx2-chips{display:flex;flex-wrap:wrap;gap:.35em;margin-top:.45em}
+.gx2-c{font-style:normal;padding:.25em .7em;border-radius:999px;font-size:.85em;font-weight:900;background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.gx2-c.gc-new{background:rgba(95,242,201,.28);color:#C8FFF0}.gx2-c.gc-great{background:rgba(123,227,154,.28);color:#D4FFE0}
+.gx2-c.gc-worn{background:rgba(245,184,46,.3);color:#FFE7A8}.gx2-c.gc-repair{background:rgba(229,72,77,.35);color:#FFD0D2}.gx2-c.wish{background:rgba(255,255,255,.12)}
+.gx2-shine{position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.22) 48%,transparent 60%);background-size:250% 100%;animation:gxShine 6s ease-in-out infinite}
+@keyframes gxShine{0%,55%{background-position:140% 0}80%,100%{background-position:-60% 0}}
+.cc-face.gx2 .cc-warn{z-index:2}
+@media (prefers-reduced-motion:reduce){ .gx2-shine{animation:none} }
+/* ===== Sleep schedule boxes fit side by side ===== */
+.gf-two:has(#dsOff){display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:10px !important}
+.gf-two:has(#dsOff) > div{min-width:0}
+#dsOff,#dsWake{width:100% !important;max-width:100%;min-width:0;box-sizing:border-box;margin:0 !important;text-align:center;-webkit-appearance:none;appearance:none}
+/* ===== Display mode: live timer ring, and the new cards ===== */
+.dn.dn-live{border-radius:40px;animation:lvGlowD 2.6s ease-in-out infinite}
+@keyframes lvGlowD{0%,100%{box-shadow:0 0 0 0 rgba(255,79,110,0),0 0 40px rgba(255,79,110,.2)}50%{box-shadow:0 0 0 6px rgba(255,79,110,.18),0 0 70px rgba(255,79,110,.4)}}
+.dn.dn-paused{animation:none}
+.drt{position:relative;display:inline-flex;padding:16px;flex:0 0 auto}
+.drt-ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(#FF5E7E 0 var(--rp,0%),rgba(255,255,255,.14) var(--rp,0%));-webkit-mask:radial-gradient(closest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));mask:radial-gradient(closest-side,transparent calc(100% - 10px),#000 calc(100% - 9px));filter:drop-shadow(0 0 8px rgba(255,94,126,.7))}
+.dn-paused .drt-ring{filter:none;opacity:.55}
+.dc-tl{display:flex;gap:2.4vmin;justify-content:center;flex-wrap:wrap}
+.dc-tl-i{display:flex;flex-direction:column;align-items:center;gap:.6vmin;width:15vmin;text-align:center}
+.dc-tl-d{font-size:clamp(11px,1.9vmin,16px);font-weight:900;opacity:.8}.dc-tl-t{font-size:clamp(11px,1.9vmin,16px);font-weight:700;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.dc-week{display:flex;gap:1.6vmin;align-items:flex-end;height:22vmin;padding:0 2vmin}
+.dc-week div{flex:1;display:flex;flex-direction:column;align-items:center;gap:.8vmin;height:100%;justify-content:flex-end}
+.dc-week i{display:block;width:100%;border-radius:1vmin;background:linear-gradient(180deg,#9FF0FF,#2E9BE0);box-shadow:0 0 12px rgba(127,231,255,.4)}
+.dc-week span{font-size:clamp(11px,1.9vmin,16px);font-weight:900;opacity:.75}
+.dc-sub{margin:1.6vmin 0 0;text-align:center;font-size:clamp(12px,2.1vmin,18px);font-weight:700;opacity:.85}
+/* the dashboard card picker in Settings */
+.dshow-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.dshow-b{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;border:1px solid var(--edge);background:var(--field);color:var(--soft);font:inherit;font-size:13px;font-weight:800;cursor:pointer;text-align:left}
+.dshow-b span{font-size:17px;filter:grayscale(1);opacity:.6}
+.dshow-b.on{color:var(--ink);background:var(--tint);border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.dshow-b.on span{filter:none;opacity:1}
+
+/* Display mode live look, tidied: the pulse glows around the disc ring instead of boxing in the whole area,
+   the disc keeps its size, and the timer pill stays on one line */
+.dn.dn-live{animation:none !important;box-shadow:none !important;border-radius:0 !important}
+.dn-live .drt{padding:12px;transform:scale(.9);margin:-14px;transform-origin:center}
+.dn-live .drt::after{content:"";position:absolute;inset:4px;border-radius:50%;pointer-events:none;animation:lvGlowR 2.6s ease-in-out infinite}
+@keyframes lvGlowR{0%,100%{box-shadow:0 0 18px rgba(255,79,110,.25)}50%{box-shadow:0 0 46px 6px rgba(255,79,110,.5)}}
+.dn-paused .drt::after{animation:none;box-shadow:none}
+.d-timer{flex-wrap:nowrap !important;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){ .dn-live .drt::after{animation:none} }
+
+/* Display mode timer, evened out: same padding all around, the clock and its label on the left,
+   and two matching buttons the same height and width on the right */
+#display .d-timer{display:grid !important;grid-template-columns:auto auto 1fr auto;align-items:center;column-gap:2vmin;
+  padding:1.4vmin !important;padding-left:3vmin !important;border-radius:999px;min-height:auto}
+#display .d-timer .d-tdot{grid-column:1;width:1.6vmin;height:1.6vmin;min-width:10px;min-height:10px;margin:0;align-self:center}
+#display .d-timer b#dTimer{grid-column:2;line-height:1;margin:0;font-size:clamp(28px,6.6vmin,64px) !important;padding-right:1vmin}
+#display .d-timer .d-tbtn{grid-row:1;height:clamp(40px,8.4vmin,72px);min-width:clamp(96px,17vmin,170px);margin:0 !important;padding:0 2.6vmin !important;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;gap:1.2vmin;font-size:clamp(14px,2.5vmin,22px) !important;font-weight:900;line-height:1;box-sizing:border-box}
+#display .d-timer .d-tbtn:first-of-type{grid-column:3;justify-self:end}
+#display .d-timer .d-tbtn.stop{grid-column:4}
+#display .d-timer .d-tbtn .bi{width:1em;height:1em;flex:0 0 auto}
+#display .d-timer.paused b#dTimer{opacity:.65}
+/* ===== Installing games ===== */
+.gx-find{display:flex;gap:8px;align-items:center}
+.gx-find .lt2-search{flex:1;min-width:0}
+.gx-find .gx-gb{flex:0 0 76px}
+.gx-res{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.gx-hit{display:flex;align-items:center;gap:10px;width:100%;padding:7px 10px;border-radius:14px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.gx-hit .cd{flex:0 0 auto}.gx-hit span{flex:1;min-width:0;display:flex;flex-direction:column}.gx-hit b{font-size:14px;font-weight:800;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.gx-hit small{font-size:11px;color:var(--soft);font-weight:600}
+.gx-hit em{font-style:normal;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;background:var(--pill-accent,linear-gradient(180deg,#6CC6F5,#2E9BE0))}
+.gx-hit:active{transform:scale(.98)}
+.gp-inst{margin:10px 0 4px;padding:10px 12px;border-radius:18px;background:var(--pane);border:1px solid var(--pane-line)}
+.gp-inst .d-l{display:block;margin:0 0 8px}
+.gpi-row{display:flex;flex-wrap:wrap;gap:8px}
+.gpi{display:inline-flex;align-items:center;border-radius:999px;border:1px solid var(--edge);background:var(--field);overflow:hidden}
+.gpi-t{border:0;background:none;color:var(--soft);font:inherit;font-size:13px;font-weight:800;padding:8px 12px;cursor:pointer}
+.gpi.on{border-color:transparent;background:linear-gradient(180deg,#7FE0A0,#2FA05C)}
+.gpi.on .gpi-t{color:#fff}
+.gpi-gb{width:62px;margin:0 6px 0 0 !important;padding:5px 8px !important;border-radius:999px !important;border:0 !important;background:rgba(255,255,255,.85) !important;color:#14324A !important;text-align:center;font-weight:800}
+/* the Undo popup, out of the way */
+.toast{pointer-events:none}
+.toast button{pointer-events:auto}
+.toast.toast-top{top:calc(env(safe-area-inset-top) + 72px);bottom:auto !important;left:50%;right:auto;width:auto;max-width:calc(100% - 32px);padding:8px 8px 8px 14px !important;border-radius:999px !important;font-size:13px;transform:translate(-50%,-14px) !important;z-index:100005}
+.toast.toast-top.show{transform:translate(-50%,0) !important}
+.toast.toast-top button{padding:5px 12px;font-size:13px}
+
+.toast.toast-top span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62vw}
+/* ===== The Add/Edit game form, same layout, the app's current look ===== */
+#sheet{background:var(--win-bg) !important;border:1px solid var(--edge) !important;-webkit-backdrop-filter:blur(26px) saturate(1.3);backdrop-filter:blur(26px) saturate(1.3);box-shadow:0 -12px 40px rgba(0,20,50,.35) !important;border-radius:28px 28px 0 0 !important;color:var(--ink)}
+#sheet .sheet-head{padding:14px 16px 10px !important;border-bottom:1px solid var(--pane-line) !important;background:none !important}
+#sheet .sheet-head h3{font-size:19px;font-weight:900}
+#sheet .mode-btn{font-weight:800;color:var(--aqua-deep,#2E7FD0) !important;background:none !important;border:0 !important}
+#sheet .sheet-scroll{padding:6px 16px 18px !important}
+#sheet label:not(.toggle):not(.check-row):not(.pick){display:block;margin:14px 2px 6px !important;font-size:11px !important;font-weight:900 !important;letter-spacing:.12em;text-transform:uppercase;color:var(--soft) !important}
+#sheet input:not([type=checkbox]):not([type=file]),#sheet textarea,#sheet select{border-radius:14px !important;border:1px solid var(--edge) !important;background:var(--field) !important;color:var(--ink) !important;box-shadow:none !important;padding:11px 13px !important;font-weight:700}
+#sheet input:not([type=checkbox]):focus,#sheet textarea:focus{border-color:var(--accent) !important;box-shadow:0 0 0 3px rgba(46,155,224,.25) !important;outline:none}
+#sheet #fTitle{font-size:17px !important;font-weight:800}
+/* status and owned: the app's pill buttons instead of the old white glossy ones */
+#sheet .seg{gap:7px !important;background:none !important;box-shadow:none !important;padding:0 !important;flex-wrap:wrap}
+#sheet .seg button{flex:1 1 30%;padding:10px 6px !important;border-radius:14px !important;border:1px solid var(--edge) !important;background:var(--field) !important;color:var(--ink) !important;font-weight:900 !important;font-size:13px !important;text-shadow:none !important;box-shadow:none !important}
+#sheet .seg button[aria-pressed=true],#sheet .seg button.on,#sheet .seg button.sel{color:#fff !important;border-color:transparent !important;background:var(--pill-accent,linear-gradient(180deg,#6CC6F5,#2E9BE0)) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 10px rgba(30,110,200,.25) !important}
+#sheet .seg.small button{flex:1 1 20%;padding:8px 4px !important;font-size:12.5px !important}
+/* quick console and tag chips */
+#sheet .tag-sugs{gap:6px !important;margin-top:8px !important}
+#sheet .tag-sug{padding:6px 11px !important;border-radius:999px !important;border:1px solid var(--edge) !important;background:var(--field) !important;color:var(--ink) !important;font-weight:800 !important;font-size:12.5px !important;box-shadow:none !important;text-shadow:none !important}
+/* the 100% complete toggle, stars, and cover photo row as glass panels */
+#sheet .toggle,#sheet .check-row{border-radius:16px !important;background:var(--pane) !important;border:1px solid var(--pane-line) !important;padding:12px 14px !important;margin-top:12px !important;font-weight:800}
+#sheet .stars-input button,#sheet .stars-input span{font-size:28px !important}
+#sheet .cover-row{padding:10px 12px;border-radius:16px;background:var(--pane);border:1px solid var(--pane-line);margin-top:6px}
+#sheet .pick.chrome{border-radius:999px !important;border:1px solid var(--edge) !important;background:var(--field) !important;color:var(--ink) !important;font-weight:800;box-shadow:none !important;text-shadow:none !important}
+#sheet .hint{color:var(--soft) !important;font-size:11.5px !important}
+#sheet .dup{display:block;margin-top:8px;padding:8px 10px;border-radius:12px;background:rgba(255,200,90,.16);box-shadow:inset 0 0 0 1px rgba(240,180,60,.5);font-weight:700}
+#sheet .dup[hidden]{display:none}
+/* the buttons at the bottom */
+#sheet .actions{gap:10px !important;padding-top:14px !important;border-top:1px solid var(--pane-line) !important;background:none !important}
+#sheet #saveBtn{flex:2 !important;padding:13px !important;border-radius:999px !important;font-size:16px !important;font-weight:900;color:#fff !important;background:var(--pill-accent,linear-gradient(180deg,#6CC6F5,#2E9BE0 50%,#1F86CC 51%,#3AA8EA)) !important;border:1px solid rgba(255,255,255,.55) !important;box-shadow:0 6px 16px rgba(30,110,200,.35),inset 0 1px 0 rgba(255,255,255,.6) !important}
+#sheet #cancelBtn{flex:1 !important;padding:13px !important;border-radius:999px !important;border:1px solid var(--edge) !important;background:var(--field) !important;color:var(--ink) !important;font-weight:800;box-shadow:none !important;text-shadow:none !important}
+#sheet .del{border-radius:999px !important}
+#sheet .mini-btn.go{border-radius:999px !important;background:var(--pill-accent,linear-gradient(180deg,#6CC6F5,#2E9BE0)) !important;color:#fff !important;border:0 !important}
 </style>
 </head>
 <body>
@@ -4670,7 +4799,7 @@ document.addEventListener('change', e => { const s = dsched();
    "Update available" banner. The app knows its own version; every so often
    it peeks at the copy on GitHub, and if that's newer it offers to update.
    =================================================================== */
-const APP_VERSION = 'v28';
+const APP_VERSION = 'v30';
 const upd = { at:0, found:false };
 async function updCheck(){
   if (!/^https?:/.test(location.protocol) || upd.found) return;
@@ -5913,8 +6042,8 @@ function wrapData(Y){
 const wrapH = h => h >= 10 ? `${Math.round(h)}` : h >= .1 ? (Math.round(h * 10) / 10).toString() : h > 0 ? '<0.1' : '0';
 function wrapSlides(D){
   const S = [], disc = (g, s) => `<span class="wr-disc">${discHTML(g, s)}</span>`;
-  S.push(`<div class="wr-c"><span class="wr-k">Game Shelf</span><div class="wr-hero"><span class="wr-bigdisc"></span></div><h1>Your ${D.Y}<br>Wrapped</h1><p>Tap to see your year on the shelf</p></div>`);
-  if (D.hours > 0) S.push(`<div class="wr-c"><span class="wr-k">Time played</span><p class="wr-pre">This year you played for</p><b class="wr-num" data-count="${D.hours}">${wrapH(D.hours)}</b><p class="wr-unit">hours</p><p>${D.hours >= 24 ? `That's ${(D.hours / 24).toFixed(1)} whole days.` : D.hours >= 1 ? `That's about ${Math.round(D.hours * 60)} minutes of games.` : 'Every minute counts.'}</p></div>`);
+  S.push(`<div class="wr-c"><span class="wr-k">Game Shelf</span><div class="wr-hero"><span class="wr-bigdisc"></span></div><h1>${D.soFar ? `Your ${D.Y}<br>so far` : `Your ${D.Y}<br>Wrapped`}</h1><p>${D.soFar ? 'A peek at your year on the shelf' : 'Tap to see your year on the shelf'}</p></div>`);
+  if (D.hours > 0) S.push(`<div class="wr-c"><span class="wr-k">Time played</span><p class="wr-pre">${D.Y === new Date().getFullYear() ? 'This year' : `In ${D.Y}`} you played for</p><b class="wr-num" data-count="${D.hours}">${wrapH(D.hours)}</b><p class="wr-unit">hours</p><p>${D.hours >= 24 ? `That's ${(D.hours / 24).toFixed(1)} whole days.` : D.hours >= 1 ? `That's about ${Math.round(D.hours * 60)} minutes of games.` : 'Every minute counts.'}</p></div>`);
   else S.push(`<div class="wr-c"><span class="wr-k">Time played</span><p class="wr-pre">Your shelf holds</p><b class="wr-num" data-count="${D.total}">${wrapH(D.total)}</b><p class="wr-unit">hours of play</p><p>Log hours this year and next year's Wrapped will tell the story.</p></div>`);
   if (D.beaten.length) S.push(`<div class="wr-c"><span class="wr-k">Games beaten</span><b class="wr-num" data-count="${D.beaten.length}">${D.beaten.length}</b><p class="wr-unit">game${D.beaten.length === 1 ? '' : 's'} beaten in ${D.Y}</p><div class="wr-row">${D.beaten.slice(-6).map(g => disc(g, 52)).join('')}</div><p>The first was <b>${esc(D.beaten[0].title)}</b>, the latest <b>${esc(D.beaten[D.beaten.length - 1].title)}</b>.</p></div>`);
   if (D.top) S.push(`<div class="wr-c"><span class="wr-k">Your top game</span>${disc(D.top[0], 150)}<h2>${esc(D.top[0].title)}</h2><p>${D.top[2] ? `${wrapH(D.top[1])} hours on the clock` : `${wrapH(D.top[1])} hours this year`}${D.top[0].series?.trim() ? ` · ${esc(seriesOf(D.top[0]))}` : ''}</p></div>`);
@@ -5931,8 +6060,8 @@ function wrapSlides(D){
   return S;
 }
 let wrapState = null;
-function wrapOpen(){
-  const D = wrapData(new Date().getFullYear()), S = wrapSlides(D), ov = document.createElement('div'); ov.id = 'wrapView'; ov.className = 'wrap-ov';
+function wrapOpen(Y, soFar){
+  const D = { ...wrapData(Y || new Date().getFullYear()), soFar: !!soFar }, S = wrapSlides(D), ov = document.createElement('div'); ov.id = 'wrapView'; ov.className = 'wrap-ov';
   wrapState = { D, S, i:0, timer:null };
   ov.innerHTML = `<div class="au-sky"><span class="au-rib r1"></span><span class="au-rib r2"></span><span class="au-rib r3"></span><span class="au-rib r4"></span></div>
     <div class="wr-bars">${S.map(() => '<i><b></b></i>').join('')}</div><button class="wr-x" data-wrclose aria-label="Close">✕</button>
@@ -5972,10 +6101,144 @@ async function wrapShare(){
   try{ if (navigator.canShare && navigator.canShare({ files:[file] })){ await navigator.share({ files:[file], title:`My ${D.Y} Game Shelf Wrapped` }); return; } }catch(e){ if (e && e.name === 'AbortError') return; }
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); toast('Saved your Wrapped card');
 }
-/* the way in: a glossy card at the top of Stats */
-renderStage = (orig => function(a){ orig(a); if (currentApp !== 'stats' || !games.length) return; const b = $('stageBody'); if (!b || b.querySelector('.wr-entry')) return;
-  b.insertAdjacentHTML('afterbegin', `<button class="wr-entry" data-wropen><span class="wr-e-disc"></span><span><b>Your ${new Date().getFullYear()} Wrapped</b><small>Your year on the shelf, in stories</small></span><em>▶</em></button>`); })(renderStage);
-document.addEventListener('click', e => { if (e.target.closest('[data-wropen]')) wrapOpen(); });
+/* the way in, by season: December 1 to January 15 brings the big Wrapped card to the top of Stats
+   (in January it shows last year). The rest of the year, a small "your year so far" link sits at the bottom. */
+function wrapSeason(now = new Date()){ const m = now.getMonth(), d = now.getDate(), y = now.getFullYear();
+  if (m === 11) return { big:true, Y:y }; if (m === 0 && d <= 15) return { big:true, Y:y - 1 }; return { big:false, Y:y }; }
+renderStage = (orig => function(a){ orig(a); if (currentApp !== 'stats' || !(games.length)) return; const b = $('stageBody'); if (!b || b.querySelector('.wr-entry, .wr-mini')) return;
+  const S = wrapSeason();
+  if (S.big) b.insertAdjacentHTML('afterbegin', `<button class="wr-entry" data-wropen data-y="${S.Y}"><span class="wr-e-disc"></span><span><b>Your ${S.Y} Wrapped</b><small>Your year on the shelf, in stories</small></span><em>▶</em></button>`);
+  else b.insertAdjacentHTML('beforeend', `<button class="wr-mini" data-wropen data-y="${S.Y}" data-sofar="1"><span class="wr-e-disc"></span><span>Your ${S.Y} so far</span><em>›</em></button>`); })(renderStage);
+document.addEventListener('click', e => { const o = e.target.closest('[data-wropen]'); if (o) wrapOpen(+o.dataset.y || undefined, o.dataset.sofar === '1'); });
+
+/* ===================================================================
+   Gear cards, redesigned: the photo sits sharp in a framed window over a
+   soft blurred copy of itself, with the name, details, and colored chips on
+   a clean glass panel. New gear photos are saved much sharper.
+   =================================================================== */
+function gearReadPhoto(file){ return new Promise((res, rej) => { const r = new FileReader(); r.onerror = () => rej(new Error('read'));
+  r.onload = () => { const img = new Image(); img.onload = () => { try{ const M = 1100, s = Math.min(1, M / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas');
+    c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', .84)); }catch(err){ rej(err); } };
+    img.onerror = () => rej(new Error('decode')); img.src = r.result; }; r.readAsDataURL(file); }); }
+document.addEventListener('change', async e => { if (e.target.id !== 'gfPhoto' || !e.target.files[0]) return; e.stopImmediatePropagation();
+  try{ gearKeep(); gearDraft.photo = await gearReadPhoto(e.target.files[0]); gearForm(); }catch(err){ toast('That photo could not be loaded. Try a different one.'); } }, true);
+gearCardFace = function(it, idx, total){
+  const t = GEAR_TYPES[it.type] || GEAR_TYPES.other, [a, b] = GEAR_COL[it.type] || GEAR_COL.other, sys = it.type === 'console' || it.type === 'handheld';
+  const on = sys && it.status === 'own' ? gearOn(it) : [], hrs = on.reduce((s, g) => s + (g.hours || 0), 0), cur = prefs.currency || '$';
+  const [rc, rn] = it.status === 'wish' ? ['ghost','Wanted'] : RARITY[it.cond] || ['plain',''];
+  const sub = [it.model, it.color].filter(Boolean).join(' · ') || t.one;
+  const chips = [
+    it.status === 'wish' ? `<i class="gx2-c wish">☆ Wanted${it.price ? ` · ${cur}${Math.round(it.price)}` : ''}</i>` : it.cond ? `<i class="gx2-c ${COND_CLS && COND_CLS[it.cond] ? COND_CLS[it.cond] : ''}">${esc(it.cond)}${it.cond === 'New' ? ' ✦' : ''}</i>` : '',
+    on.length ? `<i class="gx2-c">🎮 ${on.length} games</i>` : '', hrs ? `<i class="gx2-c">⏱ ${Math.round(hrs)}h</i>` : '',
+    it.qty > 1 ? `<i class="gx2-c">×${it.qty}</i>` : '', it.got ? `<i class="gx2-c">since ${new Date(it.got).getFullYear()}</i>` : ''].filter(Boolean).join('');
+  const art = it.photo ? `<span class="gx2-blur" style="background-image:url('${it.photo}')"></span><span class="gx2-win"><img src="${it.photo}" alt=""></span>`
+    : `<span class="gx2-blur gx2-plain"></span><span class="gx2-win gx2-icon">${gearIcon(it)}</span>`;
+  return `<div class="cc-face gx2 rar-${rc}" style="--ga:${a};--gb:${b}">${art}
+    ${rn ? `<span class="gx2-rar">${esc(rn)}</span>` : ''}${gearWarn(it, 'cc-warn')}
+    <span class="gx2-info"><b>${esc(it.name || t.one)}</b><small>${esc(sub)}</small><span class="gx2-chips">${chips}</span></span>
+    ${it.status === 'sold' ? '<span class="cc-stamp">TRADED</span>' : ''}<span class="gx2-shine"></span></div>`;
+};
+
+/* ===================================================================
+   Display mode: the live timer look (ring around the disc, soft red pulse),
+   and you choose which cards rotate on the dashboard.
+   =================================================================== */
+const DISP_KINDS = [['shelf','Your shelf','📚'],['recent','Recently beaten','🏆'],['goal','Yearly goal','🎯'],['trophies','Trophies','🥇'],['series','Series progress','📈'],['idea','Up next idea','🎲'],
+  ['stats','Stats','📊'],['timeline','Timeline','🕰️'],['week','This week','📅'],['upnext','Your Up next','📋']];
+const dispShowOn = k => (prefs.dispShow || {})[k] !== false;
+const dispKindOf = html => { const h = (html.match(/class="dc-h">([^<]*)</) || [])[1] || '';
+  return /Your shelf/.test(h) ? 'shelf' : /Recently beaten/.test(h) ? 'recent' : /goal|so far/.test(h) ? 'goal' : /Trophies/.test(h) ? 'trophies' : /Series progress/.test(h) ? 'series' : /Up next idea/.test(h) ? 'idea'
+    : /Stats/.test(h) ? 'stats' : /Timeline/.test(h) ? 'timeline' : /This week/.test(h) ? 'week' : /Your Up next/.test(h) ? 'upnext' : 'other'; };
+dispCards = (orig => function(){
+  const cards = orig(), y = new Date().getFullYear(), MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  // new cards you can add
+  const hrsY = games.reduce((a, g) => a + (g.log || []).filter(e => new Date(e.t).getFullYear() === y).reduce((s, e) => s + e.h, 0), 0);
+  const cons = new Map(); games.forEach(g => { const c = consolesOf(g)[0]; if (c) cons.set(c, (cons.get(c) || 0) + (g.hours || 0)); }); const topCon = [...cons.entries()].sort((p, q) => q[1] - p[1])[0];
+  const rated = games.filter(g => g.rating), avg = rated.length ? rated.reduce((s, g) => s + g.rating, 0) / rated.length : 0;
+  cards.push(`<div class="dc"><p class="dc-h">Stats</p><div class="dc-stats"><div><b>${Math.round(Math.max(0, hrsY))}</b><span>hours in ${y}</span></div><div><b>${games.filter(g => g.status === 'beaten' && g.finishedAt && new Date(g.finishedAt).getFullYear() === y).length}</b><span>beaten in ${y}</span></div>
+    <div><b>${topCon ? esc(topCon[0]) : '—'}</b><span>top console</span></div><div><b>${avg ? avg.toFixed(1) + '★' : '—'}</b><span>average rating</span></div></div></div>`);
+  const tl = games.filter(g => g.status === 'beaten' && g.finishedAt).sort((p, q) => q.finishedAt - p.finishedAt).slice(0, 5);
+  if (tl.length) cards.push(`<div class="dc"><p class="dc-h">Timeline</p><div class="dc-tl">${tl.map(g => { const d = new Date(g.finishedAt); return `<div class="dc-tl-i">${discHTML(g, 64)}<span class="dc-tl-d">${MON[d.getMonth()]} ${d.getDate()}</span><span class="dc-tl-t">${esc(g.title)}</span></div>`; }).join('')}</div></div>`);
+  const start = (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate() - ((n.getDay() + 6) % 7)).getTime(); })(), days = Array(7).fill(0);
+  games.forEach(g => (g.log || []).forEach(e => { if (e.t >= start && e.h > 0 && e.h <= 16) days[Math.min(6, Math.floor((e.t - start) / 864e5))] += e.h; })); const wk = days.reduce((a, b) => a + b, 0), mx = Math.max(1, ...days);
+  cards.push(`<div class="dc"><p class="dc-h">This week</p><div class="dc-week">${days.map((h, i) => `<div><i style="height:${Math.max(4, h / mx * 100)}%"></i><span>${'MTWTFSS'[i]}</span></div>`).join('')}</div><p class="dc-sub">${wk ? `${fmtH(wk)} played this week` : 'Nothing played yet this week'}</p></div>`);
+  const up = (prefs.upnext || []).map(id => games.find(g => g.id === id)).filter(Boolean).slice(0, 3);
+  if (up.length) cards.push(`<div class="dc"><p class="dc-h">Your Up next</p><div class="dc-discs">${up.map(g => `<div>${discHTML(g, 84)}<span>${esc(g.title)}</span></div>`).join('')}</div></div>`);
+  const shown = cards.filter(c => dispShowOn(dispKindOf(c)));
+  return shown.length ? shown : cards.slice(0, 1);
+})(dispCards);
+// the live timer look on the dashboard
+dispRender = (orig => function(){ orig(); const el = $('display'), t = typeof timerNow === 'function' && timerNow(); if (!el) return; const dn = el.querySelector('.d-main .dn'); if (!dn) return;
+  dn.classList.toggle('dn-live', !!t && !!el.querySelector('#dTimer')); dn.classList.toggle('dn-paused', !!t && !!t.pausedAt);
+  if (t && el.querySelector('#dTimer') && !dn.querySelector('.drt')){ const cd = dn.querySelector(':scope > .cd'); if (cd){ const w = document.createElement('span'); w.className = 'drt'; cd.replaceWith(w); w.innerHTML = '<span class="drt-ring"></span>'; w.appendChild(cd); } }
+  const w = dn.querySelector('.drt'); if (w && t) w.style.setProperty('--rp', ((timerMs(t) % 3600000) / 3600000 * 100).toFixed(2) + '%'); })(dispRender);
+setInterval(() => { const w = document.querySelector('#display .drt'), t = typeof timerNow === 'function' && timerNow(); if (w && t) w.style.setProperty('--rp', ((timerMs(t) % 3600000) / 3600000 * 100).toFixed(2) + '%'); }, 1000);
+// choosing what shows, in Settings > Display mode
+appSettings = (orig => function(){ const html = orig(); if (!html.includes('id="dsOff"') && !html.includes('Start display mode')) return html; if (html.includes('data-dshow')) return html;
+  const box = `<div class="dshow"><p class="d-l" style="margin:14px 0 6px">Show on the dashboard</p><p class="set-note" style="margin:0 0 8px">Tap to choose which cards take turns next to your game.</p>
+    <div class="dshow-g">${DISP_KINDS.map(([k, l, i]) => `<button class="dshow-b ${dispShowOn(k) ? 'on' : ''}" data-dshow="${k}" aria-pressed="${dispShowOn(k)}"><span>${i}</span>${l}</button>`).join('')}</div></div>`;
+  const a = html.indexOf('<fieldset class="group"><legend>Display mode</legend>'); if (a < 0) return html; const b = html.indexOf('</fieldset>', a);
+  return html.slice(0, b) + box + html.slice(b); })(appSettings);
+document.addEventListener('click', e => { const b = e.target.closest('[data-dshow]'); if (!b) return; const k = b.dataset.dshow; prefs.dispShow = { ...(prefs.dispShow || {}) };
+  const willShow = !dispShowOn(k); if (!willShow && DISP_KINDS.filter(([x]) => dispShowOn(x)).length <= 1){ toast('Keep at least one card'); return; }
+  prefs.dispShow[k] = willShow; savePrefs(); renderStage(false); });
+
+/* ===================================================================
+   Installing games, made quick:
+   - In a console's Storage sheet: search your games by name (with suggestions
+     like what you're playing), tap one to add it, size optional.
+   - In any game's panel: tap a console chip under Status to mark it installed
+     there, and type its size right in the chip if you want.
+   =================================================================== */
+const sysGear = () => gearList().filter(x => (x.type === 'console' || x.type === 'handheld') && x.status === 'own');
+function instFindHTML(it, q){
+  const have = new Set((it.installed || []).map(x => x.gid)), pool = gearOn(it).filter(g => !have.has(g.id)), nq = norm(q || '');
+  const added = g => { const t = parseInt(String(g.id).slice(0, 8), 36); return t > 1.4e12 ? t : 0; };
+  const rank = g => (g.status === 'playing' ? 0 : g.status === 'hold' ? 1 : (prefs.upnext || []).includes(g.id) ? 2 : 3);
+  const list = nq ? pool.filter(g => norm(g.title).includes(nq)).sort((a, b) => norm(a.title).indexOf(nq) - norm(b.title).indexOf(nq) || a.title.localeCompare(b.title))
+                  : pool.slice().sort((a, b) => rank(a) - rank(b) || added(b) - added(a));
+  if (!pool.length) return `<p class="set-note" style="margin:6px 0 0">${gearOn(it).length ? 'Every game on this system is marked installed.' : 'Games show up here once their console matches this system\u2019s name.'}</p>`;
+  if (!list.length) return `<p class="set-note" style="margin:6px 0 0">No games match “${esc(q)}”.</p>`;
+  return list.slice(0, 7).map(g => `<button class="gx-hit" data-gxpick="${g.id}">${discHTML(g, 28)}<span><b>${esc(g.title)}</b><small>${ST[g.status]?.long || ''}</small></span><em>＋</em></button>`).join('')
+    + (list.length > 7 ? `<p class="set-note" style="margin:4px 2px 0">${list.length - 7} more. Keep typing to narrow it down.</p>` : '');
+}
+gxDraw = (orig => function(){ orig(); if (!gxSheet || gxSheet.kind !== 'storage') return; const ov = $('gxSheet'), add = ov?.querySelector('.gx-add'), it = gearById(gxSheet.id); if (!it) return;
+  const host = add || ov?.querySelector('.gx-list')?.nextElementSibling; if (!host || ov.querySelector('.gx-find')) return;
+  host.outerHTML = `<p class="d-l" style="margin:14px 0 6px">Add a game</p><div class="gx-find"><span class="lt2-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input class="search" id="gxFind" placeholder="Search your ${esc(it.name)} games" autocomplete="off" value="${esc(gxSheet.q || '')}"></span>
+    <input class="search gx-gb" id="gxNewGb" inputmode="decimal" placeholder="GB" aria-label="Size in GB (optional)"></div><div class="gx-res" id="gxRes">${instFindHTML(it, gxSheet.q)}</div>`;
+})(gxDraw);
+document.addEventListener('input', e => { if (e.target.id !== 'gxFind' || !gxSheet) return; gxSheet.q = e.target.value; const it = gearById(gxSheet.id), r = $('gxRes'); if (it && r) r.innerHTML = instFindHTML(it, gxSheet.q); });
+document.addEventListener('click', e => { const p = e.target.closest('[data-gxpick]'); if (!p || !gxSheet) return; const it = gearById(gxSheet.id); if (!it) return;
+  const size = parseFloat(($('gxNewGb')?.value || '').replace(',', '.')) || 0, g = games.find(x => x.id === p.dataset.gxpick);
+  (it.installed ||= []).push({ gid:p.dataset.gxpick, gb:size }); savePrefs(); gxSheet.q = ''; gxDraw(); /* fresh suggestions for the next one */ toast(`${g ? g.title : 'Game'} installed on ${it.name}`); }, true);
+
+/* in the game's panel */
+appGame = (orig => function(id){ const html = orig(id), g = games.find(x => x.id === id); if (!g) return html;
+  const sys = sysGear().filter(s => gearOn(s).some(x => x.id === id)); if (!sys.length) return html;
+  const chips = sys.map(s => { const ins = (s.installed || []).find(x => x.gid === id);
+    return ins ? `<span class="gpi on"><button class="gpi-t" data-gpinst="${s.id}|${id}" aria-label="Remove from ${esc(s.name)}">💾 ${esc(s.name)} ✓</button><input class="gpi-gb" data-gpigb="${s.id}|${id}" inputmode="decimal" placeholder="GB" value="${ins.gb || ''}" aria-label="Size on ${esc(s.name)} in GB"></span>`
+               : `<span class="gpi"><button class="gpi-t" data-gpinst="${s.id}|${id}">＋ ${esc(s.name)}</button></span>`; }).join('');
+  const block = `<div class="gp-inst"><span class="d-l">Installed on</span><div class="gpi-row">${chips}</div></div>`;
+  const mark = '<div class="gp2-pane p-overview">'; const i = html.indexOf(mark); if (i < 0) return html;
+  const j = html.indexOf('</fieldset>', i); return j < 0 ? html : html.slice(0, j + 11) + block + html.slice(j + 11); })(appGame);
+document.addEventListener('click', e => { const b = e.target.closest('[data-gpinst]'); if (!b) return; const [sid, gid] = b.dataset.gpinst.split('|'), s = gearById(sid); if (!s) return;
+  const L = (s.installed ||= []), i = L.findIndex(x => x.gid === gid);
+  if (i >= 0) L.splice(i, 1); else L.push({ gid, gb:0 });
+  savePrefs(); const pane = b.closest('.gp-inst'); if (pane){ const html = appGame(gid), tmp = document.createElement('div'); tmp.innerHTML = html; const fresh = tmp.querySelector('.gp-inst'); if (fresh) pane.replaceWith(fresh); }
+  if (i < 0) setTimeout(() => document.querySelector(`[data-gpigb="${sid}|${gid}"]`)?.focus(), 30); });
+document.addEventListener('change', e => { const f = e.target.closest('[data-gpigb]'); if (!f) return; const [sid, gid] = f.dataset.gpigb.split('|'), s = gearById(sid), x = s && (s.installed || []).find(y => y.gid === gid);
+  if (x){ x.gb = parseFloat(f.value.replace(',', '.')) || 0; savePrefs(); } });
+
+/* ===================================================================
+   The Undo popup stays out of the way: shorter, smaller, it lets taps go
+   through to the buttons under it, and while a game's panel is open it
+   shows up at the top of the screen instead of over your buttons.
+   =================================================================== */
+toast = (orig => function(msg, undo){ orig(msg, undo); const t = $('toast'); if (!t) return;
+  const panel = !!document.querySelector('#drawer.open, .drawer.open, #gxSheet, .gear-ov, .tm-ov');
+  t.classList.toggle('toast-top', panel);
+  clearTimeout(toast.h); toast.h = setTimeout(() => { t.classList.remove('show', 'has-action'); undoSnap = null; }, undo ? 3500 : 2400); })(toast);
+document.addEventListener('pointerdown', e => { const t = $('toast'); if (t && t.classList.contains('show') && !e.target.closest('#toast')) t.classList.remove('show', 'has-action'); }, true);
 
 load().then(() => {
   loadSnaps().then(dailySnap);
