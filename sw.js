@@ -1,6 +1,6 @@
 // Game Shelf offline support. The app page always comes fresh from GitHub when you're online
 // (so an upload shows up right away), and from the saved copy when you're offline.
-const CACHE = 'game-shelf-v28';
+const CACHE = 'game-shelf-v30';
 const FILES = ['./', './index.html', './manifest.webmanifest', './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES))); self.skipWaiting(); });
 self.addEventListener('activate', e => {
