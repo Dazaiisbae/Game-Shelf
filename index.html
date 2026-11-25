@@ -2576,6 +2576,83 @@ label.feat .feat-t{display:flex;flex-direction:column;align-items:flex-start}
 @keyframes livePulse{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
 :root[data-lite] #tray .mini-np .cd,:root[data-lite] #tray .mini-np::after{animation:none}
 @media (prefers-reduced-motion:reduce){ :root[data-live] #tray .mini-np .cd,:root[data-live] #tray .mini-np::after{animation:none} }
+
+/* phones: the page frame has no edge or shine line, so nothing white shows at the very top of the screen */
+@media (max-width:759px){ .stage{border:0 !important;box-shadow:none !important;border-radius:0 !important} }
+/* ===== Now Playing lists as tidy glass panels ===== */
+.qlist{display:flex;flex-direction:column;gap:14px}
+.qsec-h{display:flex;align-items:baseline;justify-content:space-between;margin:0 4px 6px !important}
+.qsec-h b{font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.qsec-h span{font-size:11px;font-weight:900;padding:2px 9px;border-radius:999px;background:var(--tint);border:1px solid var(--edge);color:var(--soft)}
+.qsec-box{border-radius:20px;background:var(--pane);border:1px solid var(--pane-line);overflow:hidden}
+.qsec-box .qrow{padding:9px 12px !important;margin:0 !important;border-radius:0 !important;background:none !important;border:0 !important;border-bottom:1px solid var(--pane-line) !important}
+.qsec-box .qrow[hidden]{display:none !important}
+.qsec-box .qrow .t{font-size:14.5px}
+.qsec-box .qplay{padding:7px 12px !important;font-size:12.5px !important}
+.qsec-more{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:11px;border:0;background:none;color:var(--aqua-deep,#2E7FD0);font:inherit;font-size:13.5px;font-weight:900;cursor:pointer}
+.qsec-more span{font-size:11px}
+.qsec-box > .qrow:last-of-type{border-bottom:0 !important}
+/* ===== Your own Up next ===== */
+.up-edit{display:flex;gap:6px;flex:0 0 auto}
+.up-edit .btn.round{width:32px;height:32px;padding:0;font-size:12px;display:inline-flex;align-items:center;justify-content:center}
+.up-edit .up-x{color:#D63A40}
+.up-tools{display:flex;justify-content:center;padding:4px 0 2px}
+.up-tools .linkbtn{font-size:12.5px;font-weight:800;color:var(--soft)}
+.up-empty{margin:0;padding:12px 14px;font-size:13px}
+.btn.up-on{background:var(--tint);border-color:var(--accent)}
+/* ===== Now Playing, tidied ===== */
+.np2-week{display:flex;align-items:center;gap:10px;margin-top:10px;padding:8px 10px;border-radius:14px;background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);font-size:12px;font-weight:800}
+.np2-days{display:flex;gap:4px;margin-left:auto}
+.np2-days i{width:13px;height:13px;border-radius:4px;background:rgba(255,255,255,.22)}
+.np2-days i.on{background:linear-gradient(180deg,#9FF0FF,#2E9BE0);box-shadow:0 0 6px rgba(127,231,255,.7)}
+.np2-days i.today{outline:1.5px solid rgba(255,255,255,.85);outline-offset:1px}
+.np2-games{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 4px}
+.np2-gchip{display:inline-flex;align-items:center;gap:6px;max-width:48%;padding:3px 10px 3px 3px;border-radius:999px;border:0;font:inherit;font-size:11.5px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);cursor:pointer}
+.np2-gchip span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.np2-gchip.on{background:rgba(255,255,255,.34);box-shadow:inset 0 0 0 1.5px #fff}
+.np2-gchip .cd{flex:0 0 auto}
+.np2-empty .np2-ebody{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;margin:8px 0 2px}
+.np2-empty .np2-ebody b{font-size:21px;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.np2-empty .np2-ebody small{font-size:12.5px;font-weight:700;opacity:.9}
+.np2-tag{margin-top:6px;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.22)}
+.np2-empty .np2-actions{flex-wrap:wrap}.np2-empty .np2-actions .btn:not(.primary){flex:1 1 auto}
+.qslim{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:18px;border:1px solid var(--pane-line);background:var(--pane);color:inherit;font:inherit;font-size:13.5px;font-weight:800;cursor:pointer;text-align:left}
+.qslim-st{display:flex}.qslim-st .cd{margin-left:-9px;box-shadow:0 0 0 2px var(--win-bg)}.qslim-st .cd:first-child{margin-left:0}
+.qslim em{margin-left:auto;font-style:normal;font-size:12.5px;font-weight:900;color:var(--aqua-deep,#2E7FD0)}
+.qsec-h[hidden],.qsec-box[hidden]{display:none !important}
+.qwait{margin:8px;padding:10px 12px;border-radius:16px;background:linear-gradient(135deg,rgba(255,159,216,.2),rgba(180,156,255,.14));border:1px solid rgba(255,159,216,.4)}
+.qwait-k{font-size:10.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#D9468A}
+@media (prefers-color-scheme:dark){ .qwait-k{color:#FFB3DA} }
+.qwait-m{display:flex;align-items:center;gap:10px;margin-top:6px;cursor:pointer}.qwait-m .cd{flex:0 0 auto}
+.qwait-m span{display:flex;flex-direction:column;min-width:0}.qwait-m b{font-size:15px;font-weight:900}.qwait-m small{font-size:12px;font-weight:600;color:var(--soft)}
+.qwait-a{display:flex;gap:8px;margin-top:8px}.qwait-a .btn{flex:1;padding:8px}
+/* ===== Pick for me ===== */
+.qsec-h .pick-btn,.pane-h .pick-btn{margin-left:8px;padding:4px 11px;border-radius:999px;border:1px solid var(--edge);background:var(--pill-accent,linear-gradient(180deg,#6CC6F5,#2E9BE0));color:#fff;font:inherit;font-size:11.5px;font-weight:900;letter-spacing:0;text-transform:none;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.qsec-h{align-items:center !important}.qsec-h > span:not(.pick-btn){margin-left:auto}
+.pick-ov{align-items:flex-end}
+.pick-box{width:min(460px,100%);max-height:92%;overflow:auto;padding:14px 14px 18px;border-radius:26px 26px 0 0;background:var(--win-bg);border:1px solid var(--edge);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);color:var(--ink);box-shadow:0 -12px 40px rgba(0,20,50,.3);animation:pop .25s ease-out}
+.pick-card{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:10px;padding:18px 14px;border-radius:22px;color:#fff;text-align:center;border:1px solid rgba(255,255,255,.6)}
+.pick-card.none{color:var(--ink);background:var(--pane);border-color:var(--pane-line)}
+.pick-card b{font-size:22px;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,.35);overflow-wrap:anywhere}
+.pick-card small{font-size:13px;font-weight:700;opacity:.92}
+.pick-why{padding:3px 11px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.24);margin-top:4px}
+.pick-disc{filter:drop-shadow(0 8px 14px rgba(0,0,0,.3))}
+.pick-card.roll .pick-disc{animation:pickSpin .6s cubic-bezier(.2,.8,.3,1)}
+.pick-card.roll b,.pick-card.roll .pick-why{animation:pop .45s ease-out}
+@keyframes pickSpin{from{transform:rotate(-540deg) scale(.6);opacity:.3}}
+.pick-acts{display:flex;gap:8px;margin-top:12px}.pick-acts .btn{flex:1;padding:11px 8px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.pick-acts .bi{width:15px;height:15px}
+.pick-filters{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:14px;padding:10px 12px;border-radius:16px;background:var(--pane);border:1px solid var(--pane-line);font-size:13px;font-weight:700}
+.pick-filters select{border-radius:10px;margin:0}
+.pick-filters label{display:flex;align-items:center;gap:6px}
+@media (prefers-reduced-motion:reduce){ .pick-card.roll .pick-disc{animation:none} }
+.ab-head{display:flex;align-items:center;gap:12px}
+.ab-disc{width:52px;height:52px;border-radius:50%;flex:0 0 auto;background:radial-gradient(circle closest-side,transparent 0 15%,#fff 16% 28%,transparent 29%),conic-gradient(from 200deg,#5FD8FF,#9B7BFF,#FF7FC8,#FFE066,#5FF2B0,#5FD8FF);
+  -webkit-mask:radial-gradient(circle closest-side,transparent 0 9%,#000 10%);mask:radial-gradient(circle closest-side,transparent 0 9%,#000 10%);box-shadow:0 3px 10px rgba(0,30,60,.25)}
+.ab-head span{display:flex;flex-direction:column}.ab-head b{font-size:18px;font-weight:900}.ab-head small{font-size:12.5px;font-weight:800;color:var(--soft)}
+.ab-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.ab-facts div{padding:8px 4px;border-radius:12px;text-align:center;background:var(--tint);border:1px solid var(--edge)}
+.ab-facts b{display:block;font-size:17px;font-weight:900}.ab-facts span{font-size:10px;font-weight:800;color:var(--soft);text-transform:uppercase;letter-spacing:.05em}
 </style>
 </head>
 <body>
@@ -4709,7 +4786,7 @@ document.addEventListener('change', e => { const s = dsched();
    "Update available" banner. The app knows its own version; every so often
    it peeks at the copy on GitHub, and if that's newer it offers to update.
    =================================================================== */
-const APP_VERSION = 'v20';
+const APP_VERSION = 'v26';
 const upd = { at:0, found:false };
 async function updCheck(){
   if (!/^https?:/.test(location.protocol) || upd.found) return;
@@ -5496,6 +5573,183 @@ render = (orig => function(){ orig(); liveSync(); })(render);
 renderTaskbar = (orig => function(){ orig(); liveSync(); })(renderTaskbar);
 setInterval(liveSync, 4000);
 
+/* Now Playing lists (On hold, Up next, and the rest): each is a tidy glass panel showing 3 games, with "Show all" to open the rest. */
+const qOpen = new Set();
+renderStage = (orig => function(a){ orig(a); if (currentApp !== 'player') return; const q = $('stageBody')?.querySelector('.qlist'); if (!q || q.dataset.folded) return; q.dataset.folded = '1';
+  const kids = [...q.children], groups = []; let cur = null;
+  kids.forEach(k => { if (k.classList.contains('pane-h')){ cur = { head:k, rows:[] }; groups.push(cur); } else if (cur) cur.rows.push(k); else { cur = { head:null, rows:[k] }; groups.push(cur); } });
+  q.innerHTML = '';
+  groups.forEach(gp => { const name = gp.head ? gp.head.querySelector('b')?.textContent.trim() : 'More', open = qOpen.has(name), LIMIT = 3;
+    const sec = document.createElement('section'); sec.className = 'qsec';
+    if (gp.head){ gp.head.classList.add('qsec-h'); sec.appendChild(gp.head); }
+    const box = document.createElement('div'); box.className = 'qsec-box';
+    const games2 = gp.rows.filter(r => r.classList.contains('qrow')); let n = 0;
+    gp.rows.forEach(r => { if (r.classList.contains('qrow')){ if (!open && n >= LIMIT) r.hidden = true; n++; } box.appendChild(r); });
+    sec.appendChild(box);
+    if (games2.length > LIMIT){ const b = document.createElement('button'); b.className = 'qsec-more'; b.dataset.qmore = name;
+      b.innerHTML = open ? 'Show less <span>▴</span>' : `Show all ${games2.length} <span>▾</span>`; box.appendChild(b); }
+    q.appendChild(sec); });
+})(renderStage);
+document.addEventListener('click', e => { const b = e.target.closest('[data-qmore]'); if (!b) return; const n = b.dataset.qmore; qOpen.has(n) ? qOpen.delete(n) : qOpen.add(n); renderStage(false); });
+
+/* ===================================================================
+   Your own Up next: add games yourself (from a game's panel or from the
+   suggestions), put them in your order, and start them from Now Playing.
+   A game leaves the list once you start it, beat it, or drop it.
+   =================================================================== */
+let upEdit = false;
+const upList = () => { const q = (prefs.upnext ||= []); const keep = q.filter(id => { const g = games.find(x => x.id === id); return g && (g.status === 'backlog' || g.status === 'hold' || !g.status); });
+  if (keep.length !== q.length){ prefs.upnext = keep; savePrefs(); } return prefs.upnext; };
+const inUp = id => upList().includes(id);
+function upAdd(id){ if (!inUp(id)){ upList().push(id); savePrefs(); const g = games.find(x => x.id === id); toast(`Added ${g ? g.title : 'it'} to Up next`); } }
+function upRemove(id){ prefs.upnext = upList().filter(x => x !== id); savePrefs(); }
+appPlayer = (orig => function(){
+  const html = orig(), W = document.createElement('div'); W.innerHTML = html; const q = W.querySelector('.qlist'); if (!q) return html;
+  const heads = [...q.querySelectorAll(':scope > .pane-h')], upH = heads.find(h => h.querySelector('b')?.textContent.trim() === 'Up next');
+  const auto = []; if (upH){ let n = upH.nextElementSibling; while (n && !n.classList.contains('pane-h')){ const nx = n.nextElementSibling; const id = n.querySelector('[data-load]')?.dataset.load; if (id) auto.push(id); n.remove(); n = nx; } upH.remove(); }
+  const mine = upList().map(id => games.find(g => g.id === id)).filter(Boolean);
+  const meta = g => esc([g.series?.trim() ? seriesOf(g) : '', g.platform].filter(Boolean).join(', '));
+  const row = (g, i) => `<div class="qrow up-row">${discHTML(g, 36)}<span style="min-width:0"><button class="t" data-game="${g.id}">${esc(g.title)}</button><span class="m">${meta(g)}</span></span>
+    ${upEdit ? `<span class="up-edit"><button class="btn round" data-upmove="${g.id}|-1" ${i === 0 ? 'disabled' : ''} aria-label="Move up">▲</button><button class="btn round" data-upmove="${g.id}|1" ${i === mine.length - 1 ? 'disabled' : ''} aria-label="Move down">▼</button><button class="btn round up-x" data-uprm="${g.id}" aria-label="Remove">✕</button></span>`
+      : `<button class="btn qplay" data-load="${g.id}">${ICONS.play}<span>Play</span></button>`}</div>`;
+  let out = `<div class="pane-h"><b>Up next</b><span>${mine.length ? `${mine.length} in your list` : 'your list'}</span></div>`;
+  out += mine.length ? mine.map(row).join('') + `<div class="up-tools"><button class="linkbtn" data-upedit>${upEdit ? 'Done' : 'Reorder or remove'}</button></div>`
+    : `<p class="set-note up-empty">Your Up next is empty. Open any game and tap <b>＋ Up next</b>, or add a suggestion below.</p>`;
+  const sugg = auto.filter(id => !inUp(id)).slice(0, mine.length >= 3 ? 0 : 5).map(id => games.find(g => g.id === id)).filter(Boolean);
+  if (sugg.length) out += `<div class="pane-h"><b>Suggested</b><span>next in your series</span></div>` + sugg.map(g => `<div class="qrow">${discHTML(g, 36)}<span style="min-width:0"><button class="t" data-game="${g.id}">${esc(g.title)}</button><span class="m">${meta(g)}</span></span><button class="btn qplay" data-upadd="${g.id}" aria-label="Add ${esc(g.title)} to Up next">＋<span>Add</span></button></div>`).join('');
+  q.insertAdjacentHTML('beforeend', out); return W.innerHTML;
+})(appPlayer);
+/* a button in each game's panel */
+appGame = (orig => function(id){ const html = orig(id), g = games.find(x => x.id === id); if (!g || !['backlog','hold'].includes(g.status || 'backlog')) return html;
+  const b = `<button class="btn ${inUp(id) ? 'up-on' : ''}" data-uptoggle="${id}">${inUp(id) ? '✓ In Up next' : '＋ Up next'}</button>`;
+  return html.includes('<div class="gp-actions">') ? html.replace('<div class="gp-actions">', '<div class="gp-actions">' + b) : html; })(appGame);
+document.addEventListener('click', e => {
+  const t = e.target;
+  const a = t.closest('[data-upadd]'); if (a){ upAdd(a.dataset.upadd); render(); return; }
+  const tg = t.closest('[data-uptoggle]'); if (tg){ const id = tg.dataset.uptoggle; inUp(id) ? (upRemove(id), toast('Removed from Up next')) : upAdd(id); render(); return; }
+  if (t.closest('[data-upedit]')){ upEdit = !upEdit; render(); return; }
+  const mv = t.closest('[data-upmove]'); if (mv){ const [id, d] = mv.dataset.upmove.split('|'), L = upList(), i = L.indexOf(id), j = i + +d; if (i >= 0 && j >= 0 && j < L.length){ [L[i], L[j]] = [L[j], L[i]]; savePrefs(); render(); } return; }
+  const rm = t.closest('[data-uprm]'); if (rm){ upRemove(rm.dataset.uprm); render(); return; }
+});
+
+/* ===================================================================
+   Now Playing, tidied: a "this week" line on the card, game chips to switch
+   between games you're playing, Up next above On hold, On hold folded into
+   one slim row (open it to see who's waited longest), and a helpful empty state.
+   =================================================================== */
+const waitSpan = ms => { const d = Math.floor(ms / 864e5); if (d < 45) return `${d} days`; const m = Math.round(d / 30.44); if (m < 12) return `${m} months`; const y = Math.floor(m / 12), r = m % 12; return `${y} year${y > 1 ? 's' : ''}${r ? ` ${r} mo` : ''}`; };
+const lastTouch = g => Math.max(g.holdAt || 0, g.lastPlayed || 0, ...(g.log || []).map(x => x.t || 0), g.startedAt || 0) || 0;
+function weekInfo(g){
+  const now = new Date(), start = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay() + 6) % 7)).getTime(), days = Array(7).fill(false); let h = 0;
+  (g.log || []).forEach(x => { if (!x.t || x.t < start || !(x.h > 0) || x.h > 16) return; h += x.h; days[Math.min(6, Math.floor((x.t - start) / 864e5))] = true; });
+  return { h, n: days.filter(Boolean).length, days, today: (now.getDay() + 6) % 7 };
+}
+appPlayer = (orig => function(){
+  const html = orig(), W = document.createElement('div'); W.innerHTML = html;
+  const card = W.querySelector('.np2-card'), playing = games.filter(g => g.status === 'playing').sort((a, b) => (b.startedAt || 0) - (a.startedAt || 0));
+  if (card){
+    const id = card.querySelector('[data-hour]')?.dataset.hour, g = games.find(x => x.id === id);
+    if (g){ const w = weekInfo(g);
+      card.querySelector('.np2-actions')?.insertAdjacentHTML('beforebegin', `<div class="np2-week"><span>⏱ ${w.h ? `${fmtH(w.h)} · ${w.n} day${w.n === 1 ? '' : 's'} this week` : 'Not played yet this week'}</span>
+        <span class="np2-days">${w.days.map((on, i) => `<i class="${on ? 'on' : ''} ${i === w.today ? 'today' : ''}" title="${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]}"></i>`).join('')}</span></div>`);
+      if (playing.length > 1){ card.querySelectorAll('[data-ptrack]').forEach(b => b.remove());
+        card.querySelector('.np2-top')?.insertAdjacentHTML('afterend', `<div class="np2-games">${playing.map(x => `<button class="np2-gchip ${x.id === g.id ? 'on' : ''}" data-npick="${x.id}">${discHTML(x, 22)}<span>${esc(x.title)}</span></button>`).join('')}</div>`); }
+    }
+  } else {
+    // nothing in progress: your first Up next game (or the first suggestion) takes the card
+    const main = W.querySelector('.np-main'), qlist = W.querySelector('.qlist');
+    const firstId = (prefs.upnext || []).find(id => games.find(x => x.id === id && x.status !== 'playing')) || qlist?.querySelector('[data-upadd],[data-load]')?.dataset.upadd || qlist?.querySelector('[data-load]')?.dataset.load;
+    const g = games.find(x => x.id === firstId);
+    if (main && g){ const cov = covers[g.id], fromList = (prefs.upnext || []).includes(g.id);
+      main.outerHTML = `<div class="np2"><div class="np2-card np2-empty" style="${cov ? `--cov:url('${cov}')` : `--h:${hue(g.title)}`}"><span class="gp2-bg ${cov ? 'photo' : ''}"></span>
+        <div class="np2-k" style="text-align:center">Nothing in progress</div><div class="np2-ebody"><span class="np2-disc">${discHTML(g, 104)}</span>
+        <span class="np2-tag">${fromList ? 'First in your Up next' : 'Suggested next'}</span><b>${esc(g.title)}</b><small>${esc([g.series?.trim() ? seriesOf(g) : '', g.platform].filter(Boolean).join(' · '))}</small></div>
+        <div class="np2-actions"><button class="btn primary np2-go" data-load="${g.id}">${PLAY_I}<span>Start it</span></button><button class="btn" data-launch="spin">Pick something else</button></div></div></div>`; }
+  }
+  // Up next (and Suggested) first, On hold last
+  const q = W.querySelector('.qlist'); if (q){ const heads = [...q.querySelectorAll(':scope > .pane-h')], hh = heads.find(h => h.querySelector('b')?.textContent.trim() === 'On hold');
+    if (hh){ const part = [hh]; let n = hh.nextElementSibling; while (n && !n.classList.contains('pane-h')){ part.push(n); n = n.nextElementSibling; } part.forEach(el => q.appendChild(el)); } }
+  return W.innerHTML;
+})(appPlayer);
+document.addEventListener('click', e => { const c = e.target.closest('[data-npick]'); if (!c) return; homePick = c.dataset.npick; render(); });
+/* On hold: a slim row until you open it; opened, the longest-waiting game is highlighted on top */
+renderStage = (orig => function(a){ orig(a); if (currentApp !== 'player') return; const body = $('stageBody'); if (!body) return;
+  const sec = [...body.querySelectorAll('.qsec')].find(s => s.querySelector('.qsec-h b')?.textContent.trim() === 'On hold'); if (!sec || sec.dataset.slim) return; sec.dataset.slim = '1';
+  const rows = [...sec.querySelectorAll('.qrow')], ids = rows.map(r => r.querySelector('[data-load]')?.dataset.load).filter(Boolean), hold = ids.map(id => games.find(g => g.id === id)).filter(Boolean);
+  const open = qOpen.has('On hold'), box = sec.querySelector('.qsec-box'), head = sec.querySelector('.qsec-h');
+  if (!open){ head.hidden = true; box.hidden = true;
+    sec.insertAdjacentHTML('beforeend', `<button class="qslim" data-qmore="On hold"><span class="qslim-st">${hold.slice(0, 3).map(g => discHTML(g, 28)).join('')}</span><span>⏸ ${hold.length} on hold</span><em>Show ▾</em></button>`); }
+  else { rows.forEach(r => { r.hidden = false; }); const more = box.querySelector('.qsec-more'); if (more) more.innerHTML = 'Show less <span>▴</span>';
+    const snoozed = (prefs.holdSnooze ||= {}), cand = hold.filter(g => !(snoozed[g.id] > Date.now())).sort((x, y) => (lastTouch(x) || Infinity) - (lastTouch(y) || Infinity))[0];
+    if (cand){ const t = lastTouch(cand), lo = cand.leftOff;
+      box.insertAdjacentHTML('afterbegin', `<div class="qwait"><div class="qwait-k">⏳ Waiting the longest${t ? ` · ${waitSpan(Date.now() - t)}` : ''}</div>
+        <div class="qwait-m" data-game="${cand.id}">${discHTML(cand, 40)}<span><b>${esc(cand.title)}</b>${lo && lo.text ? `<small>📍 ${esc(lo.text)}</small>` : `<small>${esc(cand.platform || '')}</small>`}</span></div>
+        <div class="qwait-a"><button class="btn primary" data-load="${cand.id}">Resume</button><button class="btn" data-holdsnooze="${cand.id}">Not now</button></div></div>`);
+      rows.find(r => r.querySelector(`[data-load="${cand.id}"]`))?.remove(); } }
+  // the separate "Waiting for you" card only stays for unplayed games now; on hold ones live here
+  body.querySelectorAll('.nudge').forEach(n => { if (/On hold/.test(n.querySelector('.nudge-main small')?.textContent || '')) n.remove(); });
+})(renderStage);
+document.addEventListener('click', e => { const s = e.target.closest('[data-holdsnooze]'); if (!s) return; (prefs.holdSnooze ||= {})[s.dataset.holdsnooze] = Date.now() + 30 * 864e5; savePrefs(); render(); toast('Okay, I\u2019ll bring it up again in a month'); });
+
+/* ===================================================================
+   "Pick for me" replaces the What to Play tab: a button on Now Playing
+   opens a quick sheet that shuffles through your backlog and lands on one
+   game, with Play it, add to Up next, or pick again.
+   =================================================================== */
+{ const fi = FEATURES.findIndex(f => f.id === 'spin'); if (fi >= 0) FEATURES.splice(fi, 1); const ti = ALL_TASKS.indexOf('spin'); if (ti >= 0) ALL_TASKS.splice(ti, 1);
+  if (prefs.features) delete prefs.features.spin; if (typeof FEAT_META !== 'undefined') delete FEAT_META.spin; if (currentApp === 'spin') currentApp = 'player';
+  if (prefs.pinTabs) prefs.pinTabs = prefs.pinTabs.filter(t => t !== 'spin'); }
+let pickCur = null;
+const consoleList = () => [...new Set(games.flatMap(g => consolesOf(g)))].filter(Boolean).sort();
+function pickWhy(g){
+  const ser = g.series?.trim() ? seriesOf(g) : '', t = typeof lastTouch === 'function' ? 0 : 0;
+  const added = (() => { const x = parseInt(String(g.id).slice(0, 8), 36); return x > 1.4e12 && x <= Date.now() ? x : null; })();
+  if (ser && typeof isNextUp === 'function' && isNextUp(g)) return `Next up in ${ser}`;
+  if (added && Date.now() - added > 180 * 864e5) return `Waiting since ${fmtDate(added)}`;
+  return g.own === 'physical' || g.own === 'digital' ? 'On your shelf, ready to go' : 'From your backlog';
+}
+function pickRoll(){ const pool = spinPool().filter(g => g.id !== pickCur); pickCur = (pool.length ? pool : spinPool())[Math.floor(Math.random() * Math.max(1, (pool.length ? pool : spinPool()).length))]?.id || null; }
+function pickOpen(){ pickRoll(); pickDraw(true); }
+function pickDraw(animate){
+  const g = games.find(x => x.id === pickCur), pool = spinPool(), cons = consoleList();
+  const ov = $('pickSheet') || document.createElement('div'); ov.id = 'pickSheet'; ov.className = 'tm-ov pick-ov';
+  const card = g ? `<div class="pick-card ${animate ? 'roll' : ''}" style="${covers[g.id] ? `--cov:url('${covers[g.id]}')` : `--h:${hue(g.title)}`}"><span class="gp2-bg ${covers[g.id] ? 'photo' : ''}"></span>
+      <span class="pick-disc">${discHTML(g, 120)}</span><span class="pick-why">${esc(pickWhy(g))}</span><b>${esc(g.title)}</b><small>${esc([g.series?.trim() ? seriesOf(g) : '', g.platform].filter(Boolean).join(' · '))}</small></div>`
+    : `<div class="pick-card none"><b>Nothing matches</b><small>Try a different console or turn off series order.</small></div>`;
+  ov.innerHTML = `<div class="pick-box" role="dialog" aria-label="Pick for me"><div class="gf-head"><b>🎲 Pick for me</b><button class="btn round" data-pickclose aria-label="Close">✕</button></div>
+    ${card}
+    ${g ? `<div class="pick-acts"><button class="btn primary" data-load="${g.id}" data-pickplay>${PLAY_I}<span>Play it</span></button>${typeof upAdd === 'function' ? `<button class="btn" data-pickup="${g.id}">${typeof inUp === 'function' && inUp(g.id) ? '✓ In Up next' : '＋ Up next'}</button>` : ''}<button class="btn" data-pickagain>🎲 Again</button></div>` : ''}
+    <div class="pick-filters"><select id="pickConsole" aria-label="Console"><option value="all">Any console</option>${cons.map(c => `<option ${spinConsole === c ? 'selected' : ''}>${esc(c)}</option>`).join('')}</select>
+      <label><input type="checkbox" id="pickOwned" ${spinOwned ? 'checked' : ''}> Only games I own</label><label><input type="checkbox" id="pickOrder" ${spinInOrder ? 'checked' : ''}> Series in order</label></div>
+    <p class="set-note" style="text-align:center;margin:8px 0 0">${pool.length} game${pool.length === 1 ? '' : 's'} to pick from</p></div>`;
+  if (!ov.isConnected){ $('os').appendChild(ov);
+    ov.addEventListener('click', e => { const t = e.target;
+      if (t === ov || t.closest('[data-pickclose]')) return ov.remove();
+      if (t.closest('[data-pickagain]')){ pickRoll(); pickDraw(true); return; }
+      const u = t.closest('[data-pickup]'); if (u){ if (!inUp(u.dataset.pickup)) upAdd(u.dataset.pickup); pickDraw(false); render(); return; }
+      if (t.closest('[data-pickplay]')) setTimeout(() => ov.remove(), 0); });
+    ov.addEventListener('change', e => { if (e.target.id === 'pickConsole') spinConsole = e.target.value; if (e.target.id === 'pickOwned') spinOwned = e.target.checked; if (e.target.id === 'pickOrder') spinInOrder = e.target.checked; pickRoll(); pickDraw(true); }); }
+}
+// anything that used to open the What to Play tab opens the picker instead
+document.addEventListener('click', e => { const b = e.target.closest('[data-launch="spin"],[data-pickme]'); if (!b) return; e.stopImmediatePropagation(); e.preventDefault(); pickOpen(); }, true);
+// the button lives next to the Up next heading on Now Playing
+renderStage = (orig => function(a){ orig(a); if (currentApp !== 'player') return; const h = [...($('stageBody')?.querySelectorAll('.qsec-h, .pane-h') || [])].find(x => x.querySelector('b')?.textContent.trim() === 'Up next');
+  if (h && !h.querySelector('[data-pickme]')) h.insertAdjacentHTML('beforeend', `<button class="pick-btn" data-pickme>🎲 Pick for me</button>`); })(renderStage);
+
+/* About shows which version you're running, with a "Check for updates" button */
+appSettings = (orig => function(){ const html = orig(), a = html.indexOf('<fieldset class="group"><legend>About</legend>'); if (a < 0) return html; const b = html.indexOf('</fieldset>', a) + 11;
+  const panel = `<fieldset class="group"><legend>About</legend>
+    <div class="ab-head"><span class="ab-disc"></span><span><b>Game Shelf</b><small>Version ${APP_VERSION.replace('v', '')}</small></span></div>
+    <div class="ab-facts"><div><b>${games.length}</b><span>games</span></div><div><b>${Object.keys(covers).length}</b><span>covers</span></div><div><b>${FEATURES.filter(f => featOn(f.id)).length}/${FEATURES.length}</b><span>features on</span></div></div>
+    <button class="btn primary" id="updCheckNow" style="width:100%;margin-top:12px;padding:11px">Check for updates</button>
+    <p class="set-note" style="margin:8px 0 0">Everything lives on this device. Clearing Safari data or deleting the home screen app erases it, so back up now and then.</p></fieldset>`;
+  return html.slice(0, a) + panel + html.slice(b); })(appSettings);
+sectionSummary = (orig => k => k === 'about' ? { text:`Version ${APP_VERSION.replace('v', '')} · ${games.length} games` } : orig(k))(sectionSummary);
+document.addEventListener('click', async e => { const b = e.target.closest('#updCheckNow'); if (!b) return;
+  if (!/^https?:/.test(location.protocol)){ toast('Checking only works in the installed app'); return; }
+  b.textContent = 'Checking…'; upd.found = false; await updCheck();
+  if ($('updBanner')) b.textContent = 'Update ready, see the banner'; else { b.textContent = 'Check for updates'; toast(`You're up to date (version ${APP_VERSION.replace('v', '')})`); } });
+
 load().then(() => {
   wallPhotoLoad();
   if (/[?&]display\b/.test(location.search)){ prefs.features = { ...(prefs.features || {}), display:true }; savePrefs(); }
@@ -5512,4 +5766,3 @@ load().then(() => {
 </script>
 </body>
 </html>
-
