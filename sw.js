@@ -1,5 +1,5 @@
 // Game Shelf offline support: serve the app from cache, refresh it in the background.
-const CACHE = 'game-shelf-v26';
+const CACHE = 'game-shelf-v27';
 const FILES = ['./', './index.html', './manifest.webmanifest', './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES))); self.skipWaiting(); });
 self.addEventListener('activate', e => {
