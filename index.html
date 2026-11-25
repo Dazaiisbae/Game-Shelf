@@ -4670,7 +4670,7 @@ document.addEventListener('change', e => { const s = dsched();
    "Update available" banner. The app knows its own version; every so often
    it peeks at the copy on GitHub, and if that's newer it offers to update.
    =================================================================== */
-const APP_VERSION = 'v27';
+const APP_VERSION = 'v28';
 const upd = { at:0, found:false };
 async function updCheck(){
   if (!/^https?:/.test(location.protocol) || upd.found) return;
@@ -5888,16 +5888,17 @@ setInterval(() => { const t = timerNow(), w = document.querySelector('.rt2'); if
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 function wrapData(Y){
   const inY = t => t && new Date(t).getFullYear() === Y;
-  const logs = games.flatMap(g => (g.log || []).filter(e => inY(e.t) && e.h > 0 && e.h <= 16).map(e => ({ g, t:e.t, h:e.h })));
+  const all = games.flatMap(g => (g.log || []).filter(e => inY(e.t) && e.h).map(e => ({ g, t:e.t, h:e.h })));
+  const logs = all.filter(e => e.h > 0 && e.h <= 16);   // real play sessions
   const sess = games.flatMap(g => (g.sessions || []).filter(s => inY(s.at)).map(s => ({ g, t:s.at, h:s.ms / 3600000 })));
-  const hours = logs.reduce((a, e) => a + e.h, 0), beaten = games.filter(g => g.status === 'beaten' && inY(g.finishedAt)).sort((a, b) => a.finishedAt - b.finishedAt);
-  const byGame = new Map(); logs.forEach(e => byGame.set(e.g, (byGame.get(e.g) || 0) + e.h));
-  let top = [...byGame.entries()].sort((a, b) => b[1] - a[1])[0];
+  const hours = Math.max(0, all.reduce((a, e) => a + e.h, 0)), beaten = games.filter(g => g.status === 'beaten' && inY(g.finishedAt)).sort((a, b) => a.finishedAt - b.finishedAt);
+  const byGame = new Map(); all.forEach(e => byGame.set(e.g, (byGame.get(e.g) || 0) + e.h));
+  let top = [...byGame.entries()].filter(x => x[1] > 0).sort((a, b) => b[1] - a[1])[0];
   if (!top){ const c = games.filter(g => (inY(g.startedAt) || inY(g.finishedAt) || g.status === 'playing') && g.hours).sort((a, b) => b.hours - a.hours)[0]; if (c) top = [c, c.hours, true]; }
-  const byCon = new Map(); (logs.length ? logs : beaten.map(g => ({ g, h:1 }))).forEach(e => { const c = consolesOf(e.g)[0]; if (c) byCon.set(c, (byCon.get(c) || 0) + e.h); });
+  const byCon = new Map(); (all.length ? all : beaten.map(g => ({ g, h:1 }))).forEach(e => { const c = consolesOf(e.g)[0]; if (c) byCon.set(c, (byCon.get(c) || 0) + e.h); });
   const con = [...byCon.entries()].sort((a, b) => b[1] - a[1])[0];
   const longest = [...sess, ...logs].sort((a, b) => b.h - a.h)[0];
-  const byMonth = Array(12).fill(0); logs.forEach(e => byMonth[new Date(e.t).getMonth()] += e.h); beaten.forEach(g => byMonth[new Date(g.finishedAt).getMonth()] += .001);
+  const byMonth = Array(12).fill(0); all.forEach(e => { if (e.h > 0) byMonth[new Date(e.t).getMonth()] += e.h; }); beaten.forEach(g => byMonth[new Date(g.finishedAt).getMonth()] += .001);
   const bm = byMonth.indexOf(Math.max(...byMonth)), busiest = byMonth[bm] > 0 ? bm : -1;
   const stamps = [...logs, ...sess].map(e => new Date(e.t)), n = stamps.length;
   const night = stamps.filter(d => d.getHours() >= 22 || d.getHours() < 4).length, morning = stamps.filter(d => d.getHours() >= 5 && d.getHours() < 11).length, wknd = stamps.filter(d => d.getDay() === 0 || d.getDay() === 6).length;
@@ -5907,9 +5908,9 @@ function wrapData(Y){
   const bySeries = new Map(); beaten.forEach(g => { if (g.series?.trim()){ const s = seriesOf(g); bySeries.set(s, (bySeries.get(s) || 0) + 1); } });
   const ser = [...bySeries.entries()].sort((a, b) => b[1] - a[1])[0];
   const added = games.filter(g => { const t = parseInt(String(g.id).slice(0, 8), 36); return t > 1.4e12 && new Date(t).getFullYear() === Y; }).length;
-  return { Y, hours, beaten, top, con, longest, busiest, style, ser, added, logs:logs.length, total:games.reduce((a, g) => a + (g.hours || 0), 0) };
+  return { Y, hours, beaten, top, con, longest, busiest, style, ser, added, logs:all.length, total:games.reduce((a, g) => a + (g.hours || 0), 0) };
 }
-const wrapH = h => h >= 10 ? `${Math.round(h)}` : (Math.round(h * 10) / 10).toString();
+const wrapH = h => h >= 10 ? `${Math.round(h)}` : h >= .1 ? (Math.round(h * 10) / 10).toString() : h > 0 ? '<0.1' : '0';
 function wrapSlides(D){
   const S = [], disc = (g, s) => `<span class="wr-disc">${discHTML(g, s)}</span>`;
   S.push(`<div class="wr-c"><span class="wr-k">Game Shelf</span><div class="wr-hero"><span class="wr-bigdisc"></span></div><h1>Your ${D.Y}<br>Wrapped</h1><p>Tap to see your year on the shelf</p></div>`);
